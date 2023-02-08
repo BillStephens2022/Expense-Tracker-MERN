@@ -1,0 +1,96 @@
+body {
+  font-style: "Montserrat, non-serif";
+  background: #034f84;
+}
+
+.home-body {
+  position: relative;
+  font-style: "Montserrat, non-serif";
+  background: #034f84;
+  font-weight: 900;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  color: rgb(25, 43, 57);
+}
+
+.home-body h1 {
+  font-style: "Montserrat, non-serif";
+  font-weight: 900;
+  font-size: 6em;
+  animation: texclip 1.5s linear infinite;
+  background: linear-gradient(to right, #d4af37 10%, #E5E4E2 50%, #a97142 60%);
+  background-clip: border-box;
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 10s linear infinite;
+  display: inline-block;
+}
+
+.home-body h6 {
+  font-size: 1.75em;
+  font-weight: 500;
+  max-width: 700px;
+  padding: 15px;
+  margin-top: 15px;
+  color: #fff;
+  animation: slideUp 1s ease-in-out;
+  background-color: #3c4344;
+  border-radius: 10px;
+  box-shadow: white 5px 5px 15px;
+  line-height: 1.5em;
+}
+
+.home-image {
+  text-align: center;
+  width: 50%;
+  border-radius: 5%;
+  margin: 15px 0px 15px 15px;
+  animation: slideRight 1s ease-in-out;
+}
+
+@keyframes textclip {
+  
+  to {
+    background-position: 200% center;
+  }
+  
+}
+
+@keyframes slideRight{
+  0% {
+  transform: translateX(-100%);
+  }
+  100% {
+  transform: translateX(0%);
+  }
+}
+
+@keyframes slideLeft{
+  0% {
+  transform: translateX(300%);
+  }
+  100% {
+  transform: translateX(0%);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+  transform: translateY(300%);
+  }
+  100% {
+  transform: translateY(0%);
+  }
+}
+
+.transaction-page {
+  font-style: "Montserrat, non-serif";
+  text-align: center;
+}
