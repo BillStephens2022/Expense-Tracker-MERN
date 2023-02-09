@@ -9,11 +9,11 @@ const transactionSchema = new Schema({
     type: Number,
     required: true,
   },
-  highLevelCategory: {
+  highLevelCategory: {  //essential vs non-essential
     type: String,
     required: true,
   },
-  category: {
+  category: {  // housing, transportation, utilities, etc
     type: String,
     required: true,
   },
