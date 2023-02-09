@@ -47,13 +47,30 @@ body {
   line-height: 1.5em;
 }
 
-.home-image {
+
+
+.dollar-image {
   text-align: center;
   width: 50%;
   border-radius: 5%;
   margin: 15px 0px 15px 15px;
   animation: slideRight 1s ease-in-out;
 }
+
+.chart-div {
+  text-align: center;
+  margin: 15px 0px 15px 15px;
+}
+
+.chart-image {
+  text-align: center;
+  width: 30%;
+  margin: auto;
+  box-shadow: white 5px 5px 15px;
+  animation: slideUp 1s ease-in-out;
+}
+
+
 
 @keyframes textclip {
   
@@ -90,7 +107,3 @@ body {
   }
 }
 
-.transaction-page {
-  font-style: "Montserrat, non-serif";
-  text-align: center;
-}

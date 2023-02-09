@@ -1,0 +1,60 @@
+body {
+  font-style: "Montserrat, non-serif";
+  background: #034f84;
+}
+
+.transaction-page {
+  background: #034f84;
+  font-style: "Montserrat, non-serif";
+  text-align: center;
+}
+
+.container {
+  background: #034f84;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.transaction-form {
+  background: #fff;
+  margin: 5% auto;
+  width: 35%;
+  min-height: 50vh;
+  border-radius: 10px;
+}
+
+.transaction-form .form-control {
+  margin-bottom: 15px;
+}
+
+.transaction-image {
+  text-align: center;
+}
+
+.transaction-image img {
+  border-radius: 5%;
+  border: 3px #667292 solid;
+  width: 15%;
+  margin-top: -7%;
+}
+
+.transaction-form form {
+  padding: 14%;
+}
+
+.contact-form h3 {
+  margin-bottom: 3%;
+  margin-top: -10%;
+  font-weight: 900;
+  text-align: center;
+  color: #034f84;
+}
+
+.input-group-append {
+  height: 2.35em;
+}
+
+.error-message {
+    color: red;
+    font-size: 1em;
+}
