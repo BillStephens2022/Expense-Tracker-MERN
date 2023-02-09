@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import "../styles/TransactionForm.css";
 // import Auth from "../utils/auth";
-import $ from 'jquery';
 import dollar from "../images/dollar.png";
-
+import Date from "./DatePicker";
 
 
 
@@ -35,9 +34,11 @@ export default function TransactionForm() {
     }
   }
 
-  $(function(){
-    $('#datepicker').datepicker();
-  });
+  
+
+
+
+
 
   return (
     <div className="container">
@@ -47,24 +48,15 @@ export default function TransactionForm() {
         </div>
         <form>
           <h3>Enter a Transaction</h3>
+
+          
           <div class="form-group">
             <label for="date">Transaction Date</label>
-            <div class="input-group date" id="datepicker">
-              <input
-                type="text"
-                name="date"
-                class="form-control"
-                id="date"
-                placeholder="transaction date"
-                onBlur={handleChange}
-              ></input>
-              <span class="input-group-append">
-                <span class="input-group-text bg-light d-block">
-                  <i class="fa fa-calendar"></i>
-                </span>
-              </span>
-            </div>
+
+            <Date />
+
           </div>
+
           <div class="form-group">
             <label for="amount">Transaction Amount (USD):</label>
             <input class="form-control" id="amount" name="amount" onBlur={handleChange}></input>
