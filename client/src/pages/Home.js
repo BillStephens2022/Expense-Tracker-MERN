@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
 import dollar from "../images/dollar.png";
-import chart from "../images/chart.jpeg";
+import chart from "../images/chart.png";
 
 const Home = () => {
   return (

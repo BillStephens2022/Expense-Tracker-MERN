@@ -66,6 +66,7 @@ body {
   text-align: center;
   width: 30%;
   margin: auto;
+  border-radius: 10px;
   box-shadow: white 5px 5px 15px;
   animation: slideUp 1s ease-in-out;
 }

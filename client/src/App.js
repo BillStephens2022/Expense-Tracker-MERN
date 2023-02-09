@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
 import Home from "./pages/Home";
-import TransactionForm from "./pages/TransactionForm";
+import Transactions from "./pages/Transactions";
 import Navbar from "./components/Navbar";
 
 const httpLink = createHttpLink({
@@ -35,7 +35,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/transactions" element={<TransactionForm />} />
+            <Route path="/transactions" element={<Transactions />} />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}

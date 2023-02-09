@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../styles/TransactionForm.css";
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 import $ from 'jquery';
+import dollar from "../images/dollar.png";
 
 
 
@@ -42,7 +43,7 @@ export default function TransactionForm() {
     <div className="container">
       <div className="transaction-form">
         <div className="transaction-image">
-          <img src="" alt="" className="transaction-pic" />
+          <img src={dollar} alt="logo pic" className="transaction-pic" />
         </div>
         <form>
           <h3>Enter a Transaction</h3>
@@ -99,7 +100,7 @@ export default function TransactionForm() {
           <div className="form-group">
                 <button
                   type="submit"
-                  className="btnContact"
+                  className="btnContact btn btn-primary"
                   onSubmit={handleSubmit}
                 > Send Message
                 </button>
