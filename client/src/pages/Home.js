@@ -46,6 +46,7 @@ const Home = () => {
             </h6>
           </div>
         </div>
+
         <div className="col-lg-8 col-sm-12 d-flex align-items-center">
           <div class="about-div">
             <h1 className="placeholder-4">Placeholder 3</h1>
@@ -55,6 +56,7 @@ const Home = () => {
             </h6>
           </div>
         </div>
+
         
       </div>
       <div className="chart-div row">
