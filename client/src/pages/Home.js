@@ -11,7 +11,7 @@ const Home = () => {
           <img className="dollar-image" src={dollar} alt="expense-pic" />
         </div>
         <div className="col-lg-8 col-sm-12 d-flex align-items-center">
-          <div class="about-div">
+          <div className="about-div">
             <h1 className="home-title">Expense Tracker</h1>
             <h6 className="home-description">
               Welcome to Expense Tracker - track and analyze your personal

@@ -18,13 +18,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    // set transactions to be an array of data that adheres to the transactionSchema
-    transactions: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Transaction',
-      }
-    ],
   },
   // set this to use virtual below
   {

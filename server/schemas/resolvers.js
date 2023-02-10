@@ -1,6 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User } = require("../models");
-const transactionSchema = require("../models/Transaction");
+const { User, Transaction } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -11,6 +10,11 @@ const resolvers = {
         return await User.findOne({ _id: context.user._id });
       }
       throw new AuthenticationError("You need to be logged in!");
+    },
+    transactions: async (parent, args, context) => {
+    
+      return await Transaction.find();
+    
     },
   },
   Mutation: {
@@ -38,15 +42,19 @@ const resolvers = {
 
       return { token, user };
     },
-    // save a transaction
-    saveTransaction: async (parent, { ...transactionSchema }, context) => {
+    // add a transaction
+    addTransaction: async (parent, { date, amount, highLevelCategory, category, description, userId }, context) => {
         if (context.user) {
-            return await User.findOneAndUpdate(
-                { _id: context.user._id },
+            console.log('trying to add transaction!')
+            return await Transaction.create(
                 {
-                    $addToSet: {
-                        transactions: { ...transactionSchema },
-                    },
+                  date,
+                  amount,
+                  highLevelCategory,
+                  category,
+                  description,
+                  userId,
+                  username: context.user.username 
                 },
                 { new: true, runValidators: true }
             );
@@ -55,18 +63,18 @@ const resolvers = {
         }
     },
     // delete a transaction
-    deleteTransaction: async (parent, { transactionId }, context ) => {
-        if (context.user) {
-            return await User.findOneAndUpdate(
-                { _id: context.user._id },
-                { $pull: { transactions: { transactionId } } },
-                { new: true, runValidators: true }
-            );
-        } else {
-          throw new AuthenticationError("You need to be logged in!");
-        }
+//     deleteTransaction: async (parent, { transactionId }, context ) => {
+//         if (context.user) {
+//             return await User.findOneAndUpdate(
+//                 { _id: context.user._id },
+//                 { $pull: { transactions: { transactionId } } },
+//                 { new: true, runValidators: true }
+//             );
+//         } else {
+//           throw new AuthenticationError("You need to be logged in!");
+//         }
         
-    }
+//     }
   }
 };
 

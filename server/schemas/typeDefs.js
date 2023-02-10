@@ -5,15 +5,14 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
-    transactions: [Transaction]
   }
   type Transaction {
-    transactionId: ID!
-    date: String!
-    amount: Float!
-    highLevelCategory: String!
-    category: String!
+    date: String
+    amount: Float
+    highLevelCategory: String
+    category: String
     description: String
+    userId: String
   }
   type Auth {
     token: ID
@@ -21,19 +20,20 @@ const typeDefs = gql`
   }
   type Query {
     me: User
+    transactions: [Transaction]
   }
   type Mutation {
     addUser(username: String, email: String, password: String): Auth
     login(email: String, password: String): Auth
-    saveTransaction(
-      _id: ID
+    addTransaction(
       date: String
       amount: Float
       highLevelCategory: String
       category: String
       description: String
-    ) : User
-    deleteTransaction(_id: ID): User
+      userId: String
+    ) : Transaction
+    deleteTransaction(_id: ID): Transaction
   }
 `;
 
