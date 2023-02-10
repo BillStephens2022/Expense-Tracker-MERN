@@ -13,4 +13,8 @@ const Date = () => {
   );
 };
 
+<<<<<<< HEAD
 export default Date;
+=======
+export default Date;
+>>>>>>> 3556261612e203808ce67b4fff70236f4be63907

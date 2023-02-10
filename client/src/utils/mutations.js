@@ -24,6 +24,17 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_TRANSACTION = gql`
+mutation AddTransaction($date: String, $amount: Float, $highLevelCategory: String, $category: String, $description: String) {
+  addTransaction(date: $date, amount: $amount, highLevelCategory: $highLevelCategory, category: $category, description: $description) {
+    amount
+    category
+    date
+    description
+    highLevelCategory
+    userId
+  }
+}
 export const DELETE_USER = gql`
   mutation deleteUser($username: String!, $email: String!, $password: String!) {
     deleteUser(username: $username, email: $email, password: $password) {

@@ -6,13 +6,19 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      transactions {
-        date
-        amount
-        highLevelCategory
-        category
-        description
-      }
     }
   }
+`;
+
+export const QUERY_TRANSACTIONS = gql`
+query transactions {
+  transactions {
+    amount
+    category
+    date
+    description
+    highLevelCategory
+    userId
+  }
+}
 `;
