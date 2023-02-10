@@ -86,7 +86,7 @@ export default function TransactionForm() {
         <div className="transaction-image">
           <img src={dollar} alt="logo pic" className="transaction-pic" />
         </div>
-        <form>
+        <form onSubmit={handleSubmit}>
           <h3>Enter a Transaction</h3>
 
           
@@ -103,14 +103,14 @@ export default function TransactionForm() {
           </div>
           <div className="form-group">
             <label htmlFor="highLevelCategory">Essential/Non-Essential:</label>
-            <select className="form-control" id="highLevelCategory" onBlur={handleChange}>
+            <select className="form-control" id="highLevelCategory" onBlur={handleChange} name="highLevelCategory">
               <option>Essential</option>
               <option>Non-Essential</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="category">Select a Category:</label>
-            <select className="form-control" id="category" onBlur={handleChange}>
+            <select className="form-control" id="category" onBlur={handleChange} name="category">
               <option>Housing</option>
               <option>Food</option>
               <option>Transportation</option>
@@ -133,7 +133,6 @@ export default function TransactionForm() {
                 <button
                   type="submit"
                   className="btnContact btn btn-primary"
-                  onClick={handleSubmit}
                 > Add Transaction
                 </button>
                 {errorMessage ? <p className="error-message">{errorMessage}</p> : null }
