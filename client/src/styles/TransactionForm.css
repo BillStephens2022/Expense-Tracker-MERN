@@ -11,14 +11,12 @@ body {
 
 .container {
   background: #034f84;
-  min-height: 100vh;
-  min-width: 100vw;
 }
 
 .transaction-form {
   background: #fff;
   margin: 5% auto;
-  width: 35%;
+  width: 85%;
   min-height: 50vh;
   border-radius: 10px;
 }
@@ -55,4 +53,18 @@ body {
 .error-message {
     color: red;
     font-size: 1em;
+}
+
+#transaction-list-title {
+  color: white;
+}
+
+.card {
+  background-color: white;
+  width: 300px;
+  margin: 5px;
+}
+
+.transaction-category {
+  margin-left: 10px;
 }

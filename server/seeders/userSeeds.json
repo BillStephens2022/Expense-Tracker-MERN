@@ -1,0 +1,22 @@
+[
+    {
+      "username": "BillStephens",
+      "email": "bill@gmail.com",
+      "password": "password"
+    },
+    {
+      "username": "JoeSedlak",
+      "email": "joe@gmail.com",
+      "password": "password"
+    },
+    {
+      "username": "JonathanPlaras",
+      "email": "jonathan@gmail.com",
+      "password": "password"
+    },
+    {
+      "username": "Marc Nicolas",
+      "email": "marc@gmail.com",
+      "password": "password"
+    }
+  ]

@@ -13,7 +13,7 @@ const resolvers = {
     },
     transactions: async (parent, args, context) => {
     
-      return await Transaction.find();
+      return await Transaction.find().sort({ date: 'desc' });
     
     },
   },

@@ -45,11 +45,9 @@ export default function TransactionForm() {
   });
 
   async function handleSubmit(e) {
-    console.log("submitted!");
     e.preventDefault();
-    
     console.log("submitted!");
-
+    console.log(transactionFormState);
     try {
       const { data } = await addTransaction({
         variables: {
@@ -135,7 +133,7 @@ export default function TransactionForm() {
                 <button
                   type="submit"
                   className="btnContact btn btn-primary"
-                  onSubmit={handleSubmit}
+                  onClick={handleSubmit}
                 > Add Transaction
                 </button>
                 {errorMessage ? <p className="error-message">{errorMessage}</p> : null }
