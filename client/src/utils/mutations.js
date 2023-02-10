@@ -35,14 +35,4 @@ mutation AddTransaction($date: String, $amount: Float, $highLevelCategory: Strin
     userId
   }
 }
-export const DELETE_USER = gql`
-  mutation deleteUser($username: String!, $email: String!, $password: String!) {
-    deleteUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
-    }
-  }
 `;
