@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "../styles/TransactionForm.css";
-import { formatDate } from "../utils/helpers.js";
+import formatDate from "../utils/helpers.js";
+
+console.log(formatDate(1676005200));
 
 const TransactionList = ({ transactions, title, showTitle = true }) => {
   if (!transactions.length) {
     return <h3>No Transactions Recorded Yet</h3>;
   }
+ 
 
   return (
     <div>
@@ -15,7 +18,7 @@ const TransactionList = ({ transactions, title, showTitle = true }) => {
           <div className="card transaction-item">
             <div className="card-header">
               <p>
-                <span className="transaction-date">{transaction.date}</span>
+                <span className="transaction-date">{formatDate(transaction.date)}</span>
                 <span className="transaction-category">
                   {transaction.category}
                 </span>
