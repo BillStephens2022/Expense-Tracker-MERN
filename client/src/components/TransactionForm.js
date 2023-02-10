@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "../styles/TransactionForm.css";
 // import Auth from "../utils/auth";
 import dollar from "../images/dollar.png";
-import Date from "./DatePicker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from '@apollo/client';
 
 import { ADD_TRANSACTION } from '../utils/mutations';
@@ -13,7 +14,7 @@ import Auth from '../utils/auth';
 
 
 export default function TransactionForm() {
-  const [errorMessage, setErrorMessage] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
   const [transactionFormState, setTransactionFormState] = useState({
     date: '',
     amount: '',
@@ -21,7 +22,7 @@ export default function TransactionForm() {
     category: '',
     description: '',
   });
-
+  const [errorMessage, setErrorMessage] = useState("");
   const [addTransaction, {error}] = useMutation(ADD_TRANSACTION, {
     update(cache, { data: {addTransaction } }) {
       try {
@@ -48,6 +49,7 @@ export default function TransactionForm() {
     e.preventDefault();
     console.log("submitted!");
     console.log(transactionFormState);
+    
     try {
       const { data } = await addTransaction({
         variables: {
@@ -71,6 +73,7 @@ export default function TransactionForm() {
 
     if (!errorMessage) {
       setTransactionFormState({ ...transactionFormState, [e.target.name]: e.target.value });
+      console.log(transactionFormState);
     }
   }
 
@@ -93,7 +96,12 @@ export default function TransactionForm() {
           <div className="form-group">
             <label htmlFor="date">Transaction Date</label>
 
-            <Date />
+            <DatePicker
+                showIcon
+                name="date"
+                selected={startDate}
+                onChange={(startDate) => console.log(setStartDate(startDate))}
+              />
 
           </div>
 
@@ -104,23 +112,23 @@ export default function TransactionForm() {
           <div className="form-group">
             <label htmlFor="highLevelCategory">Essential/Non-Essential:</label>
             <select className="form-control" id="highLevelCategory" onBlur={handleChange} name="highLevelCategory">
-              <option>Essential</option>
-              <option>Non-Essential</option>
+              <option value="Essential" selected="selected">Essential</option>
+              <option value="Non-Essential">Non-Essential</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="category">Select a Category:</label>
             <select className="form-control" id="category" onBlur={handleChange} name="category">
-              <option>Housing</option>
-              <option>Food</option>
-              <option>Transportation</option>
-              <option>Utilities - Gas, Electric, Water</option>
-              <option>Cable/Streaming Services</option>
-              <option>Insurance</option>
-              <option>Medical/Health</option>
-              <option>Entertainment</option>
-              <option>Vacations</option>
-              <option>Charity</option>
+              <option value="Housing" selected="selected">Housing</option>
+              <option value="Food">Food</option>
+              <option value="Transportation">Transportation</option>
+              <option value="Utilities - Gas, Electric, Water">Utilities - Gas, Electric, Water</option>
+              <option value="Cable/Streaming Services">Cable/Streaming Services</option>
+              <option value="Insurance">Insurance</option>
+              <option value="Medical/Health">Medical/Health</option>
+              <option value="Entertainment">Entertainment</option>
+              <option value="Vacations">Vacations</option>
+              <option value="Charity">Charity</option>
             </select>
           </div>
           <div className="form-group">
