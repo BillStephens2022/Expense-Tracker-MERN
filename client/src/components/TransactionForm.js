@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "../styles/TransactionForm.css";
 // import Auth from "../utils/auth";
 import dollar from "../images/dollar.png";
-import Date from "./DatePicker";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from '@apollo/client';
 
 import { ADD_TRANSACTION } from '../utils/mutations';
@@ -13,7 +14,7 @@ import Auth from '../utils/auth';
 
 
 export default function TransactionForm() {
-  
+  const [startDate, setStartDate] = useState(new Date());
   const [transactionFormState, setTransactionFormState] = useState({
     date: '',
     amount: '',
@@ -72,6 +73,7 @@ export default function TransactionForm() {
 
     if (!errorMessage) {
       setTransactionFormState({ ...transactionFormState, [e.target.name]: e.target.value });
+      console.log(transactionFormState);
     }
   }
 
@@ -94,7 +96,12 @@ export default function TransactionForm() {
           <div className="form-group">
             <label htmlFor="date">Transaction Date</label>
 
-            <Date />
+            <DatePicker
+                showIcon
+                name="date"
+                selected={startDate}
+                onChange={(startDate) => console.log(setStartDate(startDate))}
+              />
 
           </div>
 

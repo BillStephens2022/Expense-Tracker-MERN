@@ -22,3 +22,12 @@ query transactions {
   }
 }
 `;
+export const QUERY_TESTIMONIALS = gql`
+  query testimonials {
+    testimonials {
+      username
+      date
+      review
+    }
+  }
+`;
