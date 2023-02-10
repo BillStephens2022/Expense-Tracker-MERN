@@ -3,15 +3,12 @@ import "../styles/TransactionForm.css";
 // import Auth from "../utils/auth";
 import dollar from "../images/dollar.png";
 import Date from "./DatePicker";
-<<<<<<< HEAD
 import { useMutation } from '@apollo/client';
 
 import { ADD_TRANSACTION } from '../utils/mutations';
 import { QUERY_TRANSACTIONS, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
-=======
->>>>>>> 3556261612e203808ce67b4fff70236f4be63907
 
 
 
@@ -93,27 +90,16 @@ export default function TransactionForm() {
           <h3>Enter a Transaction</h3>
 
           
-<<<<<<< HEAD
           <div className="form-group">
             <label htmlFor="date">Transaction Date</label>
-=======
-          <div class="form-group">
-            <label for="date">Transaction Date</label>
->>>>>>> 3556261612e203808ce67b4fff70236f4be63907
 
             <Date />
 
           </div>
 
-<<<<<<< HEAD
           <div className="form-group">
             <label htmlFor="amount">Transaction Amount (USD):</label>
             <input className="form-control" id="amount" name="amount" onBlur={handleChange}></input>
-=======
-          <div class="form-group">
-            <label for="amount">Transaction Amount (USD):</label>
-            <input class="form-control" id="amount" name="amount" onBlur={handleChange}></input>
->>>>>>> 3556261612e203808ce67b4fff70236f4be63907
           </div>
           <div className="form-group">
             <label htmlFor="highLevelCategory">Essential/Non-Essential:</label>
