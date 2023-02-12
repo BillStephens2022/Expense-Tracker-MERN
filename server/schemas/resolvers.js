@@ -11,10 +11,11 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    transactions: async (parent, args, context) => {
-      if (context.user) {
-        return await Transaction.find({}).populate('user').sort({ date: 'desc' });
-      }
+    transactions: async (parent, args) => {
+      
+     
+      return await Transaction.find({}).populate('username').sort({ date: 'desc' });
+      
       
     
     },
@@ -46,8 +47,9 @@ const resolvers = {
     },
     // add a transaction
     addTransaction: async (parent, { date, amount, highLevelCategory, category, description }, context) => {
-        if (context.user) {
+      if (context.user) {
             console.log('trying to add transaction!')
+            console.log(context.user.username);
             const transaction = await Transaction.create(
                 {
                   date,
@@ -55,7 +57,6 @@ const resolvers = {
                   highLevelCategory,
                   category,
                   description,
-                  username: context.user.username 
                 },
                 // { new: true, runValidators: true }
             );

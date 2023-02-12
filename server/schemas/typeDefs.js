@@ -14,7 +14,6 @@ const typeDefs = gql`
     highLevelCategory: String
     category: String
     description: String
-    user: User
     username: String
   }
   type Auth {
@@ -23,7 +22,7 @@ const typeDefs = gql`
   }
   type Query {
     me: User
-    transactions(username: String): [Transaction]
+    transactions: [Transaction]
   }
   type Mutation {
     addUser(username: String, email: String, password: String): Auth
@@ -34,6 +33,7 @@ const typeDefs = gql`
       highLevelCategory: String!
       category: String!
       description: String!
+      username: String
     ) : Transaction
     deleteTransaction(_id: ID): Transaction
   }

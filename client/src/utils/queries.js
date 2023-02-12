@@ -27,10 +27,13 @@ query transactions {
     highLevelCategory
     category
     description
-    username
+    user {
+      username
+    }
   }
 }
 `;
+
 export const QUERY_TESTIMONIALS = gql`
   query testimonials {
     testimonials {

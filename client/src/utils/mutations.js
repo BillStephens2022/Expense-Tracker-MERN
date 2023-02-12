@@ -33,9 +33,7 @@ mutation addTransactation($date: String!, $amount: Float!, $highLevelCategory: S
     highLevelCategory
     category
     description
-    user {
-      username
-    }
+    username
   }
 }
 `;

@@ -15,7 +15,6 @@ import Auth from '../utils/auth';
 
 export default function TransactionForm() {
   const [startDate, setStartDate] = useState();
-  console.log("start date: " + startDate);
   const [transactionFormState, setTransactionFormState] = useState({
     date: '',
     amount: '',
@@ -24,8 +23,8 @@ export default function TransactionForm() {
     description: '',
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const [addTransaction, {error}] = useMutation(ADD_TRANSACTION, {
-    update(cache, { data: {addTransaction } }) {
+  const [addTransaction] = useMutation(ADD_TRANSACTION, {
+    update(cache, { data: { addTransaction } }) {
       try {
         const { transactions } = cache.readQuery({ query: QUERY_TRANSACTIONS });
 
@@ -38,29 +37,45 @@ export default function TransactionForm() {
         console.log('error with mutation!');
         console.error(e);
       }
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, transactions: [...me.transactions], addTransaction } },
-      // })
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, transactions: [...me.transactions], addTransaction } },
+      })
     }
   });
 
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("submitted!");
-    console.log(transactionFormState);
-    
+    console.log(parseFloat(transactionFormState.amount));
     try {
+      console.log(transactionFormState);
+      const token = Auth.loggedIn() ? Auth.getToken() : null;
+      const loggedIn = Auth.loggedIn();
+      const username = Auth.getProfile().data.username;
+      console.log("token: ", token);
+      console.log(username);
+      console.log(loggedIn);
+      let date = transactionFormState.date;
+      let amount = parseFloat(transactionFormState.amount);
+      let highLevelCategory = transactionFormState.highLevelCategory;
+      let category = transactionFormState.category;
+      let description = transactionFormState.description;
       const { data } = await addTransaction({
         variables: {
-          ...transactionFormState
+          date,
+          amount,
+          highLevelCategory,
+          category,
+          description
+       
         }
-
       });
-      console.log("this is my data" + data);
-      transactionFormState('');
+      console.log("this is my data", data);
+      setTransactionFormState('');
     } catch (err) {
+      console.log(addTransaction());
       console.error(err);
     }
   };
