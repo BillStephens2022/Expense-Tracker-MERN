@@ -26,9 +26,6 @@ const transactionSchema = new Schema(
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
-    },
-    username: {
-      type: String,
     }
   });
 

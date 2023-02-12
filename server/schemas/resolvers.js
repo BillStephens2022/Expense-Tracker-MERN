@@ -57,7 +57,7 @@ const resolvers = {
                   description,
                   username: context.user.username 
                 },
-                { new: true, runValidators: true }
+                // { new: true, runValidators: true }
             );
 
             await User.findOneAndUpdate(
