@@ -6,6 +6,14 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      transactions {
+        _id
+        date
+        amount
+        highLevelCategory
+        category
+        description
+      }
     }
   }
 `;
@@ -13,12 +21,13 @@ export const QUERY_ME = gql`
 export const QUERY_TRANSACTIONS = gql`
 query transactions {
   transactions {
-    amount
-    category
+    _id
     date
-    description
+    amount
     highLevelCategory
-    userId
+    category
+    description
+    username
   }
 }
 `;

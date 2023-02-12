@@ -14,7 +14,8 @@ import Auth from '../utils/auth';
 
 
 export default function TransactionForm() {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
+  console.log("start date: " + startDate);
   const [transactionFormState, setTransactionFormState] = useState({
     date: '',
     amount: '',
@@ -96,12 +97,16 @@ export default function TransactionForm() {
           <div className="form-group">
             <label htmlFor="date">Transaction Date</label>
 
-            <DatePicker
+            {/* <DatePicker
                 showIcon
                 name="date"
+                dateFormat="MM/dd/yyyy"
+                value={startDate}
                 selected={startDate}
-                onChange={(startDate) => console.log(setStartDate(startDate))}
-              />
+                onBlur={(startDate) => setStartDate(startDate)}
+              /> */}
+           
+            <input className="form-control" id="date" name="date" onBlur={handleChange}></input>
 
           </div>
 
@@ -112,14 +117,14 @@ export default function TransactionForm() {
           <div className="form-group">
             <label htmlFor="highLevelCategory">Essential/Non-Essential:</label>
             <select className="form-control" id="highLevelCategory" onBlur={handleChange} name="highLevelCategory">
-              <option value="Essential" selected="selected">Essential</option>
+              <option value="Essential">Essential</option>
               <option value="Non-Essential">Non-Essential</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="category">Select a Category:</label>
             <select className="form-control" id="category" onBlur={handleChange} name="category">
-              <option value="Housing" selected="selected">Housing</option>
+              <option value="Housing">Housing</option>
               <option value="Food">Food</option>
               <option value="Transportation">Transportation</option>
               <option value="Utilities - Gas, Electric, Water">Utilities - Gas, Electric, Water</option>

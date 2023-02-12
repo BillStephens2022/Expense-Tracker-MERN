@@ -18,6 +18,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    transactions: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Transaction'
+      }
+    ]
   },
   // set this to use virtual below
   {

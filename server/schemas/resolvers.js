@@ -7,13 +7,15 @@ const resolvers = {
     // me: User
     me: async (parent, args, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id });
+        return await User.findOne({ _id: context.user._id }).populate('transactions');
       }
       throw new AuthenticationError("You need to be logged in!");
     },
     transactions: async (parent, args, context) => {
-    
-      return await Transaction.find().sort({ date: 'desc' });
+      if (context.user) {
+        return await Transaction.find({}).populate('user').sort({ date: 'desc' });
+      }
+      
     
     },
   },
@@ -43,21 +45,28 @@ const resolvers = {
       return { token, user };
     },
     // add a transaction
-    addTransaction: async (parent, { date, amount, highLevelCategory, category, description, userId }, context) => {
+    addTransaction: async (parent, { date, amount, highLevelCategory, category, description }, context) => {
         if (context.user) {
             console.log('trying to add transaction!')
-            return await Transaction.create(
+            const transaction = await Transaction.create(
                 {
                   date,
                   amount,
                   highLevelCategory,
                   category,
                   description,
-                  userId,
                   username: context.user.username 
                 },
                 { new: true, runValidators: true }
             );
+
+            await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $addToSet: { transactions: transaction._id } }
+            );
+
+            return transaction;
+
         } else {
           throw new AuthenticationError("You need to be logged in!");
         }

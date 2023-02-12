@@ -5,14 +5,17 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
+    transactions: [Transaction]
   }
   type Transaction {
+    _id: ID
     date: String
     amount: Float
     highLevelCategory: String
     category: String
     description: String
-    userId: String
+    user: User
+    username: String
   }
   type Auth {
     token: ID
@@ -20,7 +23,7 @@ const typeDefs = gql`
   }
   type Query {
     me: User
-    transactions: [Transaction]
+    transactions(username: String): [Transaction]
   }
   type Mutation {
     addUser(username: String, email: String, password: String): Auth
@@ -31,7 +34,7 @@ const typeDefs = gql`
       highLevelCategory: String
       category: String
       description: String
-      userId: String
+      username: String
     ) : Transaction
     deleteTransaction(_id: ID): Transaction
   }

@@ -3,12 +3,15 @@ import "../styles/TransactionForm.css";
 import TransactionForm from "../components/TransactionForm";
 import TransactionList from "../components/TransactionList";
 import { useQuery } from '@apollo/client';
-import { QUERY_TRANSACTIONS } from '../utils/queries';
+import { QUERY_TRANSACTIONS, QUERY_ME } from '../utils/queries';
 
 
 function Transactions() {
-  const { data } = useQuery(QUERY_TRANSACTIONS);
-  const transactions = data?.transactions || [];
+  const { data } = useQuery(QUERY_ME);
+  const transactions = data?.me.transactions || [];
+  const me = data?.me.username || [];
+  console.log(me);
+  
     return (
       <div className="row">
         <div className="col col-lg-8 col-sm-12">
@@ -18,6 +21,7 @@ function Transactions() {
           <div className="col col-lg-4 col-sm-12">
             <TransactionList
               transactions={transactions}
+              me={me}
               title="Your Transactions..."
             />
             </div>

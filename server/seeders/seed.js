@@ -9,7 +9,18 @@ db.once('open', async () => {
     await User.deleteMany({});
 
     await User.create(userSeeds);
-    await Transaction.create(transactionSeeds);
+
+    for (let i = 0; i < transactionSeeds.length; i++) {
+      const { _id, username } = await Transaction.create(transactionSeeds[i]);
+      const user = await User.findOneAndUpdate(
+        { username: username },
+        {
+          $addToSet: {
+            transactions: _id,
+          },
+        }
+      );
+    }
 
   } catch (err) {
     console.error(err);

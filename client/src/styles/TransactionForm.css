@@ -65,6 +65,16 @@ body {
   margin: 5px;
 }
 
+.card-header {
+  background-color: #034f84;
+  color: white;
+}
+
+.card-footer {
+  background-color: #034f84;
+  color: white;
+}
+
 .transaction-category {
   margin-left: 10px;
 }

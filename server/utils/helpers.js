@@ -6,5 +6,3 @@ function formatDate(timestamp) {
     let formattedDate = (`${month}/${day}/${year}`)
     return formattedDate;
 }
-
-console.log(formatDate(1675832400));

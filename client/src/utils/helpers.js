@@ -1,4 +1,4 @@
-function formatDate(timestamp) {
+export function formatDate(timestamp) {
     let date = new Date (timestamp / 1);
     let month = date.getMonth()+1;
     let day = date.getDate();
@@ -7,4 +7,6 @@ function formatDate(timestamp) {
     return formattedDate;
 }
 
-export default formatDate;
+export function formatAmount(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
