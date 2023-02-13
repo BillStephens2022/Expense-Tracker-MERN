@@ -23,13 +23,10 @@ const transactionSchema = new Schema(
     description: {
       type: String,
     },
-    userId: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: "User",
-    },
-    username: {
-      type: String,
-    },
+    }
   });
 
 const Transaction = model("Transaction", transactionSchema);

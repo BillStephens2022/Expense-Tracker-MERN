@@ -1,18 +1,20 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "../styles/TransactionForm.css";
+// import Auth from "../utils/auth";
 import dollar from "../images/dollar.png";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useMutation } from "@apollo/client";
-import { FaCalendarAlt } from "react-icons/fa";
-import { Button } from "react-bootstrap";
+import { useMutation } from '@apollo/client';
 
-import { ADD_TRANSACTION } from "../utils/mutations";
-import { QUERY_TRANSACTIONS, QUERY_ME } from "../utils/queries";
+import { ADD_TRANSACTION } from '../utils/mutations';
+import { QUERY_TRANSACTIONS, QUERY_ME } from '../utils/queries';
 
-import Auth from "../utils/auth";
+import Auth from '../utils/auth';
+
+
 
 export default function TransactionForm() {
+  const [startDate, setStartDate] = useState();
   const [transactionFormState, setTransactionFormState] = useState({
     date: '',
     amount: '',
@@ -28,10 +30,11 @@ export default function TransactionForm() {
 
         cache.writeQuery({
           query: QUERY_TRANSACTIONS,
-          data: { transactions: [addTransaction, ...transactions] },
+          data: { transactions: [addTransaction, ...transactions] }, 
         });
+
       } catch (e) {
-        console.log("error with mutation!");
+        console.log('error with mutation!');
         console.error(e);
       }
       const { me } = cache.readQuery({ query: QUERY_ME });
@@ -41,13 +44,7 @@ export default function TransactionForm() {
       })
     }
   });
-  const [showDatePicker, setShowDatePicker] = useState(false); 
-  const [startDate, setStartDate] = useState(new Date());
 
-  // 
-  const inputRef = useRef(null);
-
-  
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("submitted!");
@@ -74,31 +71,18 @@ export default function TransactionForm() {
           highLevelCategory,
           category,
           description
+        
         }
-    });
+      });
+      console.log("this is my data", data);
+      setTransactionFormState('');
+    } catch (err) {
+      console.log(addTransaction());
+      console.error(err);
+    }
+  };
 
-    console.log("this is my data" + data);
-      setTransactionFormState({
-        date: "",
-        amount: "",
-        highLevelCategory: "",
-        category: "",
-        description: "",
-    });
-} catch (err) {
-    console.error(err);
-}
-}
-
-// handles date selection
-function handleDateSelect(date) {
-  setTransactionFormState({
-    ...transactionFormState,
-    date: date.toLocaleDateString(), // formats string MM/DD/YYYY, but 0 doesn't show, not sure how to apply the date formatting helper
-  });
-}
-
-function handleChange(e) {
+  function handleChange(e) {
     if (!e.target.value.length) {
       setErrorMessage(`${e.target.name} is required`);
     } else {
@@ -106,82 +90,46 @@ function handleChange(e) {
     }
 
     if (!errorMessage) {
-      setTransactionFormState({
-        ...transactionFormState,
-        [e.target.name]: e.target.value,
-      });
+      setTransactionFormState({ ...transactionFormState, [e.target.name]: e.target.value });
       console.log(transactionFormState);
     }
   }
-  
-  // handles when user clicks in transaction date input field
-  function handleInputClick() {
-    setShowDatePicker(true); // sets date picker to true, so it displays
-  }
 
-  // when a user clicks outside of the input field / date picker component
-  // only closes date picker if you focus on date input field and focus on another
-  // if you click date picker and select another input field, it won't close it
-  function handleInputBlur() {
-    if (inputRef.current.contains(document.activeElement)) {
-      return;
-    }
-    setShowDatePicker(false);
-  }
+  
+
+
+
+
 
   return (
-    <>
+    <div className="container">
       <div className="transaction-form">
         <div className="transaction-image">
           <img src={dollar} alt="logo pic" className="transaction-pic" />
         </div>
         <form onSubmit={handleSubmit}>
+          <h3>Enter a Transaction</h3>
+
+          
           <div className="form-group">
             <label htmlFor="date">Transaction Date</label>
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                id="date"
+
+            {/* <DatePicker
+                showIcon
                 name="date"
-                value={transactionFormState.date}
-                // satisfies requirement of onChange prop where value of input is controlled by component state? found this on stack overflow
-                onChange={() => {}}
-                onClick={handleInputClick}
-                onBlur={handleInputBlur}
-                ref={inputRef}
-              />
-              <div className="input-group-append">
-                <button
-                  type="button"
-                  className="btn btn-outline-secondary"
-                  onClick={handleInputClick}
-                >
-                  <FaCalendarAlt size={20} />
-                </button>
-              </div>
-              {showDatePicker && (
-                <div className="date-picker-container">
-                  <DatePicker
-                    selected={startDate}
-                    onChange={(date) => {
-                      handleDateSelect(date);
-                      setShowDatePicker(false);
-                    }}
-                    inline
-                  />
-                </div>
-              )}
-            </div>
+                dateFormat="MM/dd/yyyy"
+                value={startDate}
+                selected={startDate}
+                onBlur={(startDate) => setStartDate(startDate)}
+              /> */}
+           
+            <input className="form-control" id="date" name="date" onBlur={handleChange}></input>
+
           </div>
+
           <div className="form-group">
             <label htmlFor="amount">Transaction Amount (USD):</label>
-            <input
-              className="form-control"
-              id="amount"
-              name="amount"
-              onBlur={handleChange}
-            />
+            <input className="form-control" id="amount" name="amount" onBlur={handleChange}></input>
           </div>
           <div className="form-group">
             <label htmlFor="highLevelCategory">Essential/Non-Essential:</label>
@@ -196,12 +144,8 @@ function handleChange(e) {
               <option value="Housing">Housing</option>
               <option value="Food">Food</option>
               <option value="Transportation">Transportation</option>
-              <option value="Utilities - Gas, Electric, Water">
-                Utilities - Gas, Electric, Water
-              </option>
-              <option value="Cable/Streaming Services">
-                Cable/Streaming Services
-              </option>
+              <option value="Utilities - Gas, Electric, Water">Utilities - Gas, Electric, Water</option>
+              <option value="Cable/Streaming Services">Cable/Streaming Services</option>
               <option value="Insurance">Insurance</option>
               <option value="Medical/Health">Medical/Health</option>
               <option value="Entertainment">Entertainment</option>
@@ -211,25 +155,21 @@ function handleChange(e) {
           </div>
           <div className="form-group">
             <label htmlFor="description">Transaction Description:</label>
-            <textarea
-              name="description"
-              className="form-control"
-              id="description"
-              rows="3"
-              onBlur={handleChange}
-            ></textarea>
+            <textarea name="description" className="form-control" id="description" rows="3" onBlur={handleChange}>
+              
+            </textarea>
           </div>
           <div className="form-group">
-            <Button variant="primary" type="submit">
-              Add Transaction
-            </Button>
-            {errorMessage ? (
-              <p className="error-message">{errorMessage}</p>
-            ) : null}
-          </div>
+                <button
+                  type="submit"
+                  className="btnContact btn btn-primary"
+                > Add Transaction
+                </button>
+                {errorMessage ? <p className="error-message">{errorMessage}</p> : null }
+              </div>
         </form>
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    </>
+    </div>
   );
-}
+};
