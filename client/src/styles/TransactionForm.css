@@ -8,7 +8,7 @@ body {
   font-style: "Montserrat, non-serif";
   text-align: center;
 }
-
+/* had to comment it out so pop-up wont have blue edges */
 .container {
   background: #034f84;
 }
