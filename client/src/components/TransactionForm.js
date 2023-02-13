@@ -20,7 +20,7 @@ export default function TransactionForm() {
     amount: '',
     highLevelCategory: '',
     category: '',
-    description: '',
+    description: ''
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [addTransaction] = useMutation(ADD_TRANSACTION, {
@@ -53,15 +53,17 @@ export default function TransactionForm() {
       console.log(transactionFormState);
       const token = Auth.loggedIn() ? Auth.getToken() : null;
       const loggedIn = Auth.loggedIn();
-      const username = Auth.getProfile().data.username;
       console.log("token: ", token);
-      console.log(username);
       console.log(loggedIn);
+      let username = Auth.getProfile().data.username;
+      console.log(username);
       let date = transactionFormState.date;
       let amount = parseFloat(transactionFormState.amount);
       let highLevelCategory = transactionFormState.highLevelCategory;
       let category = transactionFormState.category;
       let description = transactionFormState.description;
+      transactionFormState.username = Auth.getProfile().data.username;
+      
       const { data } = await addTransaction({
         variables: {
           date,
@@ -69,7 +71,7 @@ export default function TransactionForm() {
           highLevelCategory,
           category,
           description
-       
+        
         }
       });
       console.log("this is my data", data);
