@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/TransactionForm.css";
-import TransactionForm from "../components/TransactionForm";
+import TransactionForm from "../components/TransactionForm_old";
 import TransactionList from "../components/TransactionList";
 import { useQuery } from '@apollo/client';
 import { QUERY_TRANSACTIONS, QUERY_ME } from '../utils/queries';
