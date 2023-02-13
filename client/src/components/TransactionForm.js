@@ -13,7 +13,6 @@ import { QUERY_TRANSACTIONS, QUERY_ME } from "../utils/queries";
 import Auth from "../utils/auth";
 
 export default function TransactionForm() {
-  const [startDate, setStartDate] = useState();
   const [transactionFormState, setTransactionFormState] = useState({
     date: '',
     amount: '',
@@ -77,7 +76,7 @@ export default function TransactionForm() {
           description
         }
     });
-    
+
     console.log("this is my data" + data);
       setTransactionFormState({
         date: "",

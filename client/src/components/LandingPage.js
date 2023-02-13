@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_TRANSACTIONS } from "../utils/queries";
+import { QUERY_ME, QUERY_TRANSACTIONS } from "../utils/queries";
 import TransactionList from "./TransactionList";
 import TransactionForm from "./TransactionForm";
 // import "../styles/LandingPage.css";
@@ -18,8 +18,9 @@ const LandingPage = () => {
   const [endDate, setEndDate] = useState(moment().endOf("week").format("L"));
 
   // query transaction data then destructure the transactions from all the data
-  const { data } = useQuery(QUERY_TRANSACTIONS);
-  const transactions = data?.transactions || [];
+  const { data } = useQuery(QUERY_ME);
+  const transactions = data?.me.transactions || [];
+  const me = data?.me.username || [];
   console.log(transactions);
 
   // formatting, "L" MM/DD/YYYY, "M" current month
@@ -71,6 +72,7 @@ const LandingPage = () => {
       <div className="mt-4">
         <TransactionList
           transactions={transactions}
+          me={me}
           title="All Transactions"
           showTitle={true}
         />
