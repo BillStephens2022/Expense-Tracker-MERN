@@ -46,7 +46,7 @@ export default function TransactionForm({
           me: { ...me, transactions: [...me.transactions], addTransaction },
         },
       });
-      setTransactionList([...me.transactions, addTransaction]);
+      // setTransactionList([ ...me.transactions, addTransaction ]);
       console.log("updated cache:", cache.data.data);
     },
     variables: {

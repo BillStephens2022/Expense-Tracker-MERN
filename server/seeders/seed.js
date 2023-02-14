@@ -8,19 +8,25 @@ db.once('open', async () => {
     await Transaction.deleteMany({});
     await User.deleteMany({});
 
-    await User.create(userSeeds);
+    const dbUsers = await User.create(userSeeds);
+  
 
     for (let i = 0; i < transactionSeeds.length; i++) {
-      const { _id, username } = await Transaction.create(transactionSeeds[i]);
+      const { _id: transId } = await Transaction.create(transactionSeeds[i]);
+
+      console.log(transId);
+
+      const randomIndex = Math.floor(Math.random() * dbUsers.length);
+
+      const { _id: userId } = dbUsers[randomIndex];
+
       const user = await User.findOneAndUpdate(
-        { username: username },
-        {
-          $addToSet: {
-            transactions: _id,
-          },
-        }
-      );
-    }
+        { _id: userId },
+        { $addToSet: { transactions: transId } },
+        { new: true }
+      )
+      console.log(user);
+    } 
 
   } catch (err) {
     console.error(err);

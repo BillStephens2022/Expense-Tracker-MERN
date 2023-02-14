@@ -46,7 +46,7 @@ const resolvers = {
       return { token, user };
     },
     // add a transaction
-    addTransaction: async (parent, { date, amount, highLevelCategory, category, description, username }, context) => {
+    addTransaction: async (parent, { date, amount, highLevelCategory, category, description }, context) => {
       if (context.user) {
             console.log('trying to add transaction!')
             console.log(context.user.username);
@@ -57,17 +57,17 @@ const resolvers = {
                   highLevelCategory,
                   category,
                   description,
-                  username
                 },
-                // { new: true, runValidators: true }
+                { new: true, runValidators: true }
             );
 
 
-            await User.findOneAndUpdate(
+            const user = await User.findOneAndUpdate(
               { _id: context.user._id },
               { $addToSet: { transactions: transaction._id } }
             );
-              console.log(transaction);
+            console.log(transaction);
+            console.log(user);
             return transaction;
 
         } else {
