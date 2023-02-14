@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import LandingPage from "./components/LandingPage";
 import TransactionForm from "./components/TransactionForm";
+import Analysis from "./pages/Analysis";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -44,6 +45,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/transactions" element={<LandingPage />} />
             <Route path="/transactions/add" element={<TransactionForm />} />
+            <Route path="/Analysis" element={<Analysis />} />
             {/* <Route path="/transactions" element={<Transactions />} /> */}
             <Route
               path="*"
