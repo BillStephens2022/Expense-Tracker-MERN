@@ -36,9 +36,11 @@ const LandingPage = () => {
   // console.log(transactions);
 
   // come up with calculations here
-    useEffect(() => {
-      console.log('the transaction list has changed');
-    }, [transactionList])
+    // useEffect(() => {
+    //   console.log('the transaction list has changed');
+    // }, [transactionList])
+
+   
   
 
   return (
