@@ -21,7 +21,7 @@ const Home = () => {
             </h6>
           </div>
         </div>
-        <div className="col-lg-8 col-sm-12 d-flex justify-content-center">
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
           <div className="about-div">
             <h2 className="placeholder-1">Preview of app functionality, reel user in</h2>
             <h6 className="placeholder-t1">
