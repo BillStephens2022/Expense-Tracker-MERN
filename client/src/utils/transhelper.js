@@ -8,8 +8,7 @@ app.get('/sum-price', (req, res) => {
         {
           $group: {
             _id: null,
-            // Sum of all prices
-            sum_price: { $sum: '$amount' },
+            sum_price: { $sum: '$amount , date' },
             
           },
         },
@@ -32,9 +31,7 @@ app.get('/sum-price', (req, res) => {
           $group: {
             _id: null,
             // Sum of all prices
-            sum_price: { $sum: '$amount' },
-            // Average of all prices
-            avg_price: { $avg: '$price' },
+            sum_price: { $sum: '$amount , date' },
           },
         },
       ],
@@ -57,8 +54,6 @@ app.get('/sum-price', (req, res) => {
             _id: null,
             // Sum of all prices
             sum_price: { $sum: '$amount' },
-            // Average of all prices
-            avg_price: { $avg: '$price' },
           },
         },
       ],
