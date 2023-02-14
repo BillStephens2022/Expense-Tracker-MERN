@@ -13,6 +13,7 @@ export const QUERY_ME = gql`
         highLevelCategory
         category
         description
+        username
       }
     }
   }
@@ -27,9 +28,7 @@ query transactions {
     highLevelCategory
     category
     description
-    user {
-      username
-    }
+    username
   }
 }
 `;

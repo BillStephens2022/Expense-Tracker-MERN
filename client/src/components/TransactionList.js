@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/TransactionForm.css";
 import { formatDate, formatAmount } from "../utils/helpers.js";
 
-const TransactionList = ({ transactions, me, title, showTitle = true }) => {
-  console.log(transactions);
-  if (!transactions.length) {
+const TransactionList = ({ transactionList, setTransactionList, me, title, showTitle = true }) => {
+  
+
+  if (!transactionList.length) {
     return <h3>No Transactions Recorded Yet</h3>;
   }
- 
+
   return (
     <div>
       {showTitle && <h3 id="transaction-list-title">{title}</h3>}
-      {transactions &&
-        transactions.map((transaction) => (
+      {transactionList &&
+        transactionList.map((transaction) => (
           <div className="card transaction-item" key={transaction._id}>
             <div className="card-header">
               <p>

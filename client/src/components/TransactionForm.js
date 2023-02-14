@@ -6,25 +6,30 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useMutation } from "@apollo/client";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Button } from "react-bootstrap";
-
 import { ADD_TRANSACTION } from "../utils/mutations";
 import { QUERY_TRANSACTIONS, QUERY_ME } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
-export default function TransactionForm() {
+export default function TransactionForm({
+  setShowTransactionForm,
+  setTransactionList,
+}) {
   const [transactionFormState, setTransactionFormState] = useState({
-    date: '',
-    amount: '',
-    highLevelCategory: '',
-    category: '',
-    description: ''
+    date: "",
+    amount: "",
+    highLevelCategory: "Essential",
+    category: "Housing",
+    description: "",
+    username: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [addTransaction] = useMutation(ADD_TRANSACTION, {
     update(cache, { data: { addTransaction } }) {
       try {
-        const { transactions } = cache.readQuery({ query: QUERY_TRANSACTIONS });
+        const { transactions } = cache.readQuery({
+          query: QUERY_TRANSACTIONS,
+        }) ?? { transactions: [] };
 
         cache.writeQuery({
           query: QUERY_TRANSACTIONS,
@@ -37,17 +42,28 @@ export default function TransactionForm() {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, transactions: [...me.transactions], addTransaction } },
-      })
-    }
+        data: {
+          me: { ...me, transactions: [...me.transactions], addTransaction },
+        },
+      });
+      setTransactionList([...me.transactions, addTransaction]);
+      console.log("updated cache:", cache.data.data);
+    },
+    variables: {
+      date: transactionFormState.date,
+      amount: parseFloat(transactionFormState.amount),
+      highLevelCategory: transactionFormState.highLevelCategory,
+      category: transactionFormState.category,
+      description: transactionFormState.description,
+      username: Auth.getProfile().data.username,
+    },
   });
-  const [showDatePicker, setShowDatePicker] = useState(false); 
+  const [showDatePicker, setShowDatePicker] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
 
-  // 
+  //
   const inputRef = useRef(null);
 
-  
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("submitted!");
@@ -66,39 +82,41 @@ export default function TransactionForm() {
       let category = transactionFormState.category;
       let description = transactionFormState.description;
       transactionFormState.username = Auth.getProfile().data.username;
-      
+
       const { data } = await addTransaction({
         variables: {
           date,
           amount,
           highLevelCategory,
           category,
-          description
-        }
-    });
+          description,
+        },
+      });
 
-    console.log("this is my data" + data);
+      console.log("this is my data" + data);
       setTransactionFormState({
         date: "",
         amount: "",
-        highLevelCategory: "",
-        category: "",
+        highLevelCategory: "Essential",
+        category: "Housing",
         description: "",
+      });
+
+      setShowTransactionForm(false);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // handles date selection
+  function handleDateSelect(date) {
+    setTransactionFormState({
+      ...transactionFormState,
+      date: date.toLocaleDateString(), // formats string MM/DD/YYYY, but 0 doesn't show, not sure how to apply the date formatting helper
     });
-} catch (err) {
-    console.error(err);
-}
-}
+  }
 
-// handles date selection
-function handleDateSelect(date) {
-  setTransactionFormState({
-    ...transactionFormState,
-    date: date.toLocaleDateString(), // formats string MM/DD/YYYY, but 0 doesn't show, not sure how to apply the date formatting helper
-  });
-}
-
-function handleChange(e) {
+  function handleChange(e) {
     if (!e.target.value.length) {
       setErrorMessage(`${e.target.name} is required`);
     } else {
@@ -110,10 +128,9 @@ function handleChange(e) {
         ...transactionFormState,
         [e.target.name]: e.target.value,
       });
-      console.log(transactionFormState);
     }
   }
-  
+
   // handles when user clicks in transaction date input field
   function handleInputClick() {
     setShowDatePicker(true); // sets date picker to true, so it displays
@@ -180,19 +197,29 @@ function handleChange(e) {
               className="form-control"
               id="amount"
               name="amount"
-              onBlur={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className="form-group">
             <label htmlFor="highLevelCategory">Essential/Non-Essential:</label>
-            <select className="form-control" id="highLevelCategory" onBlur={handleChange} name="highLevelCategory">
+            <select
+              className="form-control"
+              id="highLevelCategory"
+              onChange={handleChange}
+              name="highLevelCategory"
+            >
               <option value="Essential">Essential</option>
               <option value="Non-Essential">Non-Essential</option>
             </select>
           </div>
           <div className="form-group">
             <label htmlFor="category">Select a Category:</label>
-            <select className="form-control" id="category" onBlur={handleChange} name="category">
+            <select
+              className="form-control"
+              id="category"
+              onChange={handleChange}
+              name="category"
+            >
               <option value="Housing">Housing</option>
               <option value="Food">Food</option>
               <option value="Transportation">Transportation</option>
@@ -216,7 +243,7 @@ function handleChange(e) {
               className="form-control"
               id="description"
               rows="3"
-              onBlur={handleChange}
+              onChange={handleChange}
             ></textarea>
           </div>
           <div className="form-group">
