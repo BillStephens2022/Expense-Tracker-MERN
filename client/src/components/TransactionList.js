@@ -13,7 +13,7 @@ const TransactionList = ({ transactions, me, title, showTitle = true }) => {
       {showTitle && <h3 id="transaction-list-title">{title}</h3>}
       {transactions &&
         transactions.map((transaction) => (
-          <div className="card transaction-item">
+          <div className="card transaction-item" key={transaction._id}>
             <div className="card-header">
               <p>
                 <span className="transaction-date">{formatDate(transaction.date)}</span>

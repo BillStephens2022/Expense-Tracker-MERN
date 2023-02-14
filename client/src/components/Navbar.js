@@ -29,6 +29,9 @@ const AppNavbar = () => {
                   <Nav.Link as={Link} to='/transactions'>
                     Transactions
                   </Nav.Link>
+                  <Nav.Link as={Link} to='/analysis'>
+                    Analysis
+                  </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
