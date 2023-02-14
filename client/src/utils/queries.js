@@ -1,22 +1,21 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
-  query me {
-    me {
+query me {
+  me {
+    _id
+    email
+    username
+    transactions {
       _id
-      username
-      email
-      transactions {
-        _id
-        date
-        amount
-        highLevelCategory
-        category
-        description
-        username
-      }
+      amount
+      category
+      date
+      description
+      highLevelCategory
     }
   }
+}
 `;
 
 export const QUERY_TRANSACTIONS = gql`
@@ -28,7 +27,6 @@ query transactions {
     highLevelCategory
     category
     description
-    username
   }
 }
 `;
