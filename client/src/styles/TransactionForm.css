@@ -78,3 +78,84 @@ body {
 .transaction-category {
   margin-left: 10px;
 }
+
+
+#charts-title {
+  color: white;
+  text-align: center;
+  font-size: 4em;
+  margin: 50px auto;
+}
+
+#monthly-spending-title {
+  color: goldenrod;
+  text-align: center;
+  text-shadow: 5px 5px black;
+  font-size: 3em;
+  margin: 50px auto;
+}
+
+canvas {
+  width: 600px;
+  margin: auto;
+}
+
+.chart {
+  margin-top: 0;
+}
+
+.chart-title {
+  color: lightgray;
+  margin: auto;
+}
+
+.savings {
+  border: coral 3px solid;
+  margin: 0px 150px;
+  color: seagreen;
+  background-color: lightgray;
+  text-align: center;
+}
+.form-heading {
+  margin-top: 50px;
+  color: goldenrod;
+  text-shadow: 3px 3px black;
+  font-size: 2em;
+  text-align: center;
+}
+
+.calculator-div {
+  margin: auto;
+}
+.calculator-form {
+  max-width: 10vw;
+  text-align: center;
+  margin: 15px auto 15px auto;
+  color: white;
+}
+
+#result-div {
+  text-align: center;
+  font-size: 2.5em;
+  color: seagreen;
+  margin-bottom: 50px;
+}
+
+#result {
+  text-align: center;
+  font-size: 1em;
+  color: coral;
+  animation: blinker 2s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    color: seagreen;
+  }
+}
+
+#transaction-table-header {
+  color: goldenrod;
+  text-shadow: black 3px 3px;
+  text-align: center;
+}
