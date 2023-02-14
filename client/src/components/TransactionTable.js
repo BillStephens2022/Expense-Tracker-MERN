@@ -32,38 +32,38 @@ export default function TransactionTable() {
               <td>Monthly Netflix Description</td>
             </tr>
             <tr>
-              <th scope="row">2/3/23</th>
+              <td>2/3/23</td>
               <td>Y</td>
               <td>Groceries</td>
               <td>145.78</td>
               <td>Grocery Shopping</td>
             </tr>
             <tr>
-              <th scope="row">2/4/23</th>
+              <td>2/4/23</td>
               <td>Y</td>
               <td>Insurance</td>
               <td>312.93</td>
               <td>Geico Auto Insurance</td>
             </tr>
             <tr>
-              <th scope="row">2/5/23</th>
+              <td>2/5/23</td>
               <td>N</td>
               <td>Entertainment</td>
               <td>345.78</td>
               <td>Concert Tickets</td>
             </tr>
             <tr>
-              <th scope="row">2/7/23</th>
+              <td>2/7/23</td>
               <td>N</td>
               <td>Vacation</td>
               <td>2,416.15</td>
               <td>Trip to Cancun</td>
             </tr>
             <tr>
-              <th scope="row">2/8/23</th>
+              <td>2/8/23</td>
               <td>Y</td>
               <td>Utilities</td>
-              <td>175.00</td>
+              <td>174.17</td>
               <td>Monthly PG&E gas/electric</td>
             </tr>
           </tbody>
