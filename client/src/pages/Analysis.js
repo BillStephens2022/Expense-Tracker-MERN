@@ -3,6 +3,7 @@ import { Chart, ArcElement } from 'chart.js/auto';
 import { Pie } from 'react-chartjs-2';
 import '../styles/TransactionForm.css';
 import Savings from '../components/Savings';
+import TransactionTable from '../components/TransactionTable';
 
 export default function Analysis() {
     Chart.register(ArcElement);
@@ -85,6 +86,9 @@ export default function Analysis() {
           </div>
           <div>
             <Savings />
+          </div>
+          <div>
+            <TransactionTable />
           </div>
         </div>
     );

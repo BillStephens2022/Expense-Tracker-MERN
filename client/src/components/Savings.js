@@ -59,7 +59,7 @@ export default function Savings() {
         </h3>
         <h3>
           you would save ${formatAmount(PMT)} per month. If you invested that
-          monthly at an average 5% return over 10 years, you would have saved $
+          monthly at an average 5% return over 10 years, you would save $
           {formatAmount(savings.toFixed(0))}
         </h3>
       </div>

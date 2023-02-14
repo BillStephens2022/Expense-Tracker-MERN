@@ -145,4 +145,17 @@ canvas {
   text-align: center;
   font-size: 1em;
   color: coral;
+  animation: blinker 2s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    color: seagreen;
+  }
+}
+
+#transaction-table-header {
+  color: goldenrod;
+  text-shadow: black 3px 3px;
+  text-align: center;
 }
