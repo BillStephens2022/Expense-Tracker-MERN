@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_TRANSACTIONS } from "../utils/queries";
 import TransactionList from "./TransactionList";
@@ -9,6 +9,7 @@ import { Modal } from "react-bootstrap";
 
 const LandingPage = () => {
   const [showTransactionForm, setShowTransactionForm] = useState(false);
+  
   // uses moment.js to set start of current week starting on sunday formatted MM/DD/YYYY
   const [startDate, setStartDate] = useState(
     moment().startOf("week").format("L")
@@ -22,6 +23,9 @@ const LandingPage = () => {
   const transactions = data?.me.transactions || [];
   const me = data?.me.username || [];
   console.log(transactions);
+  console.log(me);
+
+  const [transactionList, setTransactionList] = useState(transactions);
 
   // formatting, "L" MM/DD/YYYY, "M" current month
   const currentDate = moment().format("L");
@@ -29,9 +33,13 @@ const LandingPage = () => {
 
   console.log(currentMonth);
   console.log(currentDate);
-  console.log(transactions);
+  // console.log(transactions);
 
   // come up with calculations here
+    useEffect(() => {
+      console.log('the transaction list has changed');
+    }, [transactionList])
+  
 
   return (
     <div className="container">
@@ -62,7 +70,10 @@ const LandingPage = () => {
                   <Modal.Title>Add Transaction</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <TransactionForm />
+                  <TransactionForm 
+                  setShowTransactionForm={setShowTransactionForm}
+                  setTransactionList={setTransactionList}
+                  />
                 </Modal.Body>
               </Modal>
             </div>
@@ -71,7 +82,8 @@ const LandingPage = () => {
       </div>
       <div className="mt-4">
         <TransactionList
-          transactions={transactions}
+          transactionList={transactionList}
+          setTransactionList={setTransactionList}
           me={me}
           title="All Transactions"
           showTitle={true}
