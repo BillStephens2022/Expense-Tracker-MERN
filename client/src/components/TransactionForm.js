@@ -25,7 +25,8 @@ export default function TransactionForm({
     username: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const [addTransaction] = useMutation(ADD_TRANSACTION, {
+  const [addTransaction] = useMutation(ADD_TRANSACTION, 
+    {
     update(cache, { data: { addTransaction } }) {
       try {
         const { transactions } = cache.readQuery({
@@ -59,6 +60,7 @@ export default function TransactionForm({
       username: Auth.getProfile().data.username,
     },
   });
+  
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
 
@@ -107,6 +109,7 @@ export default function TransactionForm({
       
       addTransactionList(data.addTransaction._id);
       setShowTransactionForm(false);
+      
     } catch (err) {
       console.error(err);
     }

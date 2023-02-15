@@ -11,8 +11,8 @@ export function formatAmount(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-export function calculateFutureValue(PMT, r, n, t) {
-    const futureValue = (PMT * ((1 + r / n) ** (n * t) - 1)) / (r / n);
+export function calculateFutureValue(P, PMT, r, n, t) {
+    const futureValue = (P*(1+r/n)**(n*t)) + ((PMT * ((1 + r / n) ** (n * t) - 1)) / (r / n));
     return futureValue;
 }
 

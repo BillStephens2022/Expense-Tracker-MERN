@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { formatAmount, calculateFutureValue } from "../utils/helpers";
 export default function Savings() {
   const [calculateFormState, setCalculateFormState] = useState({
-    amount: "",
+    initialAmount: "",
+    monthlyContribution: "",
     rate: "",
     frequency: "",
     years: "",
@@ -15,7 +16,7 @@ export default function Savings() {
   const n = 12; //..i.e. monthly
   const t = 10;
 
-  const savings = calculateFutureValue(PMT, r, n, t);
+  const savings = calculateFutureValue(0, PMT, r, n, t);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -25,8 +26,8 @@ export default function Savings() {
     });
     console.log(calculateFormState);
 
-    const {amount, rate, frequency, years} = calculateFormState;
-    const calculatedSavings = calculateFutureValue(amount, rate, frequency, years)
+    const {initialAmount, monthlyContribution, rate, frequency, years} = calculateFormState;
+    const calculatedSavings = calculateFutureValue(initialAmount, monthlyContribution, rate, frequency, years)
     console.log(calculatedSavings);
     const result = formatAmount(calculatedSavings.toFixed(0));
     document.getElementById('result').innerHTML = `$${result}`;
@@ -66,11 +67,14 @@ export default function Savings() {
       <div className="calculator-div">
         <h3 className="form-heading">Compound Interest Calculator</h3>
         <form className="calculator-form" onSubmit={handleSubmit}>
-          
+        <div className="form-group">
+            <label htmlFor="initialAmount">Initial Amount (USD):</label>
+            <input className="form-control" id="initialAmount" name="initialAmount" onBlur={handleChange}></input>
+          </div>
 
           <div className="form-group">
-            <label htmlFor="amount">Monthly Contribution (USD):</label>
-            <input className="form-control" id="amount" name="amount" onBlur={handleChange}></input>
+            <label htmlFor="monthlyContribution">Monthly Contribution (USD):</label>
+            <input className="form-control" id="monthlyContribution" name="monthlyContribution" onBlur={handleChange}></input>
           </div>
           <div className="form-group">
             <label htmlFor="rate">Annual Rate of Return:</label>
