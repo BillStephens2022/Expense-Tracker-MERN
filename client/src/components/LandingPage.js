@@ -9,7 +9,8 @@ import { Modal } from "react-bootstrap";
 
 const LandingPage = () => {
   const [showTransactionForm, setShowTransactionForm] = useState(false);
-  
+  const [transactionList, setTransactionList] = useState([]);
+
   // uses moment.js to set start of current week starting on sunday formatted MM/DD/YYYY
   const [startDate, setStartDate] = useState(
     moment().startOf("week").format("L")
@@ -19,13 +20,27 @@ const LandingPage = () => {
   const [endDate, setEndDate] = useState(moment().endOf("week").format("L"));
 
   // query transaction data then destructure the transactions from all the data
-  const { data } = useQuery(QUERY_ME);
+   const { data, loading } = useQuery(QUERY_ME);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(data);
   const transactions = data?.me.transactions || [];
-  const me = data?.me.username || [];
+  
+  function addTransactionList (transaction) {
+    console.log(transactionList);
+    console.log(transaction);
+    setTransactionList([ ...transactionList, transaction ]);
+  }
+
+
+  const me = data?.me.username || '';
   console.log(transactions);
   console.log(me);
 
-  const [transactionList, setTransactionList] = useState(transactions);
+  
 
   // formatting, "L" MM/DD/YYYY, "M" current month
   const currentDate = moment().format("L");
@@ -36,9 +51,7 @@ const LandingPage = () => {
   // console.log(transactions);
 
   // come up with calculations here
-    useEffect(() => {
-      console.log('the transaction list has changed');
-    }, [transactionList])
+    
   
 
   return (
@@ -70,10 +83,13 @@ const LandingPage = () => {
                   <Modal.Title>Add Transaction</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
                   <TransactionForm 
+                  transactions={transactions}
                   setShowTransactionForm={setShowTransactionForm}
-                  setTransactionList={setTransactionList}
+                  addTransactionList={addTransactionList}
                   />
+
                 </Modal.Body>
               </Modal>
             </div>
@@ -82,8 +98,7 @@ const LandingPage = () => {
       </div>
       <div className="mt-4">
         <TransactionList
-          transactionList={transactionList}
-          setTransactionList={setTransactionList}
+          transactions={transactions}
           me={me}
           title="All Transactions"
           showTitle={true}
