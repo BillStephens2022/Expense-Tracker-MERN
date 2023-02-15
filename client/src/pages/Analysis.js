@@ -6,9 +6,14 @@ import { Pie } from "react-chartjs-2";
 import "../styles/TransactionForm.css";
 import Savings from "../components/Savings";
 import TransactionTable from "../components/TransactionTable";
+import { getHighLevel, getEssentialTransactions } from "../utils/api";
 
 export default function Analysis() {
   Chart.register(ArcElement);
+  const highLevelData = getHighLevel();
+  const essentialData = getEssentialTransactions();
+  console.log(highLevelData);
+  console.log(essentialData);
   const categoryData = {
     labels: [
       "Housing",
