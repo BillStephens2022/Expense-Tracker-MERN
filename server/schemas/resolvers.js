@@ -47,32 +47,38 @@ const resolvers = {
     },
     // add a transaction
     addTransaction: async (parent, { date, amount, highLevelCategory, category, description }, context) => {
-      if (context.user) {
-            console.log('trying to add transaction!')
-            console.log(context.user.username);
-            const transaction = await Transaction.create(
-                {
-                  date,
-                  amount,
-                  highLevelCategory,
-                  category,
-                  description,
-                },
-                { new: true, runValidators: true }
-            );
+      try {
+        if (context.user) {
+          console.log('trying to add transaction!')
+          console.log(context.user.username);
+          const transaction = await Transaction.create(
+            {
+              date,
+              amount,
+              highLevelCategory,
+              category,
+              description,
+            }
+          );
 
+          console.log("transaction", transaction);
+          console.log("context.user._id", context.user._id);
 
-            const user = await User.findOneAndUpdate(
-              { _id: context.user._id },
-              { $addToSet: { transactions: transaction._id } }
-            );
-            console.log(transaction);
-            console.log(user);
-            return transaction;
+          const user = await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: { transactions: transaction._id } }
+          );
+          console.log(transaction);
+          console.log(user);
+          return transaction;
 
         } else {
           throw new AuthenticationError("You need to be logged in!");
         }
+      } catch (err) {
+        console.log(err);
+        throw new AuthenticationError(err);
+      }
     },
     // delete a transaction
 //     deleteTransaction: async (parent, { transactionId }, context ) => {

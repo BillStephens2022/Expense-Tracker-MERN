@@ -13,7 +13,8 @@ import Auth from "../utils/auth";
 
 export default function TransactionForm({
   setShowTransactionForm,
-  setTransactionList,
+  addTransactionList,
+  transactions
 }) {
   const [transactionFormState, setTransactionFormState] = useState({
     date: "",
@@ -46,7 +47,7 @@ export default function TransactionForm({
           me: { ...me, transactions: [...me.transactions], addTransaction },
         },
       });
-      // setTransactionList([ ...me.transactions, addTransaction ]);
+      
       console.log("updated cache:", cache.data.data);
     },
     variables: {
@@ -93,7 +94,7 @@ export default function TransactionForm({
         },
       });
 
-      console.log("this is my data" + data);
+      console.log("this is my data " + data);
       setTransactionFormState({
         date: "",
         amount: "",
@@ -101,7 +102,10 @@ export default function TransactionForm({
         category: "Housing",
         description: "",
       });
-
+      console.log("transactions:", transactions);
+      console.log("addTransactions:", data.addTransaction);
+      
+      addTransactionList(data.addTransaction._id);
       setShowTransactionForm(false);
     } catch (err) {
       console.error(err);
@@ -163,7 +167,7 @@ export default function TransactionForm({
                 name="date"
                 value={transactionFormState.date}
                 // satisfies requirement of onChange prop where value of input is controlled by component state? found this on stack overflow
-                onChange={() => {}}
+                onChange={() => { }}
                 onClick={handleInputClick}
                 onBlur={handleInputBlur}
                 ref={inputRef}

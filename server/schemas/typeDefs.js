@@ -32,7 +32,6 @@ const typeDefs = gql`
       highLevelCategory: String!
       category: String!
       description: String!
-      
     ) : Transaction
     deleteTransaction(_id: ID): Transaction
   }

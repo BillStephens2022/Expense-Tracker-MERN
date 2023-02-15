@@ -20,7 +20,7 @@ const LandingPage = () => {
   const [endDate, setEndDate] = useState(moment().endOf("week").format("L"));
 
   // query transaction data then destructure the transactions from all the data
-  const { data, loading } = useQuery(QUERY_ME);
+   const { data, loading } = useQuery(QUERY_ME);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -29,9 +29,12 @@ const LandingPage = () => {
   console.log(data);
   const transactions = data?.me.transactions || [];
   
-  // if(!(transactions === [])) {
-  //   setTransactionList(transactions)
-  // }
+  function addTransactionList (transaction) {
+    console.log(transactionList);
+    console.log(transaction);
+    setTransactionList([ ...transactionList, transaction ]);
+  }
+
 
   const me = data?.me.username || '';
   console.log(transactions);
@@ -80,10 +83,13 @@ const LandingPage = () => {
                   <Modal.Title>Add Transaction</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
                   <TransactionForm 
+                  transactions={transactions}
                   setShowTransactionForm={setShowTransactionForm}
-                  setTransactionList={setTransactionList}
+                  addTransactionList={addTransactionList}
                   />
+
                 </Modal.Body>
               </Modal>
             </div>
