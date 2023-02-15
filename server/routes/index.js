@@ -1,16 +1,25 @@
 const express = require("express");
+const jwt = require('jsonwebtoken');
 const { User, Transaction } = require("../models");
+const { authMiddleware, signToken } = require("../utils/auth");
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/sumHighLevel", async (req, res, context) => {
-  try {
-    
+app.get("/sumHighLevel", async (req, res) => {
+  let username = req.headers.username;
+  console.log(username);
+  // let x = Object.fromEntries(req.headers);
+  // console.log(x);
+
+ 
+  try {   
     let result = await User.aggregate([
-      { $match: { username: context.username } },
+      { $match: { username: username } },
       // replace your model name
       { $unwind: '$transactions' },
-      { $match: { highLevelCategory: 'essential' } },
+      { $match: { 'transactions.highLevelCategory': 'essential' } },
       {
         $group: {
           _id: 'essential',
@@ -18,6 +27,7 @@ app.get("/sumHighLevel", async (req, res, context) => {
         },
       },
     ]);
+    
     console.log(result);
     res.json(result);
   } catch (err) {

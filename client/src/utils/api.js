@@ -1,6 +1,14 @@
+import Auth from './auth';
+
 export async function getHighLevel() {
   try {
-    const data = await fetch("./api/sumHighLevel");
+  
+
+    const token = Auth.getProfile();
+    console.log(token);
+    const username = token.data.username;
+    console.log(username);
+    const data = await fetch("./api/sumHighLevel", {method: 'GET', headers: {username}});
 
     if (!data.ok) {
       throw new Error("something went wrong!");
