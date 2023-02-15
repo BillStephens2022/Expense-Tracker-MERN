@@ -14,7 +14,6 @@ const typeDefs = gql`
     highLevelCategory: String
     category: String
     description: String
-    username: String
   }
   type Auth {
     token: ID
@@ -33,7 +32,6 @@ const typeDefs = gql`
       highLevelCategory: String!
       category: String!
       description: String!
-      username: String
     ) : Transaction
     deleteTransaction(_id: ID): Transaction
   }
