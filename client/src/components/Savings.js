@@ -16,7 +16,7 @@ export default function Savings() {
   const n = 12; //..i.e. monthly
   const t = 10;
 
-  const savings = calculateFutureValue(PMT, r, n, t);
+  const savings = calculateFutureValue(0, PMT, r, n, t);
 
   function handleSubmit(e) {
     e.preventDefault();
