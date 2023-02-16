@@ -6,6 +6,7 @@ import TransactionForm from "../components/TransactionForm";
 // import "../styles/LandingPage.css";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
+import TransactionTable from "../components/TransactionTable";
 
 const LandingPage = () => {
   const [showTransactionForm, setShowTransactionForm] = useState(false);
@@ -90,12 +91,15 @@ const LandingPage = () => {
         )}
       </div>
       <div className="mt-4">
-        <TransactionList
+        {/* <TransactionList
           transactions={transactions}
           me={me}
           title="All Transactions"
           showTitle={true}
-        />
+        /> */}
+      </div>
+      <div className="mt-4">
+        <TransactionTable />
       </div>
     </div>
   );

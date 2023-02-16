@@ -210,7 +210,7 @@ export default function TransactionForm({
           <div className="form-group">
             <label htmlFor="highLevelCategory">Essential/Non-Essential:</label>
             <select
-              className="form-control"
+              className="form-control form-select"
               id="highLevelCategory"
               onChange={handleChange}
               name="highLevelCategory"
@@ -222,7 +222,7 @@ export default function TransactionForm({
           <div className="form-group">
             <label htmlFor="category">Select a Category:</label>
             <select
-              className="form-control"
+              className="form-control form-select"
               id="category"
               onChange={handleChange}
               name="category"

@@ -23,6 +23,7 @@ export default function Analysis() {
   }
 
   const transactions = data?.me.transactions || [];
+  console.log(transactions);
   const calcHighLevelCategory = (transactions) => transactions.reduce((acc, cur) => {
     const {highLevelCategory, amount} = cur;
     const item = acc.find(it => it.highLevelCategory === highLevelCategory);
@@ -36,7 +37,7 @@ export default function Analysis() {
     const {category, amount} = cur;
     const item = acc.find(it => it.category === category);
     item ? item.amount += amount : acc.push({category, amount});
-    return acc;;
+    return acc;
 
   }, []);
   let sumCategory = calcCategory(transactions);
@@ -140,16 +141,12 @@ export default function Analysis() {
         ></Pie>
       </div>
       <div>
-        <Savings />
+        <Savings 
+          sumHighLevel={sumHighLevel} 
+          />
       </div>
       <div>
-        <TransactionTable
-          // transactionTable={transactionTable}
-          // setTransactionTable={setTransactionTable}
-          // me={me}
-          // title="All Transactions"
-          // showTitle={true}
-        />
+        {/* <TransactionTable/> */}
       </div>
     </div>
   );

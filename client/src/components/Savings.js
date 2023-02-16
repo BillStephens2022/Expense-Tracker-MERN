@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { formatAmount, calculateFutureValue } from "../utils/helpers";
-export default function Savings() {
+export default function Savings(sumHighLevel) {
+
+  function getNonEssential() {
+    let highLevelArr = sumHighLevel.sumHighLevel;
+    console.log(highLevelArr);
+    for (let i=0; i < highLevelArr.length; i++) {
+      if (highLevelArr[i].highLevelCategory === "Non-Essential") {
+        let nonEssentialSpending = Math.round(highLevelArr[i].amount);
+        return nonEssentialSpending;
+      };
+    };
+  }
+
   const [calculateFormState, setCalculateFormState] = useState({
     initialAmount: "",
     monthlyContribution: "",
@@ -9,8 +21,9 @@ export default function Savings() {
     years: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const nonEssentialSpending = 2350.0;
-  const PMT = nonEssentialSpending * 0.1;
+  
+  const nonEssentialSpending = getNonEssential();
+  const PMT = formatAmount(Math.round(nonEssentialSpending * 0.1));
 
   const r = 0.05;
   const n = 12; //..i.e. monthly
@@ -82,7 +95,7 @@ export default function Savings() {
           </div>
           <div className="form-group">
             <label htmlFor="frequency">Compunding Frequency:</label>
-            <select className="form-control" id="frequency" name="frequency" onBlur={handleChange}>
+            <select className="form-control form-select" id="frequency" name="frequency" onBlur={handleChange}>
               <option value="" selected></option>
               <option value="1">Annually</option>
               <option value="2">Semi-Annually</option>
