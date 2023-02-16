@@ -5,6 +5,18 @@ import chart from "../images/chart.png";
 const Home = () => {
   return (
     <div className="home-body">
+      <ul className="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
       <div className="row align-items-center">
         <div className="col-md-12 text-center">
           <h1 className="home-title">Expense Tracker</h1>
