@@ -8,6 +8,7 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { Button } from "react-bootstrap";
 import { ADD_TRANSACTION } from "../utils/mutations";
 import { QUERY_TRANSACTIONS, QUERY_ME } from "../utils/queries";
+import { Navigate } from "react-router-dom";
 
 import Auth from "../utils/auth";
 
@@ -109,7 +110,8 @@ export default function TransactionForm({
       
       addTransactionList(data.addTransaction._id);
       setShowTransactionForm(false);
-      window.location.replace('/transactions');
+      <Navigate to="/transactions" replace={true}/>
+
       
     } catch (err) {
       console.error(err);

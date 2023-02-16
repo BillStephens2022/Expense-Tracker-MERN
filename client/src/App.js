@@ -46,7 +46,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/transactions" element={<Transactions />} />
             <Route path="/transactions/add" element={<TransactionForm />} />
-            <Route path="/Analysis" element={<Analysis />} />
+            <Route path="/analysis" element={<Analysis />} />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}
