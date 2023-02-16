@@ -25,8 +25,11 @@ export default function Analysis() {
     return acc;
 
   }, []);
+
   let sumHighLevel = calcHighLevelCategory(transactions);
+
   console.log("Essential vs NonEssential: ", sumHighLevel);
+
   const calcCategory = (transactions) => transactions.reduce((acc, cur) => {
     const {category, amount} = cur;
     const item = acc.find(it => it.category === category);
@@ -34,6 +37,7 @@ export default function Analysis() {
     return acc;
 
   }, []);
+
   let sumCategory = calcCategory(transactions);
   console.log("by Category: ", sumCategory);
   let sumAll=0;
@@ -60,17 +64,18 @@ export default function Analysis() {
       {
         label: "Spending by Category",
         data: [
-          sumCategory[4].amount, 
-          sumCategory[2].amount, 
-          sumCategory[1].amount, 
-          sumCategory[7].amount, 
-          sumCategory[6].amount, 
-          sumCategory[0].amount, 
-          sumCategory[5].amount, 
-          sumCategory[9].amount, 
-          sumCategory[10].amount, 
-          sumCategory[3].amount, 
-          sumCategory[8].amount],
+          sumCategory.find((x) => x.category === "Housing")?.amount || 0,
+          sumCategory.find((x) => x.category === "Food")?.amount || 0,
+          sumCategory.find((x) => x.category === "Restaurants")?.amount || 0,
+          sumCategory.find((x) => x.category === "Transportation")?.amount || 0,
+          sumCategory.find((x) => x.category === "Utilities")?.amount || 0,
+          sumCategory.find((x) => x.category === "Cable/Streaming")?.amount || 0,
+          sumCategory.find((x) => x.category === "Insurance")?.amount || 0,
+          sumCategory.find((x) => x.category === "Medical/Health")?.amount || 0,
+          sumCategory.find((x) => x.category === "Entertainment")?.amount || 0,
+          sumCategory.find((x) => x.category === "Vacations")?.amount || 0,
+          sumCategory.find((x) => x.category === "Charity")?.amount || 0,
+        ],
         backgroundColor: [
           "coral",
           "lightblue",
@@ -94,7 +99,10 @@ export default function Analysis() {
     datasets: [
       {
         label: "Spending by Essential/Non-Essential",
-        data: [sumHighLevel[1].amount, sumHighLevel[0].amount],
+        data: [
+          sumHighLevel.find((x) => x.highLevelCategory === "Essential")?.amount || 0,
+          sumHighLevel.find((x) => x.highLevelCategory === "Non-Essential")?.amount || 0,
+        ],
         backgroundColor: ["#22a57a", "#FF4D4D"],
         hoverOffset: 4,
       },
