@@ -25,6 +25,7 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 1;
 }
 
 .circles li{
@@ -115,7 +116,9 @@ body {
   animation-duration: 11s;
 }
 
-
+.navbar {
+  z-index: 999;
+}
 
 @keyframes animate {
 
@@ -181,7 +184,13 @@ body {
   animation: slideUp 1s ease-in-out;
 }
 
+.col-md-12 {
+  background-color: transparent;
+}
 
+.row {
+  background-color: transparent;
+}
 
 @keyframes textclip {
   
