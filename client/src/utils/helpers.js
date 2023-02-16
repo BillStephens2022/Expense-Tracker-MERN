@@ -12,7 +12,7 @@ export function formatAmount(x) {
 }
 
 export function calculateFutureValue(P, PMT, r, n, t) {
-    const futureValue = (P*(1+r/n)**(n*t)) + ((PMT * ((1 + r / n) ** (n * t) - 1)) / (r / n));
+    const futureValue = (P*(1 + r / 100 / n)**(n*t)) + ((PMT * ((1 + r / 100 / n) ** (n * t) - 1)) / (r / 100 / n));
     return futureValue;
 }
 

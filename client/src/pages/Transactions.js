@@ -3,11 +3,11 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_TRANSACTIONS } from "../utils/queries";
 import TransactionList from "../components/TransactionList";
 import TransactionForm from "../components/TransactionForm";
-// import "../styles/LandingPage.css";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
+import TransactionTable from "../components/TransactionTable";
 
-const LandingPage = () => {
+const Transactions = () => {
   const [showTransactionForm, setShowTransactionForm] = useState(false);
   const [transactionList, setTransactionList] = useState([]);
 
@@ -90,15 +90,18 @@ const LandingPage = () => {
         )}
       </div>
       <div className="mt-4">
-        <TransactionList
+        {/* <TransactionList
           transactions={transactions}
           me={me}
           title="All Transactions"
           showTitle={true}
-        />
+        /> */}
+      </div>
+      <div className="mt-4">
+        <TransactionTable />
       </div>
     </div>
   );
 };
 
-export default LandingPage;
+export default Transactions;
