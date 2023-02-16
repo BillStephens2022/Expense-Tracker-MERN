@@ -9,21 +9,14 @@ const Home = () => {
     <div className="home-body">
       <div style= {{ display: 'flex', justifyContent: 'center'}}></div>
       <div className="row align-items-center">
-        <div className="col-lg-4 col-sm-12 d-flex align-items-center justify-content-center">
-          <img className="dollar-image" src={dollar} alt="expense-pic" />
-        </div>
         <div className="d-flex align-items-center">
         <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
             <h1 className="home-title">Expense Tracker</h1>
-            <h6 className="home-description">
-              Welcome to Expense Tracker - track and analyze your personal
-              expenses!
-            </h6>
           </div>
         </div>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center'}}>
           <div className="about-div">
-            <h2 className="placeholder-1">Preview of app functionality, reel user in</h2>
+            <h2 className="placeholder-1">We offer</h2>
             <h6 className="placeholder-t1">
              
               <img className="chart-image" src={chart} alt="chart pic"></img>
@@ -49,9 +42,6 @@ const Home = () => {
             </h6>
           </div>
         </div>
-      </div>
-      <div className="chart-div row">
-        <img className="chart-image" src={chart} alt="chart pic"></img>
       </div>
       <div className= "footer">
         <h2 className= "footer">Footer</h2>

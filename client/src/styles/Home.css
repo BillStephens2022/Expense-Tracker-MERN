@@ -37,7 +37,8 @@ body {
 .home-body h6 {
   font-size: 1.75em;
   font-weight: 500;
-  max-width: 700px;
+  max-width: 1000px;
+  max-height: 600px;
   padding: 15px;
   margin-top: 15px;
   color: #fff;
@@ -46,16 +47,6 @@ body {
   border-radius: 10px;
   box-shadow: white 5px 5px 15px;
   line-height: 1.5em;
-}
-
-
-
-.dollar-image {
-  text-align: center;
-  width: 50%;
-  border-radius: 5%;
-  margin: 15px 0px 15px 15px;
-  animation: slideRight 1s ease-in-out;
 }
 
 .chart-div {
@@ -109,11 +100,5 @@ body {
   }
 }
 
-.placeholder-1 {
-  text-align: center,
-}
 
-.budget-image {
-  align-items: center;
-}
 
