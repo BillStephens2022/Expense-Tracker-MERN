@@ -10,12 +10,6 @@ import TransactionTable from "../components/TransactionTable";
 
 export default function Analysis() {
   Chart.register(ArcElement);
-  // const user = getUser();
-  // const highLevelData = getHighLevel();
-  // const essentialData = getEssentialTransactions();
-  // console.log(highLevelData);
-  // console.log(essentialData);
-  // console.log(user);
   const { data, loading } = useQuery(QUERY_ME);
 
   if (loading) {
