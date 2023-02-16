@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar";
 import Transactions from "./pages/Transactions";
 import TransactionForm from "./components/TransactionForm";
 import Analysis from "./pages/Analysis";
+import Footer from "./components/Footer";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -51,6 +52,7 @@ function App() {
               element={<h1 className="display-2">Wrong page!</h1>}
             />
           </Routes>
+          <Footer />
         </>
       </Router>
     </ApolloProvider>
