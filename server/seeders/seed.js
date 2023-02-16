@@ -8,10 +8,10 @@ db.once('open', async () => {
   try {
     await Transaction.deleteMany({});
     await User.deleteMany({});
-    await Testimonials.deleteMany({});
+    // await Testimonials.deleteMany({});
 
     const dbUsers = await User.create(userSeeds);
-    await Testimonials.create(testimonialSeeds);
+    // await Testimonials.create(testimonialSeeds);
 
     for (let i = 0; i < transactionSeeds.length; i++) {
       const { _id: transId } = await Transaction.create(transactionSeeds[i]);
