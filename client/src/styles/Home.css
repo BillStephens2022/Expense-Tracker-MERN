@@ -18,7 +18,7 @@ body {
 .home-body h1 {
   font-style: "Montserrat, non-serif";
   font-weight: 900;
-  font-size: 6em;
+  font-size: 8em;
   animation: texclip 1.5s linear infinite;
   background: linear-gradient(to right, #d4af37 10%, #E5E4E2 50%, #a97142 60%);
   background-clip: border-box;

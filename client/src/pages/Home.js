@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/Home.css";
-import dollar from "../images/dollar.png";
 import chart from "../images/chart.png";
 import budgetpie from "../images/budgetpie.png";
 
