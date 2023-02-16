@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/Home.css";
 import chart from "../images/chart.png";
-import budgetpie from "../images/budgetpie.png";
 
 const Home = () => {
   return (
@@ -38,14 +37,14 @@ const Home = () => {
         </div>
 
         <div className="col-md-6">
-          <div className="about-div text-center">
-            <h2 className="budget-title">Analyze your data</h2>
-            <img className="budget-image" src={budgetpie} alt="expense-pic" />
-            <p className="budget-text">
-              With the Expense Tracker you can visualize your spendings in each category and whether or not it's essential or non-essential, based on your input.
-            </p>
-          </div>
-        </div>
+  <div className="about-div text-center">
+    <h2 className="budget-title">Analyze your data</h2>
+    <img className="budget-image img-fluid shadow" src={chart} alt="expense-pic" style={{ maxWidth: "100%" }} />
+    <p className="budget-text">
+      With the Expense Tracker you can visualize your spendings in each category and whether or not it's essential or non-essential, based on your input.
+    </p>
+  </div>
+</div>
 
         <div className="col-md-12 mt-5">
           <h2 className="testimonials-title text-center">User Testimonials</h2>

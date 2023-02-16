@@ -5,41 +5,41 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 
 const TransactionTable = ({ transactions }) => {
-
   const [sortOption, setSortOption] = useState("date");
 
-  const handleSortOptionChange = (event) => {
-    setSortOption(event.target.value);
-  };
-  
-  if (!transactions.length) {
-    return <h3>No Transactions Recorded Yet</h3>;
-  }
-  
-  let sortedTransactions = [...transactions];
-  
-  if (sortOption === "date") {
-    sortedTransactions.sort((transactionA, transactionB) => {
-      const dateA = new Date(parseInt(transactionA.date));
-      const dateB = new Date(parseInt(transactionB.date));
-      return dateB - dateA;
-    });
-  } else if (sortOption === "amount") {
-    sortedTransactions.sort((transactionA, transactionB) => {
-      console.log(`transactionA.amount: ${transactionA.amount}`);
-      console.log(`transactionB.amount: ${transactionB.amount}`);
-      console.log(`transactionB.amount - transactionA.amount: ${transactionB.amount - transactionA.amount}`);
-      return transactionB.amount - transactionA.amount;
-    });
-  } else if (sortOption === "category") {
-    sortedTransactions.sort((transactionA, transactionB) => {
-      return transactionA.category.localeCompare(transactionB.category);
-    });
-  }
+const handleSortOptionChange = (event) => {
+  setSortOption(event.target.value);
+};
+
+if (!transactions.length) {
+  return <h3>No Transactions Recorded Yet</h3>;
+}
+
+let sortedTransactions = [...transactions];
+
+if (sortOption === "date") {
+  sortedTransactions.sort((transactionA, transactionB) => {
+    const dateA = new Date(parseInt(transactionA.date));
+    const dateB = new Date(parseInt(transactionB.date));
+    return dateB - dateA;
+  });
+} else if (sortOption === "amount") {
+  sortedTransactions.sort((transactionA, transactionB) => {
+    console.log(`transactionA.amount: ${transactionA.amount}`);
+    console.log(`transactionB.amount: ${transactionB.amount}`);
+    console.log(`transactionB.amount - transactionA.amount: ${transactionB.amount - transactionA.amount}`);
+    return transactionB.amount - transactionA.amount;
+  });
+} else if (sortOption === "category") {
+  sortedTransactions.sort((transactionA, transactionB) => {
+    return transactionA.category.localeCompare(transactionB.category);
+  });
+}
 
   return (
     <div>
       <h1 id="transaction-table-header">Your Transactions</h1>
+
 
       <div className="form-group">
         <label htmlFor="sort-option-select">Sort By:</label>
@@ -55,7 +55,8 @@ const TransactionTable = ({ transactions }) => {
         </select>
       </div>
 
-      <table class="table table-striped table-dark">
+
+      <table className="table table-striped table-dark">
         <thead>
           <tr>
             <th scope="col">Date</th>
@@ -79,7 +80,6 @@ const TransactionTable = ({ transactions }) => {
       </table>
     </div>
   );
-}
-
+};
 
 export default TransactionTable;
