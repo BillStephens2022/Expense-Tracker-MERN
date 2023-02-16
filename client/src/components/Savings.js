@@ -25,7 +25,7 @@ export default function Savings(sumHighLevel) {
   const nonEssentialSpending = getNonEssential();
   const PMT = formatAmount(Math.round(nonEssentialSpending * 0.1));
 
-  const r = 0.05;
+  const r = 5;
   const n = 12; //..i.e. monthly
   const t = 10;
 
@@ -90,7 +90,7 @@ export default function Savings(sumHighLevel) {
             <input className="form-control" id="monthlyContribution" name="monthlyContribution" onBlur={handleChange}></input>
           </div>
           <div className="form-group">
-            <label htmlFor="rate">Annual Rate of Return:</label>
+            <label htmlFor="rate">Annual Rate of Return (example: enter 5 for 5%):</label>
             <input className="form-control" id="rate" name="rate" onBlur={handleChange}></input>
           </div>
           <div className="form-group">

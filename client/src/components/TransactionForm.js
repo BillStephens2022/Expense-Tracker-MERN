@@ -109,6 +109,7 @@ export default function TransactionForm({
       
       addTransactionList(data.addTransaction._id);
       setShowTransactionForm(false);
+      window.location.reload();
       
     } catch (err) {
       console.error(err);
