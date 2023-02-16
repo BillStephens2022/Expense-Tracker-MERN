@@ -7,24 +7,34 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("/sumHighLevel", async (req, res) => {
-  let username = req.headers.username;
-  console.log(username);
-  // let x = Object.fromEntries(req.headers);
-  // console.log(x);
+app.get("/getUser", async (req, res) => {
+    console.log('route hit!!');
+    let user = req.headers.username;
+  try {   
+    let result = await User.findOne({username: user});
+    console.log("getUser result: ", result);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
- 
+app.get("/sumHighLevel", async (req, res) => {
+  let user = req.headers.username;
+  console.log(user);
+
   try {   
     let result = await User.aggregate([
-      { $match: { username: username } },
+      { $match: { username: user } },
       // replace your model name
       { $unwind: '$transactions' },
-      { $match: { 'transactions.highLevelCategory': 'essential' } },
+      // { $match: { highLevelCategory } },
       {
         $group: {
-          _id: 'essential',
-          sum: { $sum: '$transaction.amount' },
-        },
+          _id: '$transactions',
+          count: { $sum: 1 },
+         },
       },
     ]);
     

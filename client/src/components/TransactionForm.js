@@ -228,7 +228,8 @@ export default function TransactionForm({
               name="category"
             >
               <option value="Housing">Housing</option>
-              <option value="Food">Food</option>
+              <option value="Food-Groceries">Food-Groceries</option>
+              <option value="Restaurant/Fast-Food">Restaurant/Fast-Food</option>
               <option value="Transportation">Transportation</option>
               <option value="Utilities - Gas, Electric, Water">
                 Utilities - Gas, Electric, Water

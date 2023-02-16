@@ -6,18 +6,52 @@ import { Pie } from "react-chartjs-2";
 import "../styles/TransactionForm.css";
 import Savings from "../components/Savings";
 import TransactionTable from "../components/TransactionTable";
-import { getHighLevel, getEssentialTransactions } from "../utils/api";
+// import { getHighLevel, getEssentialTransactions, getUser } from "../utils/api";
 
 export default function Analysis() {
   Chart.register(ArcElement);
-  const highLevelData = getHighLevel();
-  const essentialData = getEssentialTransactions();
-  console.log(highLevelData);
-  console.log(essentialData);
+  // const user = getUser();
+  // const highLevelData = getHighLevel();
+  // const essentialData = getEssentialTransactions();
+  // console.log(highLevelData);
+  // console.log(essentialData);
+  // console.log(user);
+  const { data, loading } = useQuery(QUERY_ME);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  const transactions = data?.me.transactions || [];
+  const calcHighLevelCategory = (transactions) => transactions.reduce((acc, cur) => {
+    const {highLevelCategory, amount} = cur;
+    const item = acc.find(it => it.highLevelCategory === highLevelCategory);
+    item ? item.amount += amount : acc.push({highLevelCategory, amount});
+    return acc;
+
+  }, []);
+  let sumHighLevel = calcHighLevelCategory(transactions);
+  console.log("Essential vs NonEssential: ", sumHighLevel);
+  const calcCategory = (transactions) => transactions.reduce((acc, cur) => {
+    const {category, amount} = cur;
+    const item = acc.find(it => it.category === category);
+    item ? item.amount += amount : acc.push({category, amount});
+    return acc;;
+
+  }, []);
+  let sumCategory = calcCategory(transactions);
+  console.log("by Category: ", sumCategory);
+  let sumAll=0;
+  for (let i = 0; i < transactions.length; i++) {
+    sumAll += transactions[i].amount;
+  }
+  console.log('TOTAL SUM!! ', sumAll);
+  
   const categoryData = {
     labels: [
       "Housing",
       "Food",
+      "Restaurants",
       "Transportation",
       "Utilities",
       "Cable/Streaming",
@@ -30,18 +64,30 @@ export default function Analysis() {
     datasets: [
       {
         label: "Spending by Category",
-        data: [2000, 500, 250, 200, 200, 100, 200, 1000, 100],
+        data: [
+          sumCategory[4].amount, 
+          sumCategory[2].amount, 
+          sumCategory[1].amount, 
+          sumCategory[7].amount, 
+          sumCategory[6].amount, 
+          sumCategory[0].amount, 
+          sumCategory[5].amount, 
+          sumCategory[9].amount, 
+          sumCategory[10].amount, 
+          sumCategory[3].amount, 
+          sumCategory[8].amount],
         backgroundColor: [
-          "rgb(255, 99, 132)",
-          "rgb(54, 162, 235)",
+          "coral",
+          "lightblue",
           "gray",
           "white",
           "purple",
           "yellow",
-          "seagreen",
+          "lightgreen",
           "blue",
           "red",
           "green",
+          "firebrick"
         ],
         hoverOffset: 4,
       },
@@ -53,7 +99,7 @@ export default function Analysis() {
     datasets: [
       {
         label: "Spending by Essential/Non-Essential",
-        data: [3250, 1500],
+        data: [sumHighLevel[1].amount, sumHighLevel[0].amount],
         backgroundColor: ["#22a57a", "#FF4D4D"],
         hoverOffset: 4,
       },

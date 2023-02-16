@@ -19,7 +19,7 @@
     "date": "02/01/23",
     "amount": 175.46,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Dinner at Joe's Crab Shack",
     "username": "BillStephens"
   },
@@ -27,7 +27,7 @@
     "date": "02/04/23",
     "amount": 19.99,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly Netflix subscription",
     "username": "BillStephens"
   },
@@ -35,7 +35,7 @@
     "date": "02/04/23",
     "amount": 144.28,
     "highLevelCategory": "Essential",
-    "category": "Food",
+    "category": "Food-Groceries",
     "description": "grocery shopping",
     "username": "BillStephens"
   },
@@ -43,7 +43,7 @@
     "date": "02/10/23",
     "amount": 144.28,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly Disney+ subscription",
     "username": "BillStephens"
   },
@@ -51,7 +51,7 @@
     "date": "02/01/23",
     "amount": 15.44,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Lunch at Smashburger",
     "username": "BillStephens"
   },
@@ -75,7 +75,7 @@
     "date": "02/02/23",
     "amount": 154.35,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Dinner at Olive Garden",
     "username": "JoeSedlak"
   },
@@ -83,7 +83,7 @@
     "date": "02/10/23",
     "amount": 19.99,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly Netflix subscription",
     "username": "JoeSedlak"
   },
@@ -91,7 +91,7 @@
     "date": "02/01/23",
     "amount": 124.28,
     "highLevelCategory": "Essential",
-    "category": "Food",
+    "category": "Food-Groceries",
     "description": "grocery shopping",
     "username": "JoeSedlak"
   },
@@ -99,7 +99,7 @@
     "date": "02/10/23",
     "amount": 144.28,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly Hulu subscription",
     "username": "JoeSedlak"
   },
@@ -107,7 +107,7 @@
     "date": "02/01/23",
     "amount": 14.74,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Lunch at Jersey Mike's",
     "username": "JoeSedlak"
   },
@@ -131,7 +131,7 @@
     "date": "02/10/23",
     "amount": 165.35,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Dinner at BJ's Brewhouse",
     "username": "JonathanPlaras"
   },
@@ -139,7 +139,7 @@
     "date": "02/1/23",
     "amount": 19.99,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly Netflix subscription",
     "username": "JonathanPlaras"
   },
@@ -147,7 +147,7 @@
     "date": "02/01/23",
     "amount": 136.80,
     "highLevelCategory": "Essential",
-    "category": "Food",
+    "category": "Food-Groceries",
     "description": "grocery shopping",
     "username": "JonathanPlaras"
   },
@@ -155,7 +155,7 @@
     "date": "02/10/23",
     "amount": 9.99,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly Apple TV subscription",
     "username": "JonathanPlaras"
   },
@@ -163,7 +163,7 @@
     "date": "02/02/23",
     "amount": 35.00,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Lunch at Buffalo Wild Wings",
     "username": "JonathanPlaras"
   },
@@ -187,7 +187,7 @@
     "date": "02/05/23",
     "amount": 146.87,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Dinner at Applebee's",
     "username": "MarcNicolas"
   },
@@ -195,7 +195,7 @@
     "date": "02/10/23",
     "amount": 19.99,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly Netflix subscription",
     "username": "MarcNicolas"
   },
@@ -203,7 +203,7 @@
     "date": "02/09/23",
     "amount": 146.40,
     "highLevelCategory": "Essential",
-    "category": "Food",
+    "category": "Food-Groceries",
     "description": "grocery shopping",
     "username": "MarcNicolas"
   },
@@ -211,7 +211,7 @@
     "date": "02/08/23",
     "amount": 14.99,
     "highLevelCategory": "Non-Essential",
-    "category": "Cable/Monthly Subscription Services",
+    "category": "Cable/Streaming Services",
     "description": "monthly HBOMax subscription",
     "username": "MarcNicolas"
   },
@@ -219,7 +219,7 @@
     "date": "02/07/23",
     "amount": 35.00,
     "highLevelCategory": "Non-Essential",
-    "category": "Restaurant / Fast Food",
+    "category": "Restaurant/Fast-Food",
     "description": "Lunch at Chipotle",
     "username": "MarcNicolas"
   }
