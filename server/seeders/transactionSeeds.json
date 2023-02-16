@@ -57,7 +57,7 @@
   },
   {
     "date": "02/09/23",
-    "amount": 2314.86,
+    "amount": 231.86,
     "highLevelCategory": "Essential",
     "category": "Housing",
     "description": "monthly mortgage payment",
@@ -169,7 +169,7 @@
   },
   {
     "date": "02/09/23",
-    "amount": 2479.92,
+    "amount": 247.92,
     "highLevelCategory": "Essential",
     "category": "Housing",
     "description": "monthly mortgage payment",
@@ -222,5 +222,293 @@
     "category": "Restaurant/Fast-Food",
     "description": "Lunch at Chipotle",
     "username": "MarcNicolas"
+  },
+  {
+    "date": "02/01/23",
+    "amount": 1000.00,
+    "highLevelCategory": "Essential",
+    "category": "Housing",
+    "description": "mortgage payment",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/02/23",
+    "amount": 200.00,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "dinner and movie",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/03/23",
+    "amount": 100.00,
+    "highLevelCategory": "Essential",
+    "category": "Food-Groceries",
+    "description": "groceries",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/04/23",
+    "amount": 50.00,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "concert tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/05/23",
+    "amount": 80.00,
+    "highLevelCategory": "Non-Essential",
+    "category": "Cable/Streaming Services",
+    "description": "Netflix subscription",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/06/23",
+    "amount": 40.00,
+    "highLevelCategory": "Essential",
+    "category": "Food-Groceries",
+    "description": "weekly groceries",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/07/23",
+    "amount": 75.00,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "video games",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/08/23",
+    "amount": 200.00,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "concert tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/09/23",
+    "amount": 200.00,
+    "highLevelCategory": "Essential",
+    "category": "Transportation",
+    "description": "car payment",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/10/23",
+    "amount": 100.00,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "movie tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/11/23",
+    "amount": 150.00,
+    "highLevelCategory": "Essential",
+    "category": "Utilities - Gas, Electric, Water",
+    "description": "electric bill",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/12/23",
+    "amount": 100.00,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "concert tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/10/23",
+    "amount": 200.0,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "movie tickets",
+    "username": "MarcNicolas"
+  },
+  {
+    "date": "02/05/23",
+    "amount": 80.0,
+    "highLevelCategory": "Essential",
+    "category": "Transportation",
+    "description": "monthly bus pass",
+    "username": "JonathanPlaras"
+  },
+  {
+    "date": "02/18/23",
+    "amount": 45.0,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "concert tickets",
+    "username": "JoeSedlak"
+  },
+  {
+    "date": "02/11/23",
+    "amount": 120.0,
+    "highLevelCategory": "Essential",
+    "category": "Food-Groceries",
+    "description": "grocery shopping",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/14/23",
+    "amount": 1500.0,
+    "highLevelCategory": "Essential",
+    "category": "Insurance",
+    "description": "auto insurance premium",
+    "username": "MarcNicolas"
+  },
+  {
+    "date": "02/09/23",
+    "amount": 30.0,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "books",
+    "username": "JonathanPlaras"
+  },
+  {
+    "date": "02/03/23",
+    "amount": 50.0,
+    "highLevelCategory": "Essential",
+    "category": "Food-Groceries",
+    "description": "weekly grocery shopping",
+    "username": "JoeSedlak"
+  },
+  {
+    "date": "02/25/23",
+    "amount": 100.0,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "concert tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/16/23",
+    "amount": 200.0,
+    "highLevelCategory": "Essential",
+    "category": "Transportation",
+    "description": "monthly car payment",
+    "username": "MarcNicolas"
+  },
+  {
+    "date": "02/07/23",
+    "amount": 80.0,
+    "highLevelCategory": "Essential",
+    "category": "Utilities - Gas, Electric, Water",
+    "description": "monthly electric bill",
+    "username": "JonathanPlaras"
+  },
+  {
+    "date": "02/11/23",
+    "amount": 25.0,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "Netflix subscription",
+    "username": "JoeSedlak"
+  },
+  {
+    "date": "02/03/23",
+    "amount": 150.0,
+    "highLevelCategory": "Essential",
+    "category": "Food-Groceries",
+    "description": "grocery shopping",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/10/23",
+    "amount": 79.99,
+    "highLevelCategory": "Non-Essential",
+    "category": "Cable/Streaming Services",
+    "description": "Netflix subscription",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/12/23",
+    "amount": 100,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "Concert tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/15/23",
+    "amount": 500,
+    "highLevelCategory": "Non-Essential",
+    "category": "Vacations",
+    "description": "Trip to Las Vegas",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/20/23",
+    "amount": 350,
+    "highLevelCategory": "Essential",
+    "category": "Transportation",
+    "description": "Monthly car payment",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/22/23",
+    "amount": 50.99,
+    "highLevelCategory": "Non-Essential",
+    "category": "Cable/Streaming Services",
+    "description": "Hulu subscription",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/01/23",
+    "amount": 230,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "Broadway show tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/05/23",
+    "amount": 800,
+    "highLevelCategory": "Non-Essential",
+    "category": "Vacations",
+    "description": "Weekend getaway",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/10/23",
+    "amount": 1200,
+    "highLevelCategory": "Essential",
+    "category": "Housing",
+    "description": "Monthly rent payment",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/13/23",
+    "amount": 70,
+    "highLevelCategory": "Non-Essential",
+    "category": "Restaurant/Fast-Food",
+    "description": "Dinner with friends",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/18/23",
+    "amount": 500,
+    "highLevelCategory": "Essential",
+    "category": "Utilities - Gas, Electric, Water",
+    "description": "Monthly electricity bill",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/02/23",
+    "amount": 300,
+    "highLevelCategory": "Non-Essential",
+    "category": "Entertainment",
+    "description": "Sports game tickets",
+    "username": "BillStephens"
+  },
+  {
+    "date": "02/07/23",
+    "amount": 50,
+    "highLevelCategory": "Non-Essential",
+    "category": "Cable/Streaming Services",
+    "description": "Disney+ subscription",
+    "username": "BillStephens"
   }
 ]
