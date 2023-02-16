@@ -111,6 +111,7 @@ export default function TransactionForm({
       addTransactionList(data.addTransaction._id);
       setShowTransactionForm(false);
       <Navigate to="/transactions" replace={true}/>
+
       
     } catch (err) {
       console.error(err);
