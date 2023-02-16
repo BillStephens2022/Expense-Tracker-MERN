@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_TRANSACTIONS } from "../utils/queries";
 import TransactionList from "../components/TransactionList";
 import TransactionForm from "../components/TransactionForm";
+// import "../styles/LandingPage.css";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
 import TransactionTable from "../components/TransactionTable";
@@ -12,9 +13,7 @@ const Transactions = () => {
   const [transactionList, setTransactionList] = useState([]);
 
   // uses moment.js to set start of current week starting on sunday formatted MM/DD/YYYY
-  const [startDate, setStartDate] = useState(
-    moment().startOf("week").format("L")
-  );
+  const [startDate, setStartDate] = useState(moment().startOf("week").format("L"));
 
   // uses moment.js to set end of current week ending on saturday formatted MM/DD/YYYY
   const [endDate, setEndDate] = useState(moment().endOf("week").format("L"));
@@ -29,6 +28,11 @@ const Transactions = () => {
   console.log(data);
   const transactions = data?.me.transactions || [];
 
+  const transactionsData = data?.me.transactions.map(transaction => ({
+    ...transaction,
+    date: moment.unix(transaction.date / 1000).format("MM/DD/YYYY"),
+  })) || [];
+
   function addTransactionList(transaction) {
     console.log(transactionList);
     console.log(transaction);
@@ -36,7 +40,7 @@ const Transactions = () => {
   }
 
   const me = data?.me.username || "";
-  console.log(transactions);
+  console.log("TRANSACTIONS", transactions);
   console.log(me);
 
   // formatting, "L" MM/DD/YYYY, "M" current month
@@ -45,24 +49,81 @@ const Transactions = () => {
 
   console.log(currentMonth);
   console.log(currentDate);
-  // console.log(transactions);
+
+  
+const todaySpending = transactionsData
+  .reduce((acc, transaction) => {
+    if (moment(transaction.date).format("L") === currentDate) {
+      return acc + transaction.amount;
+    }
+
+    return acc;
+  }, 0)
+
+  .toLocaleString("en-US", { style: "currency", currency: "USD" });
+
+const currentWeekSpending = transactionsData
+  .reduce((acc, transaction) => {
+    const transactionDate = moment(transaction.date).format("L");
+
+    if (transactionDate >= startDate && transactionDate <= endDate) {
+      return acc + transaction.amount;
+    }
+
+    return acc;
+  }, 0)
+
+  .toLocaleString("en-US", { style: "currency", currency: "USD" });
+
+const currentMonthSpending = transactionsData
+  .reduce((acc, transaction) => {
+    if (moment(transaction.date).format("M") === currentMonth) {
+      return acc + transaction.amount;
+    }
+
+    return acc;
+  }, 0)
+
+  .toLocaleString("en-US", { style: "currency", currency: "USD" });
+
 
   // come up with calculations here
 
   return (
     <div className="container">
-      <h1 className="mt-5">Welcome to your Expense Tracker!</h1>
-      <h4 className="mt-4">
-        Expenditure for Current Month: total expenditure goes here
-      </h4>
-      <h4 className="mt-4">
-        Spending for {currentDate}: calculate current date's spending amount
-      </h4>
 
-      <h4 className="mt-4">
-        Expenditure for Current Week ({startDate} - {endDate}): $ formula to
-        take
-      </h4>
+      <h1 className="mt-5">Welcome to your Expense Tracker!</h1>
+      
+      <div className="row">
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h4>Spending for {currentDate}:</h4>
+              <p>{todaySpending}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h4>Expenditure for Current Week ({startDate} - {endDate}):</h4>
+              <p>{currentWeekSpending}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="col">
+          <div className="card">
+            <div className="card-body">
+              <h4>Expenditure for Current Month:</h4>
+              <p>{currentMonthSpending}</p>
+            </div>
+          </div>
+        </div>
+
+    </div>
+
       <div className="mt-4">
         <button
           className="btn btn-primary"
@@ -90,15 +151,10 @@ const Transactions = () => {
         )}
       </div>
       <div className="mt-4">
-        {/* <TransactionList
+        <TransactionTable
           transactions={transactions}
-          me={me}
-          title="All Transactions"
-          showTitle={true}
-        /> */}
-      </div>
-      <div className="mt-4">
-        <TransactionTable />
+         
+        />
       </div>
     </div>
   );
