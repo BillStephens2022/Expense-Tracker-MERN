@@ -7,7 +7,7 @@ body {
 .home-body {
   position: center;
   font-style: "Montserrat, non-serif";
-  background: #4e54c8;  
+  background:#034f84;  
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
   font-weight: 900;
   background-size: cover;
@@ -192,6 +192,14 @@ body {
   background-color: transparent;
 }
 
+.mt-5 {
+  text-align: center;
+  align-items: center;
+}
+
+.container h1 {
+  margin-bottom: 50px;
+}
 @keyframes textclip {
   
   to {
