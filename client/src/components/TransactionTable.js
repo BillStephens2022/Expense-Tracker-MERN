@@ -1,12 +1,48 @@
 import React, { useState } from "react";
 import "../styles/TransactionForm.css";
 import { formatDate, formatAmount } from "../utils/helpers.js";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { DELETE_TRANSACTION } from "../utils/mutations";
+import Auth from "../utils/auth";
+import Transactions from "../pages/Transactions";
 
-const TransactionTable = ({ transactions }) => {
+
+
+const TransactionTable = () => {
+  const { data, loading } = useQuery(QUERY_ME);
+  const [deleteTransaction] = useMutation(DELETE_TRANSACTION);
   const [sortOption, setSortOption] = useState("date");
-
+    // create function that accepts the book's mongo _id value as param and deletes the book from the database
+    const handleDeleteTransaction = async (e) => {
+      e.preventDefault();
+      let transactionId = e.target.id;
+      console.log(e.target.id);
+      console.log('delete requested!');
+      const token = Auth.loggedIn() ? Auth.getToken() : null;
+      if (!token) {
+        return false;
+      }
+  
+      try {
+        const { data } = await deleteTransaction({ variables: { transactionId } });
+        
+        if (!data) {
+          throw new Error('something went wrong!');
+        }
+        console.log('done!');
+      } catch (err) {
+        console.error(err);
+      }
+    };
+  const transactions = data?.me.transactions || [];
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  console.log(data);
+  
+  
 const handleSortOptionChange = (event) => {
   setSortOption(event.target.value);
 };
@@ -64,6 +100,7 @@ if (sortOption === "date") {
             <th scope="col">Category</th>
             <th scope="col">Amount</th>
             <th scope="col">Description</th>
+            <th scope="col">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -74,6 +111,7 @@ if (sortOption === "date") {
               <td>{transaction.category}</td>
               <td>{formatAmount(transaction.amount)}</td>
               <td>{transaction.description}</td>
+              <td><button className="btn btn-danger" id={transaction._id} onClick={handleDeleteTransaction}>Delete</button></td>
             </tr>
           ))}
         </tbody>

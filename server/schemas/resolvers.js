@@ -81,18 +81,21 @@ const resolvers = {
       }
     },
     // delete a transaction
-//     deleteTransaction: async (parent, { transactionId }, context ) => {
-//         if (context.user) {
-//             return await User.findOneAndUpdate(
-//                 { _id: context.user._id },
-//                 { $pull: { transactions: { transactionId } } },
-//                 { new: true, runValidators: true }
-//             );
-//         } else {
-//           throw new AuthenticationError("You need to be logged in!");
-//         }
-        
-//     }
+    deleteTransaction: async (parent, { transactionId }, context) => {
+      if (context.user) {
+        const transaction = await Transaction.findOneAndDelete({
+          _id: transactionId,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { transactions: transaction._id } }
+        );
+
+        return transaction;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    }
   }
 };
 
