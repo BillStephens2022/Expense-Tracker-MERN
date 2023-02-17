@@ -90,7 +90,7 @@ body {
 #monthly-spending-title {
   color: goldenrod;
   text-align: center;
-  text-shadow: 5px 5px black;
+  text-shadow: 3px 3px black;
   font-size: 3em;
   margin-top: 10px;
   margin-bottom: 0px;
@@ -159,6 +159,15 @@ canvas {
   color: goldenrod;
   text-shadow: black 3px 3px;
   text-align: center;
+}
+
+.expense-tracker-header {
+  color: goldenrod;
+  text-shadow: black 3px 3px;
+}
+
+.sort {
+  color: white;
 }
 
 /* .chart-title {
