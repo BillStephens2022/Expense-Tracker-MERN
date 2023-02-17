@@ -1,20 +1,22 @@
 body {
   font-style: "Montserrat, non-serif";
-  background: #034f84;
+  background: #8f94fb; 
   align-items: center;
 }
 
 .home-body {
   position: center;
   font-style: "Montserrat, non-serif";
-  background:#034f84;  
-  background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+  /* background:#034f84;   */
+  background:#8f94fb;  
   font-weight: 900;
   background-size: cover;
   background-position: center;
   width: 100%;
   min-height: 100vh;
   color: rgb(25, 43, 57);
+  padding-right: 20px;
+  margin-bottom: -50px;
 }
 
 
@@ -235,5 +237,41 @@ body {
   }
 }
 
+.feature-title {
+  background-color: lightgray;
+  border-radius: 5px;
+  margin-left: 25px;
+  color: black;
+  box-shadow: 3px 3px black;
+  animation: slideRight 500ms;
+}
 
+.feature-list {
+  background-color: seagreen;
+  border-radius: 5px;
+  margin-left: 25px;
+  box-shadow: 3px 3px black;
+  color: white;
+  animation: slideRight 500ms;
+}
+
+.home-subtitle {
+  font-size: 1.25em;
+}
+
+.budget-text {
+  font-size: 1.25em;
+}
+
+.budget-image {
+  animation: slideLeft 500ms;
+  border-radius: 10px;
+}
+
+.testimonial {
+  background-image: linear-gradient(#7e83d8, #a0bed4);
+  border-radius: 5px;
+  box-shadow: slategray 3px 3px;
+  animation: slideUp 500ms;
+}
 

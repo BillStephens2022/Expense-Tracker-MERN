@@ -5,7 +5,7 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
 import { DELETE_TRANSACTION } from "../utils/mutations";
 import Auth from "../utils/auth";
-import Transactions from "../pages/Transactions";
+// import Transactions from "../pages/Transactions";
 
 
 
@@ -78,7 +78,7 @@ if (sortOption === "date") {
 
 
       <div className="form-group">
-        <label htmlFor="sort-option-select">Sort By:</label>
+        <label htmlFor="sort-option-select" className="sort">Sort By:</label>
         <select
           className="form-control"
           id="sort-option-select"

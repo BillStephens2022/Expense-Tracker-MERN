@@ -90,9 +90,9 @@ const currentMonthSpending = transactionsData
   // come up with calculations here
 
   return (
-    <div className="container">
+    <div className="container transaction-page">
 
-      <h1 className="mt-5">Welcome to your Expense Tracker!</h1>
+      <h1 className="mt-5 expense-tracker-header">Welcome to your Expense Tracker!</h1>
       
       <div className="row">
         <div className="col">
