@@ -33,7 +33,7 @@ const typeDefs = gql`
       category: String!
       description: String!
     ) : Transaction
-    deleteTransaction(_id: ID): Transaction
+    deleteTransaction(transactionId: ID!): Transaction
   }
 `;
 
