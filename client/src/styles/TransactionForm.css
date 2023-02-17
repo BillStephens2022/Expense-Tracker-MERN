@@ -84,7 +84,7 @@ body {
   color: white;
   text-align: center;
   font-size: 4em;
-  margin: 50px auto;
+  margin: 30px;
 }
 
 #monthly-spending-title {
@@ -92,7 +92,8 @@ body {
   text-align: center;
   text-shadow: 5px 5px black;
   font-size: 3em;
-  margin: 50px auto;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 canvas {
