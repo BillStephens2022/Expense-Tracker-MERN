@@ -132,7 +132,8 @@ export default function Analysis() {
         <h3 className="chart-title text-center">Spending by Category</h3>
         <Pie className="chart" data={categoryData} options={{plugins: {
           legend: {
-            position:'left'
+            position:'left',
+            labels: { color: 'white'}
           }
         }}}></Pie>
       </div>
