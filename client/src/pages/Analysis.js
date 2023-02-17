@@ -49,11 +49,11 @@ export default function Analysis() {
   const categoryData = {
     labels: [
       "Housing",
-      "Food",
-      "Restaurants",
+      "Food-Groceries",
+      "Restaurants/Fast-Food",
       "Transportation",
-      "Utilities",
-      "Cable/Streaming",
+      "Utilities - Gas, Electric, Water",
+      "Cable/Streaming Services",
       "Insurance",
       "Medical/Health",
       "Entertainment",
@@ -65,11 +65,11 @@ export default function Analysis() {
         label: "Spending by Category",
         data: [
           sumCategory.find((x) => x.category === "Housing")?.amount || 0,
-          sumCategory.find((x) => x.category === "Food")?.amount || 0,
-          sumCategory.find((x) => x.category === "Restaurants")?.amount || 0,
+          sumCategory.find((x) => x.category === "Food-Groceries")?.amount || 0,
+          sumCategory.find((x) => x.category === "Restaurants/Fast-Food")?.amount || 0,
           sumCategory.find((x) => x.category === "Transportation")?.amount || 0,
-          sumCategory.find((x) => x.category === "Utilities")?.amount || 0,
-          sumCategory.find((x) => x.category === "Cable/Streaming")?.amount || 0,
+          sumCategory.find((x) => x.category === "Utilities - Gas, Electric, Water")?.amount || 0,
+          sumCategory.find((x) => x.category === "Cable/Streaming Services")?.amount || 0,
           sumCategory.find((x) => x.category === "Insurance")?.amount || 0,
           sumCategory.find((x) => x.category === "Medical/Health")?.amount || 0,
           sumCategory.find((x) => x.category === "Entertainment")?.amount || 0,
@@ -130,7 +130,12 @@ export default function Analysis() {
       <h2 id="monthly-spending-title">Monthly Spending</h2>
       <div className="col col-lg-6 col-sm-12" id="pie-chart-1">
         <h3 className="chart-title text-center">Spending by Category</h3>
-        <Pie className="chart" data={categoryData} options={option}></Pie>
+        <Pie className="chart" data={categoryData} options={{plugins: {
+          legend: {
+            position:'left',
+            labels: { color: 'white'}
+          }
+        }}}></Pie>
       </div>
       <div className="col col-lg-6 col-sm-12" id="pie-chart-2">
         <h3 className="chart-title text-center">
