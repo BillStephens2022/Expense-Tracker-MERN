@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import {
   ApolloClient,
@@ -14,8 +14,30 @@ import Transactions from "./pages/Transactions";
 import TransactionForm from "./components/TransactionForm";
 import Analysis from "./pages/Analysis";
 import Footer from "./components/Footer";
-import TransactionsContext from "./context/transactionsContext";
 
+// const httpLink = createHttpLink({
+//   uri: "/graphql",
+// });
+
+// const authLink = setContext((_, { headers }) => {
+//   // get the authentication token from local storage if it exists
+//   const token = localStorage.getItem("id_token");
+//   // return the headers to the context so httpLink can read them
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : "",
+//     },
+//   };
+// });
+
+// const client = new ApolloClient({
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
+
+function App() {
+  //import '@fontawesome/fontawesome-free/css/all.min.css';
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
@@ -36,13 +58,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
-function App() {
-  const { fetchTransactions } = useContext(TransactionsContext);
-  useEffect(() => {
-    fetchTransactions();
-  }, [fetchTransactions]);
-
+  
   return (
     <ApolloProvider client={client}>
       <Router basename={process.env.PUBLIC_URL}>

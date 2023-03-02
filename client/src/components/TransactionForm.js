@@ -1,21 +1,19 @@
 import React, { useState, useRef } from "react";
+import useTransactionsContext from "../hooks/transactions";
 import "../styles/TransactionForm.css";
 import dollar from "../images/dollar.png";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useMutation } from "@apollo/client";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Button } from "react-bootstrap";
-import { ADD_TRANSACTION } from "../utils/mutations";
-import { QUERY_TRANSACTIONS, QUERY_ME } from "../utils/queries";
 import { Navigate } from "react-router-dom";
 
 import Auth from "../utils/auth";
 
 export default function TransactionForm({
   setShowTransactionForm,
-  addTransactionList,
-  transactions
+  // addTransactionList,
+  // transactions
 }) {
   const [transactionFormState, setTransactionFormState] = useState({
     date: "",
@@ -26,46 +24,10 @@ export default function TransactionForm({
     username: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const [addTransaction] = useMutation(ADD_TRANSACTION, 
-    {
-    update(cache, { data: { addTransaction } }) {
-      try {
-        const { transactions } = cache.readQuery({
-          query: QUERY_TRANSACTIONS,
-        }) ?? { transactions: [] };
-
-        cache.writeQuery({
-          query: QUERY_TRANSACTIONS,
-          data: { transactions: [addTransaction, ...transactions] },
-        });
-      } catch (e) {
-        console.log("error with mutation!");
-        console.error(e);
-      }
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: {
-          me: { ...me, transactions: [...me.transactions], addTransaction },
-        },
-      });
-      
-      console.log("updated cache:", cache.data.data);
-    },
-    variables: {
-      date: transactionFormState.date,
-      amount: parseFloat(transactionFormState.amount),
-      highLevelCategory: transactionFormState.highLevelCategory,
-      category: transactionFormState.category,
-      description: transactionFormState.description,
-      username: Auth.getProfile().data.username,
-    },
-  });
-  
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
+  const { transactions, addTransaction } = useTransactionsContext();
 
-  //
   const inputRef = useRef(null);
 
   async function handleSubmit(e) {
@@ -108,7 +70,7 @@ export default function TransactionForm({
       console.log("transactions:", transactions);
       console.log("addTransactions:", data.addTransaction);
       
-      addTransactionList(data.addTransaction._id);
+      addTransaction(data.addTransaction._id);
       setShowTransactionForm(false);
       <Navigate to="/transactions" replace={true}/>
       //window.location.replace('/transactions');
