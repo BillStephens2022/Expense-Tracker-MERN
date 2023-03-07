@@ -1,46 +1,46 @@
 import React, { useState } from "react";
 import "../styles/TransactionForm.css";
 import { formatDate, formatAmount } from "../utils/helpers.js";
-import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
-import { DELETE_TRANSACTION } from "../utils/mutations";
 import Auth from "../utils/auth";
 // import Transactions from "../pages/Transactions";
 
 
 
-const TransactionTable = () => {
-  const { data, loading } = useQuery(QUERY_ME);
-  const [deleteTransaction] = useMutation(DELETE_TRANSACTION);
+const TransactionTable = ({data, loading, onDelete}) => {
+  
+  const [transactions, setTransactions] = useState(data?.me.transactions || []);
   const [sortOption, setSortOption] = useState("date");
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  console.log(transactions);
+
     // create function that accepts the book's mongo _id value as param and deletes the book from the database
     const handleDeleteTransaction = async (e) => {
       e.preventDefault();
-      let transactionId = e.target.id;
-      console.log(e.target.id);
-      console.log('delete requested!');
+      const transactionId = e.target.id;
       const token = Auth.loggedIn() ? Auth.getToken() : null;
       if (!token) {
         return false;
       }
-  
+
       try {
-        const { data } = await deleteTransaction({ variables: { transactionId } });
+        const { data } = await onDelete({ variables: { transactionId } });
         
         if (!data) {
           throw new Error('something went wrong!');
         }
+        setTransactions(transactions.filter(transaction => transaction._id !== transactionId));
         console.log('done!');
       } catch (err) {
         console.error(err);
       }
+      console.log(data);
     };
-  const transactions = data?.me.transactions || [];
-  if (loading) {
-    return <div>Loading...</div>;
-  }
   
-  console.log(data);
+  
   
   
 const handleSortOptionChange = (event) => {

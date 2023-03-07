@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_ME, QUERY_TRANSACTIONS } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 import TransactionForm from "../components/TransactionForm";
 // import "../styles/LandingPage.css";
 import moment from "moment";
@@ -24,6 +24,8 @@ const Transactions = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+
+
 
   console.log(data);
   const transactions = data?.me.transactions || [];
@@ -153,6 +155,7 @@ const currentMonthSpending = transactionsData
       <div className="mt-4">
         <TransactionTable
           transactions={transactions}
+          setTransactionList={setTransactionList}
          
         />
       </div>
