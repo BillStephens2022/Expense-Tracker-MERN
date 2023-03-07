@@ -8,10 +8,9 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/Home";
-// import Transactions from "./pages/Transactions";
 import Navbar from "./components/Navbar";
-// import Transactions from "./pages/Transactions";
-import Transactions2 from "./pages/Transactions2";
+import Transactions from "./pages/Transactions";
+// import Transactions2 from "./pages/Transactions2";
 import TransactionForm from "./components/TransactionForm";
 import Analysis from "./pages/Analysis";
 import Footer from "./components/Footer";
@@ -45,8 +44,8 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/transactions" element={<Transactions />} /> */}
-            <Route path="/transactions" element={<Transactions2 />} />
+            <Route path="/transactions" element={<Transactions />} />
+            {/* <Route path="/transactions" element={<Transactions2 />} /> */}
             <Route path="/transactions/add" element={<TransactionForm />} />
             <Route path="/analysis" element={<Analysis />} />
             <Route

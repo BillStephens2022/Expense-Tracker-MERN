@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { useQuery } from "@apollo/client";
+import React, { useState } from "react";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../utils/queries";
+import { DELETE_TRANSACTION, ADD_TRANSACTION } from "../utils/mutations";
 import TransactionForm from "../components/TransactionForm";
 // import "../styles/LandingPage.css";
 import moment from "moment";
@@ -20,6 +21,9 @@ const Transactions = () => {
 
   // query transaction data then destructure the transactions from all the data
   const { data, loading } = useQuery(QUERY_ME);
+  const [deleteTransaction] = useMutation(DELETE_TRANSACTION);
+  const [addTransaction] = useMutation(ADD_TRANSACTION);
+  const [transactions, setTransactions] = useState(data?.me.transactions || []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -28,7 +32,7 @@ const Transactions = () => {
 
 
   console.log(data);
-  const transactions = data?.me.transactions || [];
+  
 
   const transactionsData = data?.me.transactions.map(transaction => ({
     ...transaction,
@@ -154,9 +158,9 @@ const currentMonthSpending = transactionsData
       </div>
       <div className="mt-4">
         <TransactionTable
-          transactions={transactions}
-          setTransactionList={setTransactionList}
-         
+          data={data} 
+          loading={loading} 
+          deleteTransaction={deleteTransaction}
         />
       </div>
     </div>

@@ -2,20 +2,14 @@ import React, { useState } from "react";
 import "../styles/TransactionForm.css";
 import { formatDate, formatAmount } from "../utils/helpers.js";
 import Auth from "../utils/auth";
-// import Transactions from "../pages/Transactions";
 
-
-
-const TransactionTable = ({data, loading, onDelete}) => {
-  
+const TransactionTable = ({data, loading, deleteTransaction}) => {
   const [transactions, setTransactions] = useState(data?.me.transactions || []);
   const [sortOption, setSortOption] = useState("date");
 
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  console.log(transactions);
 
     // create function that accepts the book's mongo _id value as param and deletes the book from the database
     const handleDeleteTransaction = async (e) => {
@@ -27,7 +21,7 @@ const TransactionTable = ({data, loading, onDelete}) => {
       }
 
       try {
-        const { data } = await onDelete({ variables: { transactionId } });
+        const { data } = await deleteTransaction({ variables: { transactionId } });
         
         if (!data) {
           throw new Error('something went wrong!');
@@ -39,8 +33,6 @@ const TransactionTable = ({data, loading, onDelete}) => {
       }
       console.log(data);
     };
-  
-  
   
   
 const handleSortOptionChange = (event) => {
@@ -75,8 +67,6 @@ if (sortOption === "date") {
   return (
     <div>
       <h1 id="transaction-table-header">Your Transactions</h1>
-
-
       <div className="form-group">
         <label htmlFor="sort-option-select" className="sort">Sort By:</label>
         <select

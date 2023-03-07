@@ -65,7 +65,6 @@ export default function TransactionForm({
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
 
-  //
   const inputRef = useRef(null);
 
   async function handleSubmit(e) {
