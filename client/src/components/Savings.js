@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { formatAmount, calculateFutureValue } from "../utils/helpers";
-export default function Savings(sumHighLevel) {
-
+export default function Savings({sumHighLevel}) {
+  
   function getNonEssential() {
-    let highLevelArr = sumHighLevel.sumHighLevel;
+    let highLevelArr = sumHighLevel;
     console.log(highLevelArr);
     for (let i=0; i < highLevelArr.length; i++) {
       if (highLevelArr[i].highLevelCategory === "Non-Essential") {
         let nonEssentialSpending = Math.round(highLevelArr[i].amount);
+        console.log('Non-Essential: ', nonEssentialSpending);
         return nonEssentialSpending;
       };
     };
@@ -23,6 +24,7 @@ export default function Savings(sumHighLevel) {
   const [errorMessage, setErrorMessage] = useState("");
   
   const nonEssentialSpending = getNonEssential();
+  
   const PMT = formatAmount(Math.round(nonEssentialSpending * 0.1));
 
   const r = 5;
@@ -96,7 +98,7 @@ export default function Savings(sumHighLevel) {
           <div className="form-group">
             <label htmlFor="frequency">Compunding Frequency:</label>
             <select className="form-control form-select" id="frequency" name="frequency" onBlur={handleChange}>
-              <option value="" selected></option>
+              <option value="" defaultValue></option>
               <option value="1">Annually</option>
               <option value="2">Semi-Annually</option>
               <option value="4">Quarterly</option>

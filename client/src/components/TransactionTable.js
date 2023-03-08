@@ -3,8 +3,7 @@ import "../styles/TransactionForm.css";
 import { formatDate, formatAmount } from "../utils/helpers.js";
 import Auth from "../utils/auth";
 
-const TransactionTable = ({data, loading, deleteTransaction}) => {
-  const [transactions, setTransactions] = useState(data?.me.transactions || []);
+const TransactionTable = ({data, loading, deleteTransaction, transactions, setTransactions}) => {
   const [sortOption, setSortOption] = useState("date");
 
   if (loading) {
