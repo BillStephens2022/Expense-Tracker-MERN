@@ -8,15 +8,21 @@ import Savings from "../components/Savings";
 
 // import { getHighLevel, getEssentialTransactions, getUser } from "../utils/api";
 
-export default function Analysis() {
+export default function Analysis({ transactions, setTransactions }) {
   Chart.register(ArcElement);
   const { data, loading } = useQuery(QUERY_ME);
-
+  
+  useEffect(() => {
+    if (data?.me?.transactions) {
+      setTransactions(data?.me?.transactions);
+    }
+  }, [data]);
+  
   if (loading) {
     return <div>Loading...</div>;
   }
 
-  const transactions = data?.me.transactions || [];
+  // const transactions = data?.me.transactions || [];
   const calcHighLevelCategory = (transactions) => transactions.reduce((acc, cur) => {
     const {highLevelCategory, amount} = cur;
     const item = acc.find(it => it.highLevelCategory === highLevelCategory);

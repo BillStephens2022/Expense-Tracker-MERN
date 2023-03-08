@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { QUERY_ME } from "../utils/queries";
+import { QUERY_ME, QUERY_TRANSACTIONS } from "../utils/queries";
 import { DELETE_TRANSACTION, ADD_TRANSACTION } from "../utils/mutations";
 import TransactionForm from "../components/TransactionForm";
 import moment from "moment";
 import { Modal } from "react-bootstrap";
 import TransactionTable from "../components/TransactionTable";
+import Auth from "../utils/auth";
 
-const Transactions = () => {
+const Transactions = ({ transactions, setTransactions }) => {
   const [showTransactionForm, setShowTransactionForm] = useState(false);
-  const [transactionList, setTransactionList] = useState([]);
-
+  // const [transactionList, setTransactionList] = useState([]);
+  const [transactionFormState, setTransactionFormState] = useState({
+    date: "",
+    amount: "",
+    highLevelCategory: "Essential",
+    category: "Housing",
+    description: "",
+  });
   // uses moment.js to set start of current week starting on sunday formatted MM/DD/YYYY
   const [startDate, setStartDate] = useState(
     moment().startOf("week").format("L")
@@ -20,14 +27,94 @@ const Transactions = () => {
   const [endDate, setEndDate] = useState(moment().endOf("week").format("L"));
 
   // query transaction data then destructure the transactions from all the data
-  const { data, loading } = useQuery(QUERY_ME);
-  const [transactions, setTransactions] = useState(data?.me.transactions || []);
-  const [deleteTransaction] = useMutation(DELETE_TRANSACTION);
-  const [addTransaction] = useMutation(ADD_TRANSACTION);
+  const { data, loading, refetch } = useQuery(QUERY_ME);
+
+  const [deleteTransaction] = useMutation(DELETE_TRANSACTION, {
+    update(cache, { data: { deleteTransaction } }) {
+      try {
+        const { transactions } = cache.readQuery({
+          query: QUERY_TRANSACTIONS,
+        }) ?? { transactions: [] };
+  
+        const updatedTransactions = transactions.filter(
+          (transaction) => transaction._id !== deleteTransaction._id
+        );
+  
+        cache.writeQuery({
+          query: QUERY_TRANSACTIONS,
+          data: { transactions: updatedTransactions },
+        });
+  
+        const { me } = cache.readQuery({ query: QUERY_ME });
+  
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: {
+            me: {
+              ...me,
+              transactions: updatedTransactions,
+            },
+          },
+        });
+      } catch (e) {
+        console.log("error with mutation!");
+        console.error(e);
+      }
+      
+      console.log("updated cache:", cache.data.data);
+      refetch();
+    },
+  });
+
+  const [addTransaction] = useMutation(ADD_TRANSACTION, {
+    update(cache, { data: { addTransaction } }) {
+      try {
+        const { transactions } = cache.readQuery({
+          query: QUERY_TRANSACTIONS,
+        }) ?? { transactions: [] };
+
+        cache.writeQuery({
+          query: QUERY_TRANSACTIONS,
+          data: { transactions: [addTransaction, ...transactions] },
+        });
+
+        const { me } = cache.readQuery({ query: QUERY_ME });
+
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: {
+            me: { 
+              ...me, 
+              transactions: [addTransaction, ...me.transactions ],
+            },
+          },
+        });
+
+      } catch (e) {
+        console.log("error with mutation!");
+        console.error(e);
+      }
+      
+      
+      
+      console.log("updated cache:", cache.data.data);
+    },
+    variables: {
+      date: transactionFormState.date,
+      amount: parseFloat(transactionFormState.amount),
+      highLevelCategory: transactionFormState.highLevelCategory,
+      category: transactionFormState.category,
+      description: transactionFormState.description,
+      username: Auth.getProfile().data.username,
+    },
+  });
 
   useEffect(() => {
-    setTransactions(data?.me.transactions || []);
+    if (data?.me?.transactions) {
+      setTransactions(data?.me?.transactions);
+    }
   }, [data]);
+
 
   if (loading) {
     return <div>Loading...</div>;
@@ -137,6 +224,8 @@ const Transactions = () => {
                     addTransaction={addTransaction}
                     transactions={transactions}
                     setTransactions={setTransactions}
+                    transactionFormState={transactionFormState}
+                    setTransactionFormState={setTransactionFormState}
                   />
                 </Modal.Body>
               </Modal>

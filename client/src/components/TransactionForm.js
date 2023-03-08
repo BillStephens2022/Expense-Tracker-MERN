@@ -8,18 +8,13 @@ import { Button } from "react-bootstrap";
 
 export default function TransactionForm({
   setShowTransactionForm,
-  // addTransactionList,
   addTransaction,
   transactions,
-  setTransactions
+  setTransactions,
+  transactionFormState,
+  setTransactionFormState
 }) {
-  const [transactionFormState, setTransactionFormState] = useState({
-    date: "",
-    amount: "",
-    highLevelCategory: "Essential",
-    category: "Housing",
-    description: "",
-  });
+  
   const [errorMessage, setErrorMessage] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [startDate, setStartDate] = useState(new Date());

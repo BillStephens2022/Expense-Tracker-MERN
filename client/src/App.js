@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import {
   ApolloClient,
@@ -36,6 +36,9 @@ const client = new ApolloClient({
 });
 
 function App() {
+
+  const [transactions, setTransactions] = useState([]);
+
   return (
     <ApolloProvider client={client}>
       <Router basename={process.env.PUBLIC_URL}>
@@ -43,9 +46,20 @@ function App() {
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/transactions" element={<Transactions />} />         
-            <Route path="/transactions/add" element={<TransactionForm />} />
-            <Route path="/analysis" element={<Analysis />} />
+            <Route
+              path="/transactions"
+              element={<Transactions transactions={transactions} setTransactions={setTransactions} />}
+            />
+            <Route
+              path="/transactions/add"
+              element={
+                <TransactionForm />
+              }
+            />
+            <Route
+              path="/analysis"
+              element={<Analysis transactions={transactions} setTransactions={setTransactions} />}
+            />
             <Route
               path="*"
               element={<h1 className="display-2">Wrong page!</h1>}

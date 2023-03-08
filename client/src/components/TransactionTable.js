@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,  } from "react";
 import "../styles/TransactionForm.css";
 import { formatDate, formatAmount } from "../utils/helpers.js";
 import Auth from "../utils/auth";
 
-const TransactionTable = ({data, loading, deleteTransaction, transactions, setTransactions}) => {
+const TransactionTable = ({ data, loading, deleteTransaction, transactions, setTransactions }) => {
   const [sortOption, setSortOption] = useState("date");
 
   if (loading) {
@@ -25,11 +25,12 @@ const TransactionTable = ({data, loading, deleteTransaction, transactions, setTr
         if (!data) {
           throw new Error('something went wrong!');
         }
-        setTransactions(transactions.filter(transaction => transaction._id !== transactionId));
+        
         console.log('done!');
       } catch (err) {
         console.error(err);
       }
+      setTransactions(transactions.filter(transactions => transactions._id !== transactionId));
       console.log(data);
     };
   
