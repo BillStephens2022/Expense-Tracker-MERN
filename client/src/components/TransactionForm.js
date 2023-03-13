@@ -3,101 +3,37 @@ import "../styles/TransactionForm.css";
 import dollar from "../images/dollar.png";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useMutation } from "@apollo/client";
 import { FaCalendarAlt } from "react-icons/fa";
 import { Button } from "react-bootstrap";
-import { ADD_TRANSACTION } from "../utils/mutations";
-import { QUERY_TRANSACTIONS, QUERY_ME } from "../utils/queries";
-import { Navigate } from "react-router-dom";
-
-import Auth from "../utils/auth";
 
 export default function TransactionForm({
   setShowTransactionForm,
-  addTransactionList,
-  transactions
+  addTransaction,
+  transactions,
+  setTransactions,
+  transactionFormState,
+  setTransactionFormState
 }) {
-  const [transactionFormState, setTransactionFormState] = useState({
-    date: "",
-    amount: "",
-    highLevelCategory: "Essential",
-    category: "Housing",
-    description: "",
-    username: "",
-  });
-  const [errorMessage, setErrorMessage] = useState("");
-  const [addTransaction] = useMutation(ADD_TRANSACTION, 
-    {
-    update(cache, { data: { addTransaction } }) {
-      try {
-        const { transactions } = cache.readQuery({
-          query: QUERY_TRANSACTIONS,
-        }) ?? { transactions: [] };
-
-        cache.writeQuery({
-          query: QUERY_TRANSACTIONS,
-          data: { transactions: [addTransaction, ...transactions] },
-        });
-      } catch (e) {
-        console.log("error with mutation!");
-        console.error(e);
-      }
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: {
-          me: { ...me, transactions: [...me.transactions], addTransaction },
-        },
-      });
-      
-      console.log("updated cache:", cache.data.data);
-    },
-    variables: {
-      date: transactionFormState.date,
-      amount: parseFloat(transactionFormState.amount),
-      highLevelCategory: transactionFormState.highLevelCategory,
-      category: transactionFormState.category,
-      description: transactionFormState.description,
-      username: Auth.getProfile().data.username,
-    },
-  });
   
+  const [errorMessage, setErrorMessage] = useState("");
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
-
-  //
   const inputRef = useRef(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted!");
-    console.log(parseFloat(transactionFormState.amount));
+    console.log(transactionFormState);
     try {
-      console.log(transactionFormState);
-      const token = Auth.loggedIn() ? Auth.getToken() : null;
-      const loggedIn = Auth.loggedIn();
-      console.log("token: ", token);
-      console.log(loggedIn);
-      let username = Auth.getProfile().data.username;
-      console.log(username);
-      let date = transactionFormState.date;
-      let amount = parseFloat(transactionFormState.amount);
-      let highLevelCategory = transactionFormState.highLevelCategory;
-      let category = transactionFormState.category;
-      let description = transactionFormState.description;
-      transactionFormState.username = Auth.getProfile().data.username;
-
       const { data } = await addTransaction({
         variables: {
-          date,
-          amount,
-          highLevelCategory,
-          category,
-          description,
+          date: transactionFormState.date,
+          amount: parseFloat(transactionFormState.amount),
+          highLevelCategory: transactionFormState.highLevelCategory,
+          category: transactionFormState.category,
+          description: transactionFormState.description,
         },
       });
 
-      console.log("this is my data " + data);
       setTransactionFormState({
         date: "",
         amount: "",
@@ -105,14 +41,8 @@ export default function TransactionForm({
         category: "Housing",
         description: "",
       });
-      console.log("transactions:", transactions);
-      console.log("addTransactions:", data.addTransaction);
-      
-      addTransactionList(data.addTransaction._id);
       setShowTransactionForm(false);
-      <Navigate to="/transactions" replace={true}/>
-      //window.location.replace('/transactions');
-      
+      setTransactions([...transactions, data.addTransaction]);
     } catch (err) {
       console.error(err);
     }
