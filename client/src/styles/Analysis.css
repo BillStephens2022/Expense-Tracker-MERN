@@ -1,0 +1,101 @@
+:root {
+  --dollar-bill-green: #85bb65;
+  --text-shadow: 2px 1px black;
+}
+
+#charts-title {
+  color: var(--dollar-bill-green);
+  text-shadow: var(--text-shadow);
+  text-align: center;
+  font-size: 4em;
+  margin: 30px;
+}
+
+.monthly-spending-title {
+  color: black;
+  text-align: center;
+  font-size: 3em;
+}
+
+.card-chart {
+  min-width: 45vw;
+}
+
+.card {
+  background: white;
+  box-shadow: 3px 3px lightgray;
+}
+
+.card-chart-header {
+  background: white;
+}
+
+.card-chart-body {
+  background: white;
+}
+
+/* canvas {
+  width: 600px;
+  margin: auto;
+} */
+
+.chart {
+  margin-top: 0;
+}
+
+.savings {
+  border: lightgray 3px solid;
+  margin: 0px 150px;
+  padding: 15px;
+  color: var(--dollar-bill-green);
+  background-color: rgb(238, 246, 248);
+  text-align: center;
+}
+
+.form-heading {
+  color: var(--dollar-bill-green);
+  text-shadow: var(--text-shadow);
+  font-size: 2em;
+  text-align: center;
+}
+
+.calculator-div {
+  background: lightgray;
+  margin: 15px 30px;
+  padding: 15px 0;
+}
+
+.calculator-form {
+  max-width: 200px;
+  text-align: center;
+  margin: 15px auto 15px auto;
+  color: black;
+}
+
+#result-div {
+  text-align: center;
+  font-size: 2.5em;
+  color: seagreen;
+  margin-bottom: 50px;
+}
+
+.red-text {
+    color: red;
+}
+
+.green-text {
+    color: var(--dollar-bill-green);
+}
+
+#result {
+  text-align: center;
+  font-size: 1em;
+  color: coral;
+  animation: blinker 2s step-start infinite;
+}
+
+@keyframes blinker {
+  50% {
+    color: seagreen;
+  }
+}

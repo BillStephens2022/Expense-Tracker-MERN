@@ -81,6 +81,7 @@ export default function Savings({sumHighLevel}) {
       </div>
       <div className="calculator-div">
         <h3 className="form-heading">Compound Interest Calculator</h3>
+        <h6>Find out how much you could save over the long term!</h6>
         <form className="calculator-form" onSubmit={handleSubmit}>
         <div className="form-group">
             <label htmlFor="initialAmount">Initial Amount (USD):</label>
@@ -88,7 +89,7 @@ export default function Savings({sumHighLevel}) {
           </div>
 
           <div className="form-group">
-            <label htmlFor="monthlyContribution">Monthly Contribution (USD):</label>
+            <label htmlFor="monthlyContribution">Monthly Contribution Amount (USD):</label>
             <input className="form-control" id="monthlyContribution" name="monthlyContribution" onBlur={handleChange}></input>
           </div>
           <div className="form-group">
@@ -111,7 +112,7 @@ export default function Savings({sumHighLevel}) {
           </div>
 
           <div className="form-group">
-            <button type="submit" className="btnContact btn btn-primary">
+            <button type="submit" className="btnContact btn btn-success">
               {" "}
               Calculate
             </button>

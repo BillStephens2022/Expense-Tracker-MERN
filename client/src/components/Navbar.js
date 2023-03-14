@@ -12,7 +12,7 @@ const AppNavbar = () => {
 
   return (
     <>
-      <Navbar bg='dark' variant='dark' expand='lg'>
+      <Navbar variant='dark' expand='lg' className="navbar">
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
             Expense Tracker

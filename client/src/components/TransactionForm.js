@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "../styles/TransactionForm.css";
+import "../styles/Transactions.css";
 import dollar from "../images/dollar.png";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";

@@ -1,7 +1,8 @@
-import React, { useState,  } from "react";
-import "../styles/TransactionForm.css";
+import React, { useState } from "react";
+import "../styles/Transactions.css";
 import { formatDate, formatAmount } from "../utils/helpers.js";
 import Auth from "../utils/auth";
+import { GoTrashcan } from "react-icons/go";
 
 const TransactionTable = ({ data, loading, deleteTransaction, transactions, setTransactions }) => {
   const [sortOption, setSortOption] = useState("date");
@@ -70,7 +71,7 @@ if (sortOption === "date") {
       <div className="form-group">
         <label htmlFor="sort-option-select" className="sort">Sort By:</label>
         <select
-          className="form-control"
+          className="form-control form-select"
           id="sort-option-select"
           value={sortOption}
           onChange={handleSortOptionChange}
@@ -79,10 +80,11 @@ if (sortOption === "date") {
           <option value="amount">Amount</option>
           <option value="category">Category</option>
         </select>
+      
       </div>
 
 
-      <table className="table table-striped table-dark">
+      <table className="table table-striped table-light">
         <thead>
           <tr>
             <th scope="col">Date</th>
@@ -101,7 +103,7 @@ if (sortOption === "date") {
               <td>{transaction.category}</td>
               <td>{formatAmount(transaction.amount)}</td>
               <td>{transaction.description}</td>
-              <td><button className="btn btn-danger" id={transaction._id} onClick={handleDeleteTransaction}>Delete</button></td>
+              <td><button className="btn" id={transaction._id} onClick={handleDeleteTransaction}><GoTrashcan /></button></td>
             </tr>
           ))}
         </tbody>
