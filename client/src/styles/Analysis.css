@@ -75,7 +75,7 @@
 #result-div {
   text-align: center;
   font-size: 2.5em;
-  color: seagreen;
+  color: var(--dollar-bill-green);
   margin-bottom: 50px;
 }
 
@@ -87,6 +87,11 @@
     color: var(--dollar-bill-green);
 }
 
+.calc-button {
+    background: var(--dollar-bill-green);
+    color: white;
+}
+
 #result {
   text-align: center;
   font-size: 1em;
@@ -96,6 +101,6 @@
 
 @keyframes blinker {
   50% {
-    color: seagreen;
+    color: var(--dollar-bill-green);
   }
 }
