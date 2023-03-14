@@ -114,7 +114,7 @@ export default function Analysis({ transactions, setTransactions }) {
           sumHighLevel.find((x) => x.highLevelCategory === "Non-Essential")
             ?.amount || 0,
         ],
-        backgroundColor: ["#22a57a", "#FF4D4D"],
+        backgroundColor: ["#85bb65", "#FF4D4D"],
         hoverOffset: 4,
       },
     ],
@@ -144,8 +144,8 @@ export default function Analysis({ transactions, setTransactions }) {
         <div className="row">
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
-                <h3 className="chart-title text-center text-dark">Spending</h3>
-                <h3 className="chart-title text-center text-dark">
+                <h3 className="chart-title text-center text-light">Spending</h3>
+                <h3 className="chart-title text-center text-light">
                   <span className="green-text">Essential</span> vs <span className="red-text">Non-Essential</span>
                 </h3>
               </div>
@@ -168,8 +168,8 @@ export default function Analysis({ transactions, setTransactions }) {
           <div className="row">
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
-                <h3 className="chart-title text-center text-dark">Spending</h3>
-                <h4 className="chart-title text-centermb-2 text-dark">
+                <h3 className="chart-title text-center text-light">Spending</h3>
+                <h4 className="chart-title text-centermb-2 text-light">
                   by Category
                 </h4>
               </div>

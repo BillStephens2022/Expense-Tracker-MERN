@@ -24,10 +24,11 @@
 .card {
   background: white;
   box-shadow: 3px 3px lightgray;
+  padding: 0;
 }
 
 .card-chart-header {
-  background: white;
+  background: rgb(103, 95, 95);
 }
 
 .card-chart-body {
