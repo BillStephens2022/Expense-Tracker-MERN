@@ -1,0 +1,88 @@
+:root {
+  --dollar-bill-green: #85bb65; 
+  --text-shadow: 2px 1px black;
+}
+
+.transaction-form {
+  background: #fff;
+  margin: 5% auto;
+  width: 85%;
+  min-height: 50vh;
+  border-radius: 10px;
+}
+
+.container h1 {
+  margin-bottom: 15px;
+}
+
+.transaction-form .form-control {
+  margin-bottom: 15px;
+}
+
+.transaction-image {
+  text-align: center;
+}
+
+.transaction-image img {
+  width: 15%;
+  margin-top: -7%;
+}
+
+.transaction-form form {
+  padding: 14%;
+}
+
+.input-group-append {
+  height: 2.35em;
+}
+
+.error-message {
+    color: red;
+    font-size: 1em;
+}
+
+.add-transaction-button {
+  background: var(--dollar-bill-green);
+  color: white;
+  box-shadow: var(--text-shadow);
+}
+
+.card {
+  background-color: var(--dollar-bill-green);
+  color: white;
+  width: 300px;
+  margin: 5px;
+  text-align: center;
+  box-shadow: var(--text-shadow);
+}
+
+.transaction-category {
+  margin-left: 10px;
+}
+
+.expense-tracker-header {
+  color: var(--dollar-bill-green);
+  text-shadow: var(--text-shadow);
+}
+
+#transaction-table-header {
+  text-align: center;
+  color: var(--dollar-bill-green);
+  text-shadow: var(--text-shadow);
+}
+
+.sort-div {
+  width: 50%;
+  margin: 15px auto;
+  align-items: center;
+}
+
+.sort {
+  color: black;
+  width: 80px;
+  margin-top: 5px;
+}
+
+.spending {
+  font-size: 1.5em;
+}

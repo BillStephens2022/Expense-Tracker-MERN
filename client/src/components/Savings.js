@@ -67,20 +67,22 @@ export default function Savings({sumHighLevel}) {
 
   return (
     <div>
-      <div className="savings">
+      <div className="savings blue-text">
         <h2>Save More!</h2>
-        <h3>
-          If you were to cut 10% per month of your $
-          {formatAmount(nonEssentialSpending)} non-essential spending,
-        </h3>
-        <h3>
-          you would save ${formatAmount(PMT)} per month. If you invested that
-          monthly at an average 5% return over 10 years, you would save $
-          {formatAmount(savings.toFixed(0))}
-        </h3>
+        <h5 className="mb-3 blue-text">
+          Your total non-essential spending for this month is <span className="red-text">${formatAmount(nonEssentialSpending)}</span>.
+        </h5>
+        <h5 className="mb-3 blue-text">
+          If you were to save 10% of your non-essential expenses, that would be <span className="red-text">${formatAmount(PMT)}</span> per month. 
+        </h5>
+        <h5 className="blue-text">
+          If you were to invest those savings at an average 5% return over 10 years, compounded monthly, you would save <span className="red-text">${formatAmount(savings.toFixed(0))}</span>
+          
+        </h5>
       </div>
       <div className="calculator-div">
         <h3 className="form-heading">Compound Interest Calculator</h3>
+        <h6>Find out how much you could save over the long term!</h6>
         <form className="calculator-form" onSubmit={handleSubmit}>
         <div className="form-group">
             <label htmlFor="initialAmount">Initial Amount (USD):</label>
@@ -88,7 +90,7 @@ export default function Savings({sumHighLevel}) {
           </div>
 
           <div className="form-group">
-            <label htmlFor="monthlyContribution">Monthly Contribution (USD):</label>
+            <label htmlFor="monthlyContribution">Monthly Contribution Amount (USD):</label>
             <input className="form-control" id="monthlyContribution" name="monthlyContribution" onBlur={handleChange}></input>
           </div>
           <div className="form-group">
@@ -111,7 +113,7 @@ export default function Savings({sumHighLevel}) {
           </div>
 
           <div className="form-group">
-            <button type="submit" className="btnContact btn btn-primary">
+            <button type="submit" className="btnContact btn calc-button">
               {" "}
               Calculate
             </button>

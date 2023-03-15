@@ -7,6 +7,7 @@ import moment from "moment";
 import { Modal } from "react-bootstrap";
 import TransactionTable from "../components/TransactionTable";
 import Auth from "../utils/auth";
+import "../styles/Transactions.css";
 
 const Transactions = ({ transactions, setTransactions }) => {
   const [showTransactionForm, setShowTransactionForm] = useState(false);
@@ -168,44 +169,45 @@ const Transactions = ({ transactions, setTransactions }) => {
 
   return (
     <div className="container transaction-page">
-      <h1 className="mt-5 expense-tracker-header">
+      <h1 className="mt-5 mb-5 expense-tracker-header">
         Welcome to your Expense Tracker!
       </h1>
 
       <div className="row">
         <div className="col">
           <div className="card">
-            <div className="card-body">
+            <div className="card-body text-dark">
               <h4>Spending for {currentDate}:</h4>
-              <p>{todaySpending}</p>
+              <p className="text-danger spending">{todaySpending}</p>
             </div>
           </div>
         </div>
 
         <div className="col">
           <div className="card">
-            <div className="card-body">
+            <div className="card-body text-dark">
               <h4>
                 Expenditure for Current Week ({startDate} - {endDate}):
               </h4>
-              <p>{currentWeekSpending}</p>
+              <p className="text-danger spending">{currentWeekSpending}</p>
             </div>
           </div>
         </div>
 
         <div className="col">
           <div className="card">
-            <div className="card-body">
+            <div className="card-body text-dark">
               <h4>Expenditure for Current Month:</h4>
-              <p>{currentMonthSpending}</p>
+              <p className="text-danger spending">{currentMonthSpending}</p>
             </div>
           </div>
         </div>
       </div>
-
-      <div className="mt-4">
+      
+      <div className="mt-5 text-center">
+      <h1 id="transaction-table-header">Your Transactions</h1>
         <button
-          className="btn btn-primary"
+          className="btn add-transaction-button"
           onClick={() => setShowTransactionForm(!showTransactionForm)}
         >
           Add Transaction
@@ -233,7 +235,8 @@ const Transactions = ({ transactions, setTransactions }) => {
           </div>
         )}
       </div>
-      <div className="mt-4">
+      
+      <div className="mt-4 d-flex justify-content-center">
         <TransactionTable
           data={data}
           loading={loading}
