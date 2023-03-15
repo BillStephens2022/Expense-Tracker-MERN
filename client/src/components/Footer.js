@@ -3,7 +3,7 @@ import '../styles/Home.css';
 
 const Footer = () => {
   return (
-    <div className="footer text-center mt-5 py-3 bg-dark text-light">
+    <div className="footer text-center mt-5 py-3 text-light">
             <div className="row">
               <div className="col-md-4">
                 <a href="https://www.facebook.com">

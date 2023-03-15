@@ -1,6 +1,10 @@
 import React from "react";
 import "../styles/Home.css";
-import chart from "../images/chart.png";
+import trend from "../images/trend.png";
+import transactions from "../images/transactions.png";
+import chart from "../images/chart-cat.png";
+import calcform from "../images/calcform.png";
+
 
 const Home = () => {
   return (
@@ -12,19 +16,33 @@ const Home = () => {
         </p>
       </div>
       <div className="row d-flex justify-content-around">
-        <div className="col col-sm-12 col-md-6 col-lg-3 d-flex justify-content-around">
+        <div className="col col-sm-12 col-md-6 col-lg-6 d-flex justify-content-around">
           <div className="card">
             <div className="card-header">Track Expenses</div>
-            <div className="card-body"></div>
+            <div className="card-body">
+            <img
+              className="budget-image img-fluid shadow mb-3"
+              src={transactions}
+              alt="expense-pic"
+              style={{ maxWidth: "100%" }}
+            />
+            </div>
           </div>
         </div>
-        <div className="col col-sm-12 col-md-6 col-lg-3 d-flex justify-content-around">
+        <div className="col col-sm-12 col-md-6 col-lg-6 d-flex justify-content-around">
           <div className="card">
             <div className="card-header">View Trends</div>
-            <div className="card-body"></div>
+            <div className="card-body">
+            <img
+              className="budget-image img-fluid shadow mb-3"
+              src={trend}
+              alt="expense-pic"
+              style={{ maxWidth: "100%" }}
+            />
+            </div>
           </div>
         </div>
-        <div className="col col-sm-12 col-md-6 col-lg-3 d-flex justify-content-around">
+        <div className="col col-sm-12 col-md-6 col-lg-6 d-flex justify-content-around">
           <div className="card">
             <div className="card-header">Chart Expenses</div>
             <div className="card-body bg-white">
@@ -37,10 +55,17 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="col col-sm-12 col-md-6 col-lg-3 d-flex justify-content-around">
+        <div className="col col-sm-12 col-md-6 col-lg-6 d-flex justify-content-around">
           <div className="card">
             <div className="card-header">Calculate Savings</div>
-            <div className="card-body"></div>
+            <div className="card-body">
+            <img
+              className="budget-image img-fluid shadow mb-3"
+              src={calcform}
+              alt="expense-pic"
+              style={{ maxWidth: "100%" }}
+            />
+            </div>
           </div>
         </div>
 

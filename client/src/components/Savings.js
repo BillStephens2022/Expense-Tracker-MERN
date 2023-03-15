@@ -67,15 +67,15 @@ export default function Savings({sumHighLevel}) {
 
   return (
     <div>
-      <div className="savings">
+      <div className="savings blue-text">
         <h2>Save More!</h2>
-        <h5 className="mb-3">
+        <h5 className="mb-3 blue-text">
           Your total non-essential spending for this month is <span className="red-text">${formatAmount(nonEssentialSpending)}</span>.
         </h5>
-        <h5 className="mb-3">
+        <h5 className="mb-3 blue-text">
           If you were to save 10% of your non-essential expenses, that would be <span className="red-text">${formatAmount(PMT)}</span> per month. 
         </h5>
-        <h5>
+        <h5 className="blue-text">
           If you were to invest those savings at an average 5% return over 10 years, compounded monthly, you would save <span className="red-text">${formatAmount(savings.toFixed(0))}</span>
           
         </h5>

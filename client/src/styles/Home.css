@@ -79,9 +79,6 @@ body {
   align-items: center;
 }
 
-.container h1 {
-  margin-bottom: 50px;
-}
 @keyframes textclip {
   
   to {
@@ -156,10 +153,18 @@ body {
   animation: slideUp 500ms;
 }
 
+.card {
+  min-width: 35vw;
+}
+
 .card-header {
   background: var(--dollar-bill-green);
 }
 
+.footer {
+  background-color: var(--dollar-bill-green);
+}
+
 .footer-text {
-  font-size: 1em;
+  font-size: 1.25em;
 }

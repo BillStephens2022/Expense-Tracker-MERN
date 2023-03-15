@@ -11,6 +11,10 @@
   border-radius: 10px;
 }
 
+.container h1 {
+  margin-bottom: 15px;
+}
+
 .transaction-form .form-control {
   margin-bottom: 15px;
 }
@@ -67,8 +71,16 @@
   text-shadow: var(--text-shadow);
 }
 
+.sort-div {
+  width: 50%;
+  margin: 15px auto;
+  align-items: center;
+}
+
 .sort {
   color: black;
+  width: 80px;
+  margin-top: 5px;
 }
 
 .spending {

@@ -169,7 +169,7 @@ const Transactions = ({ transactions, setTransactions }) => {
 
   return (
     <div className="container transaction-page">
-      <h1 className="mt-5 expense-tracker-header">
+      <h1 className="mt-5 mb-5 expense-tracker-header">
         Welcome to your Expense Tracker!
       </h1>
 
@@ -203,8 +203,9 @@ const Transactions = ({ transactions, setTransactions }) => {
           </div>
         </div>
       </div>
-
+      
       <div className="mt-5 text-center">
+      <h1 id="transaction-table-header">Your Transactions</h1>
         <button
           className="btn add-transaction-button"
           onClick={() => setShowTransactionForm(!showTransactionForm)}
@@ -234,7 +235,8 @@ const Transactions = ({ transactions, setTransactions }) => {
           </div>
         )}
       </div>
-      <div className="mt-4">
+      
+      <div className="mt-4 d-flex justify-content-center">
         <TransactionTable
           data={data}
           loading={loading}

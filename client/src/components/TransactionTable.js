@@ -67,8 +67,8 @@ if (sortOption === "date") {
 
   return (
     <div>
-      <h1 id="transaction-table-header">Your Transactions</h1>
-      <div className="form-group">
+      
+      <div className="form-group sort-div d-flex">
         <label htmlFor="sort-option-select" className="sort">Sort By:</label>
         <select
           className="form-control form-select"
@@ -83,8 +83,8 @@ if (sortOption === "date") {
       
       </div>
 
-
-      <table className="table table-striped table-light">
+      
+      <table className="table table-striped table-light table-responsive">
         <thead>
           <tr>
             <th scope="col">Date</th>
@@ -108,6 +108,7 @@ if (sortOption === "date") {
           ))}
         </tbody>
       </table>
+      
     </div>
   );
 };

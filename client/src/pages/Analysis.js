@@ -114,7 +114,7 @@ export default function Analysis({ transactions, setTransactions }) {
           sumHighLevel.find((x) => x.highLevelCategory === "Non-Essential")
             ?.amount || 0,
         ],
-        backgroundColor: ["#85bb65", "#FF4D4D"],
+        backgroundColor: ["#7583a7", "#FF4D4D"],
         hoverOffset: 4,
       },
     ],
@@ -138,15 +138,15 @@ export default function Analysis({ transactions, setTransactions }) {
   return (
     <div>
       <h1 id="charts-title">Your Spending Charts</h1>
-      <h2 className="monthly-spending-title mb-5">Monthly Spending</h2>
+      {/* <h2 className="monthly-spending-title mb-5">Monthly Spending</h2> */}
       <div className="row d-flex justify-content-around">
         <div className="col col-sm-12 col-lg-6" id="pie-chart-1">
         <div className="row">
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
-                <h3 className="chart-title text-center text-light">Spending</h3>
+                <h3 className="chart-title text-center text-light">Month to Date Spending</h3>
                 <h3 className="chart-title text-center text-light">
-                  <span className="green-text">Essential</span> vs <span className="red-text">Non-Essential</span>
+                  <span className="blue-text">Essential</span> vs <span className="red-text">Non-Essential</span>
                 </h3>
               </div>
               <div className="card-body card-chart-body m-5">
@@ -168,7 +168,7 @@ export default function Analysis({ transactions, setTransactions }) {
           <div className="row">
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
-                <h3 className="chart-title text-center text-light">Spending</h3>
+                <h3 className="chart-title text-center text-light">Month to Date Spending</h3>
                 <h4 className="chart-title text-centermb-2 text-light">
                   by Category
                 </h4>
