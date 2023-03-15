@@ -153,12 +153,23 @@ body {
   animation: slideUp 500ms;
 }
 
-.card {
-  min-width: 35vw;
+.testimonials-title {
+  color: var(--dollar-bill-green);
+  text-shadow: var(--text-shadow);
 }
 
-.card-header {
+.card-features {
+  min-width: 35vw;
+  margin-bottom: 100px;
+}
+
+.card-header-features {
   background: var(--dollar-bill-green);
+}
+
+.card-testimonials {
+  background: var(--dollar-bill-green);
+  color: white;
 }
 
 .footer {
@@ -167,4 +178,15 @@ body {
 
 .footer-text {
   font-size: 1.25em;
+}
+
+
+@media screen and (max-width: 400px) {
+  .card-text {
+    font-size: 0.8em;
+  }
+
+  table {
+    font-size: 0.75em;
+  }
 }

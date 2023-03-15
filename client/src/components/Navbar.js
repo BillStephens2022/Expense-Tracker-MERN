@@ -10,9 +10,10 @@ const AppNavbar = () => {
   // set modal display state
   const [showModal, setShowModal] = useState(false);
 
+
   return (
     <>
-      <Navbar variant='dark' expand='lg' className="navbar">
+      <Navbar collapseOnSelect variant='dark' expand='lg' className="navbar">
         <Container fluid>
           <Navbar.Brand as={Link} to='/'>
             Expense Tracker
@@ -20,22 +21,23 @@ const AppNavbar = () => {
           <Navbar.Toggle aria-controls='navbar' />
           <Navbar.Collapse id='navbar'>
             <Nav className='ml-auto'>
-              <Nav.Link as={Link} to='/'>
+                
+              <Nav.Link eventKey="1" as={Link} to='/'>
                 Home
               </Nav.Link>
               {/* if user is logged in show and Enter Transactions and Logout */}
               {Auth.loggedIn() ? (
                 <>
-                  <Nav.Link as={Link} to='/transactions'>
+                  <Nav.Link eventKey="2" as={Link} to='/transactions'>
                     Transactions
                   </Nav.Link>
-                  <Nav.Link as={Link} to='/analysis'>
+                  <Nav.Link eventKey="3" as={Link} to='/analysis'>
                     Analysis
                   </Nav.Link>
-                  <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
+                  <Nav.Link eventKey="4" onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (
-                <Nav.Link onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
+                <Nav.Link eventKey="5" onClick={() => setShowModal(true)}>Login/Sign Up</Nav.Link>
               )}
             </Nav>
           </Navbar.Collapse>
