@@ -36,10 +36,10 @@
   background: rgb(238, 246, 248);
 }
 
-/* canvas {
-  width: 600px;
+canvas {
+  width: 33vw;
   margin: auto;
-} */
+}
 
 .chart {
   margin-top: 0;
@@ -112,5 +112,25 @@
 @keyframes blinker {
   50% {
     color: var(--blue);
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) { /* iPad viewport */
+  .card {
+    width: 90%; /* Set width to 90% */
+    margin: 15px auto; /* Center horizontally */
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .chartjs-render-monitor .chart-legend {
+    display: block !important;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    margin-top: 10px !important;
   }
 }

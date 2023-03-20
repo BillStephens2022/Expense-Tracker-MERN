@@ -151,7 +151,7 @@ export default function Analysis({ transactions, setTransactions }) {
               </div>
               <div className="card-body card-chart-body m-5">
                 <Pie
-                  className="chart"
+                  className="chart chartjs-render-monitor chart-legend"
                   data={highLevelCategoryData}
                   options={{
                     plugins: {
@@ -160,6 +160,7 @@ export default function Analysis({ transactions, setTransactions }) {
                         labels: { color: "black" },
                       },
                     },
+                    responsive: true,
                   }}
                 ></Pie>
               </div>
@@ -175,7 +176,7 @@ export default function Analysis({ transactions, setTransactions }) {
               </div>
               <div className="card-body card-chart-body m-5">
                 <Pie
-                  className="chart"
+                  className="chart chartjs-render-monitor chart-legend"
                   data={categoryData}
                   options={{
                     plugins: {
@@ -184,6 +185,7 @@ export default function Analysis({ transactions, setTransactions }) {
                         labels: { color: "black" },
                       },
                     },
+                    responsive: true,
                   }}
                 ></Pie>
               </div>
