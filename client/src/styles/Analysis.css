@@ -36,10 +36,10 @@
   background: rgb(238, 246, 248);
 }
 
-/* canvas {
-  width: 600px;
-  margin: auto;
-} */
+canvas {
+  width: 75% !important;
+  margin: auto !important;
+}
 
 .chart {
   margin-top: 0;
@@ -114,3 +114,46 @@
     color: var(--blue);
   }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) { /* iPad viewport */
+  .row {
+    margin: auto
+  }
+  
+  .card-chart {
+    width: 80vw;
+    height: 50vh; 
+    margin: 15px auto; 
+  }
+
+  .canvas {
+    width: 75vw;
+    height: 100vh;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 767px) { /* iPad viewport */
+  
+  .card-chart {
+    margin: 15px auto !important; 
+    width: 90vw !important;
+
+  }
+
+  .card-body {
+    margin: 15px !important;
+  }
+  
+  canvas {
+    width: 100% !important;
+    flex: auto !important;
+  
+    margin: auto !important;
+  }
+  
+
+  
+}
+
+

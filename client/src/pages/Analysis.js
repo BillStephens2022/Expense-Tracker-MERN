@@ -101,6 +101,9 @@ export default function Analysis({ transactions, setTransactions }) {
         hoverOffset: 4,
       },
     ],
+    options: {
+      responsive: true,
+    },
   };
 
   const highLevelCategoryData = {
@@ -118,20 +121,8 @@ export default function Analysis({ transactions, setTransactions }) {
         hoverOffset: 4,
       },
     ],
-  };
-
-  const option = {
-    plugins: {
-      legend: {
-        display: true,
-        labels: {
-          font: {
-            size: 24,
-          },
-          color: "white",
-        },
-        position: "right",
-      },
+    options: {
+      responsive: true,
     },
   };
 
@@ -151,13 +142,13 @@ export default function Analysis({ transactions, setTransactions }) {
               </div>
               <div className="card-body card-chart-body m-5">
                 <Pie
-                  className="chart"
+                  className="chart chartjs-render-monitor chart-legend"
                   data={highLevelCategoryData}
                   options={{
                     plugins: {
                       legend: {
-                        position: "right",
-                        labels: { color: "black" },
+                        position: "bottom",
+                        labels: { color: "black", wordWrap: true, maxWidth: 150 },
                       },
                     },
                   }}
@@ -175,13 +166,13 @@ export default function Analysis({ transactions, setTransactions }) {
               </div>
               <div className="card-body card-chart-body m-5">
                 <Pie
-                  className="chart"
+                  className="chart chartjs-render-monitor chart-legend"
                   data={categoryData}
                   options={{
                     plugins: {
                       legend: {
-                        position: "right",
-                        labels: { color: "black" },
+                        position: "bottom",
+                        labels: { color: "black", wordWrap: true, maxWidth: 150, fontSize: 10 },
                       },
                     },
                   }}
