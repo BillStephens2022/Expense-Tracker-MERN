@@ -101,6 +101,9 @@ export default function Analysis({ transactions, setTransactions }) {
         hoverOffset: 4,
       },
     ],
+    options: {
+      responsive: true,
+    },
   };
 
   const highLevelCategoryData = {
@@ -118,20 +121,8 @@ export default function Analysis({ transactions, setTransactions }) {
         hoverOffset: 4,
       },
     ],
-  };
-
-  const option = {
-    plugins: {
-      legend: {
-        display: true,
-        labels: {
-          font: {
-            size: 24,
-          },
-          color: "white",
-        },
-        position: "right",
-      },
+    options: {
+      responsive: true,
     },
   };
 
@@ -156,11 +147,10 @@ export default function Analysis({ transactions, setTransactions }) {
                   options={{
                     plugins: {
                       legend: {
-                        position: "right",
-                        labels: { color: "black" },
+                        position: "bottom",
+                        labels: { color: "black", wordWrap: true, maxWidth: 150 },
                       },
                     },
-                    responsive: true,
                   }}
                 ></Pie>
               </div>
@@ -181,11 +171,10 @@ export default function Analysis({ transactions, setTransactions }) {
                   options={{
                     plugins: {
                       legend: {
-                        position: "right",
-                        labels: { color: "black" },
+                        position: "bottom",
+                        labels: { color: "black", wordWrap: true, maxWidth: 150, fontSize: 10 },
                       },
                     },
-                    responsive: true,
                   }}
                 ></Pie>
               </div>

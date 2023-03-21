@@ -37,8 +37,8 @@
 }
 
 canvas {
-  width: 33vw;
-  margin: auto;
+  width: 75% !important;
+  margin: auto !important;
 }
 
 .chart {
@@ -116,21 +116,44 @@ canvas {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) { /* iPad viewport */
-  .card {
-    width: 90%; /* Set width to 90% */
-    margin: 15px auto; /* Center horizontally */
+  .row {
+    margin: auto
+  }
+  
+  .card-chart {
+    width: 80vw;
+    height: 50vh; 
+    margin: 15px auto; 
+  }
+
+  .canvas {
+    width: 75vw;
+    height: 100vh;
+    margin: auto;
   }
 }
 
-@media only screen and (max-width: 767px) {
-  .chartjs-render-monitor .chart-legend {
-    display: block !important;
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: 0 !important;
-    width: 100% !important;
-    margin-top: 10px !important;
+@media screen and (max-width: 767px) { /* iPad viewport */
+  
+  .card-chart {
+    margin: 15px auto !important; 
+    width: 90vw !important;
+
   }
+
+  .card-body {
+    margin: 15px !important;
+  }
+  
+  canvas {
+    width: 100% !important;
+    flex: auto !important;
+  
+    margin: auto !important;
+  }
+  
+
+  
 }
+
+
