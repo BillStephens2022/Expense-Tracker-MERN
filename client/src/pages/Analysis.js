@@ -5,6 +5,7 @@ import { Chart, ArcElement } from "chart.js/auto";
 import { Pie } from "react-chartjs-2";
 import "../styles/Analysis.css";
 import Savings from "../components/Savings";
+import Dropdown from "../components/Dropdown";
 
 // import { getHighLevel, getEssentialTransactions, getUser } from "../utils/api";
 
@@ -129,6 +130,7 @@ export default function Analysis({ transactions, setTransactions }) {
   return (
     <div>
       <h1 id="charts-title">Your Spending Charts</h1>
+      <Dropdown />
       {/* <h2 className="monthly-spending-title mb-5">Monthly Spending</h2> */}
       <div className="row d-flex justify-content-around">
         <div className="col col-sm-12 col-lg-6" id="pie-chart-1">
