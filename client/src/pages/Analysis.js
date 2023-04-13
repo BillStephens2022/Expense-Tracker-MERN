@@ -28,8 +28,7 @@ export default function Analysis({ transactions, setTransactions }) {
   const handleOptionChange = (selectedOption) => {
     setSelectedOption(selectedOption);
   }
-  
-  console.log("********HERE ARE MY TRANSACTIONS: ", transactions);
+  let selectedTransactions = [];
 
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
@@ -87,6 +86,26 @@ export default function Analysis({ transactions, setTransactions }) {
   console.log("PRIOR MTD SUM: ", priorMonth, ": ", priorMonthToDateSum);
   console.log("PRIOR YTD SUM: ", priorYear, ": ", priorYearToDateSum);
   
+  switch(selectedOption) {
+    case "CurrentMTD":
+      selectedTransactions = currentMonthTransactions;
+      console.log("your selection is current MTD");
+      break
+    case "CurrentYTD":
+      selectedTransactions = currentYearTransactions;
+      console.log("your selection is current YTD");
+      break;
+    case "PriorMTD":
+      selectedTransactions = priorMonthTransactions;
+      console.log("your selection is prior MTD");
+      break;
+    case "PriorYTD":
+      selectedTransactions = priorYearTransactions;
+      console.log("your selection is prior YTD");
+      break;
+    default:
+      selectedTransactions = currentMonthTransactions;
+  }
 
   // const transactions = data?.me.transactions || [];
   const calcHighLevelCategory = (transactions) =>
@@ -97,7 +116,7 @@ export default function Analysis({ transactions, setTransactions }) {
       return acc;
     }, []);
 
-  let sumHighLevel = calcHighLevelCategory(transactions);
+  let sumHighLevel = calcHighLevelCategory(selectedTransactions);
 
   console.log("Essential vs NonEssential: ", sumHighLevel);
 
@@ -109,7 +128,7 @@ export default function Analysis({ transactions, setTransactions }) {
       return acc;
     }, []);
 
-  let sumCategory = calcCategory(transactions);
+  let sumCategory = calcCategory(selectedTransactions);
   console.log("by Category: ", sumCategory);
   let sumAll = 0;
   for (let i = 0; i < transactions.length; i++) {
@@ -121,7 +140,7 @@ export default function Analysis({ transactions, setTransactions }) {
     labels: [
       "Housing",
       "Food-Groceries",
-      "Restaurants/Fast-Food",
+      "Restaurant/Fast-Food",
       "Transportation",
       "Utilities - Gas, Electric, Water",
       "Cable/Streaming Services",
@@ -137,8 +156,7 @@ export default function Analysis({ transactions, setTransactions }) {
         data: [
           sumCategory.find((x) => x.category === "Housing")?.amount || 0,
           sumCategory.find((x) => x.category === "Food-Groceries")?.amount || 0,
-          sumCategory.find((x) => x.category === "Restaurants/Fast-Food")
-            ?.amount || 0,
+          sumCategory.find((x) => x.category === "Restaurant/Fast-Food")?.amount || 0,
           sumCategory.find((x) => x.category === "Transportation")?.amount || 0,
           sumCategory.find(
             (x) => x.category === "Utilities - Gas, Electric, Water"
