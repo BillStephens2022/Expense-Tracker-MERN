@@ -29,6 +29,7 @@ export default function Analysis({ transactions, setTransactions }) {
     setSelectedOption(selectedOption);
   }
   let selectedTransactions = [];
+  let selectedTimePeriod = "";
 
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
@@ -89,22 +90,23 @@ export default function Analysis({ transactions, setTransactions }) {
   switch(selectedOption) {
     case "CurrentMTD":
       selectedTransactions = currentMonthTransactions;
-      console.log("your selection is current MTD");
+      selectedTimePeriod = "Current Month to Date Spending";
       break
     case "CurrentYTD":
       selectedTransactions = currentYearTransactions;
-      console.log("your selection is current YTD");
+      selectedTimePeriod = "Current Year to Date Spending";
       break;
     case "PriorMTD":
       selectedTransactions = priorMonthTransactions;
-      console.log("your selection is prior MTD");
+      selectedTimePeriod = "Prior Month to Date Spending";
       break;
     case "PriorYTD":
       selectedTransactions = priorYearTransactions;
-      console.log("your selection is prior YTD");
+      selectedTimePeriod = "Prior Year to Date Spending";
       break;
     default:
       selectedTransactions = currentMonthTransactions;
+      selectedTimePeriod = "Current Month to Date Spending";
   }
 
   // const transactions = data?.me.transactions || [];
@@ -214,14 +216,12 @@ export default function Analysis({ transactions, setTransactions }) {
     <div>
       <h1 id="charts-title">Your Spending Charts</h1>
       <Dropdown onOptionChange={handleOptionChange} />
-      {selectedOption && <p>Selected option in the parent component: {selectedOption}</p>}
-      {/* <h2 className="monthly-spending-title mb-5">Monthly Spending</h2> */}
       <div className="row d-flex justify-content-around">
         <div className="col col-sm-12 col-lg-6" id="pie-chart-1">
         <div className="row">
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
-                <h3 className="chart-title text-center text-light">Month to Date Spending</h3>
+                <h3 className="chart-title text-center text-light">{selectedTimePeriod}</h3>
                 <h3 className="chart-title text-center text-light">
                   <span className="blue-text">Essential</span> vs <span className="red-text">Non-Essential</span>
                 </h3>
@@ -245,7 +245,7 @@ export default function Analysis({ transactions, setTransactions }) {
           <div className="row">
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
-                <h3 className="chart-title text-center text-light">Month to Date Spending</h3>
+                <h3 className="chart-title text-center text-light">{selectedTimePeriod}</h3>
                 <h4 className="chart-title text-centermb-2 text-light">
                   by Category
                 </h4>

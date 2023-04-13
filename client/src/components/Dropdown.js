@@ -19,7 +19,6 @@ const Dropdown = ({ onOptionChange }) => {
         <option value="PriorMTD">Prior MTD</option>
         <option value="PriorYTD">Prior YTD</option>
       </select>
-      {selectedOption && <p>You selected: {selectedOption}</p>}
     </div>
   );
 };
