@@ -79,64 +79,64 @@ const Home = () => {
         User Testimonials
       </h2>
 
-      <div class="container-fluid">
-        <div class="row text-center d-flex justify-content-between">
-          <div class="col-lg-2 col-md-4 col-6 mb-4">
-            <div class="card card-testimonials w-100">
-              <div class="card-body card-testimonials">
+      <div className="container-fluid">
+        <div className="row text-center d-flex justify-content-between">
+          <div className="col-lg-2 col-md-4 col-6 mb-4">
+            <div className="card card-testimonials w-100">
+              <div className="card-body card-testimonials">
                 
-                <p class="card-text">
+                <p className="card-text">
                   "I love using Expense Tracker! It's so easy to use and helps
                   me keep track of my spending."
                 </p>
-                <p class="card-text">Sarah J.</p>
+                <p className="card-text">Sarah J.</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 col-md-4 col-6 mb-4">
-            <div class="card card-testimonials w-100">
-              <div class="card-body card-testimonials">
+          <div className="col-lg-2 col-md-4 col-6 mb-4">
+            <div className="card card-testimonials w-100">
+              <div className="card-body card-testimonials">
                 
-                <p class="card-text">
+                <p className="card-text">
                   "This app has been a game-changer for me. I've been able to
                   save more money and reach my financial goals faster."
                 </p>
-                <p class="card-text">- Michael T.</p>
+                <p className="card-text">- Michael T.</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 col-md-4 col-6 mb-4">
-            <div class="card card-testimonials w-100">
-              <div class="card-body card-testimonials">             
-                <p class="card-text">
+          <div className="col-lg-2 col-md-4 col-6 mb-4">
+            <div className="card card-testimonials w-100">
+              <div className="card-body card-testimonials">             
+                <p className="card-text">
                   "Expense Tracker has helped me identify areas where I can cut
                   back and save more money. It's a must-have for anyone looking
                   to get their finances in order."
                 </p>
-                <p class="card-text">- John D.</p>
+                <p className="card-text">- John D.</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 col-md-4 col-6 mb-4">
-            <div class="card card-testimonials w-100">
-              <div class="card-body card-testimonials">              
-                <p class="card-text">
+          <div className="col-lg-2 col-md-4 col-6 mb-4">
+            <div className="card card-testimonials w-100">
+              <div className="card-body card-testimonials">              
+                <p className="card-text">
                   "I've tried other budgeting apps, but Expense Tracker is by
                   far the best. It's intuitive, user-friendly, and has all the
                   features I need."
                 </p>
-                <p class="card-text">- Mary R.</p>
+                <p className="card-text">- Mary R.</p>
               </div>
             </div>
           </div>
-          <div class="col-lg-2 col-md-4 col-6 mb-4">
-            <div class="card card-testimonials w-100">
-              <div class="card-body card-testimonials">
-                <p class="card-text">
+          <div className="col-lg-2 col-md-4 col-6 mb-4">
+            <div className="card card-testimonials w-100">
+              <div className="card-body card-testimonials">
+                <p className="card-text">
                   "Expense Tracker has helped me identify my spending patterns
                   and make smarter financial decisions. I highly recommend it!"
                 </p>
-                <p class="card-text">- David L.</p>
+                <p className="card-text">- David L.</p>
               </div>
             </div>
           </div>

@@ -38,7 +38,7 @@ const client = new ApolloClient({
 function App() {
 
   const [transactions, setTransactions] = useState([]);
-
+  
   return (
     <ApolloProvider client={client}>
       <Router basename={process.env.PUBLIC_URL}>
