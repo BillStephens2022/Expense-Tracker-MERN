@@ -15,6 +15,14 @@ export function formatAmount(x) {
   return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+export function formatAmountDecimal(x) {
+  if (typeof x === "undefined") {
+    return "";
+  }
+  const num = typeof x === "string" ? x : parseFloat(x);
+  return num.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 
 export function calculateFutureValue(P, PMT, r, n, t) {
   const futureValue =

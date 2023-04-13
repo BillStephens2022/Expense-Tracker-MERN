@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Transactions.css";
-import { formatDate, formatAmount } from "../utils/helpers.js";
+import { formatDate, formatAmount, formatAmountDecimal } from "../utils/helpers.js";
 import Auth from "../utils/auth";
 import { GoTrashcan } from "react-icons/go";
 
@@ -114,7 +114,7 @@ const TransactionTable = ({
                 <td>{formatDate(transaction.date)}</td>
                 <td>{transaction.highLevelCategory}</td>
                 <td>{transaction.category}</td>
-                <td>{formatAmount(transaction.amount)}</td>
+                <td>{formatAmountDecimal(transaction.amount)}</td>
                 <td>{transaction.description}</td>
                 <td>
                   <button
