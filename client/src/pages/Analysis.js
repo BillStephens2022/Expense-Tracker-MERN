@@ -126,6 +126,7 @@ export default function Analysis({ transactions, setTransactions }) {
     }, []);
 
   let sumHighLevel = calcHighLevelCategory(selectedTransactions);
+  let currentMonthHighLevel = calcHighLevelCategory(currentMonthTransactions);
 
   console.log("Essential vs NonEssential: ", sumHighLevel);
 
@@ -279,7 +280,7 @@ export default function Analysis({ transactions, setTransactions }) {
           
         </div>
         <div className="col col-sm-12 col-lg-6 mt-5">
-          <Savings sumHighLevel={sumHighLevel} />
+          <Savings currentMonthHighLevel={currentMonthHighLevel} />
         </div>
         <div>{/* <TransactionTable/> */}</div>
       </div>

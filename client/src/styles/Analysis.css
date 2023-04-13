@@ -20,7 +20,7 @@
 
 .dropdown_container {
   display: block;
-  font-size: 1.75em;
+  font-size: 1.5em;
   text-align: center;
   color: var(--blue);
   margin-bottom: 1em;
@@ -31,7 +31,7 @@
 }
 
 #dropdown {
-  font-size: 0.75em;
+  font-size: 0.65em;
   color: white;
   background-color: var(--blue);
   padding: 0.25em;
@@ -97,7 +97,7 @@ canvas {
 
 #result-div {
   text-align: center;
-  font-size: 2.5em;
+  font-size: 2em;
   color: var(--blue);
   margin-bottom: 50px;
 }
