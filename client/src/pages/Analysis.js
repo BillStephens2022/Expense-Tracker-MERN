@@ -6,6 +6,7 @@ import { Pie } from "react-chartjs-2";
 import "../styles/Analysis.css";
 import Savings from "../components/Savings";
 import Dropdown from "../components/Dropdown";
+import { formatAmount } from "../utils/helpers";
 
 // import { getHighLevel, getEssentialTransactions, getUser } from "../utils/api";
 
@@ -30,6 +31,7 @@ export default function Analysis({ transactions, setTransactions }) {
   }
   let selectedTransactions = [];
   let selectedTimePeriod = "";
+  let selectedTotal;
 
   const currentDate = new Date();
   const currentMonth = currentDate.getMonth();
@@ -91,22 +93,27 @@ export default function Analysis({ transactions, setTransactions }) {
     case "CurrentMTD":
       selectedTransactions = currentMonthTransactions;
       selectedTimePeriod = "Current Month to Date Spending";
+      selectedTotal = currentMonthToDateSum;
       break
     case "CurrentYTD":
       selectedTransactions = currentYearTransactions;
       selectedTimePeriod = "Current Year to Date Spending";
+      selectedTotal = currentYearToDateSum;
       break;
     case "PriorMTD":
       selectedTransactions = priorMonthTransactions;
       selectedTimePeriod = "Prior Month to Date Spending";
+      selectedTotal = priorMonthToDateSum;
       break;
     case "PriorYTD":
       selectedTransactions = priorYearTransactions;
       selectedTimePeriod = "Prior Year to Date Spending";
+      selectedTotal = priorYearToDateSum;
       break;
     default:
       selectedTransactions = currentMonthTransactions;
       selectedTimePeriod = "Current Month to Date Spending";
+      selectedTotal = currentMonthToDateSum;
   }
 
   // const transactions = data?.me.transactions || [];
@@ -222,11 +229,13 @@ export default function Analysis({ transactions, setTransactions }) {
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
                 <h3 className="chart-title text-center text-light">{selectedTimePeriod}</h3>
+                <h4>Total: ${formatAmount(selectedTotal)}</h4>
                 <h3 className="chart-title text-center text-light">
                   <span className="blue-text">Essential</span> vs <span className="red-text">Non-Essential</span>
                 </h3>
               </div>
               <div className="card-body card-chart-body m-5">
+                
                 <Pie
                   className="chart chartjs-render-monitor chart-legend"
                   data={highLevelCategoryData}
@@ -246,6 +255,7 @@ export default function Analysis({ transactions, setTransactions }) {
             <div className="card card-chart ml-5">
               <div className="card-header card-chart-header">
                 <h3 className="chart-title text-center text-light">{selectedTimePeriod}</h3>
+                <h4>Total: ${formatAmount(selectedTotal)}</h4>
                 <h4 className="chart-title text-centermb-2 text-light">
                   by Category
                 </h4>
