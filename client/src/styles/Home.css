@@ -29,6 +29,20 @@ body {
   background: var(--dollar-bill-green);
 }
 
+.nav-link {
+  color: var(--dollar-bill-green);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+  color: #fff;
+  background-color: var(--dollar-bill-green);
+}
+
+.login-signup-button {
+  background-color: var(--dollar-bill-green) !important;
+  border: none;
+}
+
 .home-body h1 {
   margin-top: 25px;
   font-style: "Montserrat, non-serif";
