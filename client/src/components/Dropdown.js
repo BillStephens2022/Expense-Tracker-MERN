@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "../styles/Analysis.css";
 
 const Dropdown = ({ onOptionChange }) => {
   const [selectedOption, setSelectedOption] = useState('CurrentMTD');
@@ -10,8 +11,8 @@ const Dropdown = ({ onOptionChange }) => {
   }
 
   return (
-    <div>
-      <label htmlFor="dropdown">Select an option:</label>
+    <div className="dropdown_container">
+      <label className="dropdown_label" htmlFor="dropdown">Select an option:</label>
       <select id="dropdown" value={selectedOption} onChange={handleOptionChange}>
         <option value="">--Select--</option>
         <option value="CurrentMTD">Current MTD</option>

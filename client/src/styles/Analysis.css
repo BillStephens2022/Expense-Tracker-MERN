@@ -18,6 +18,27 @@
   font-size: 3em;
 }
 
+.dropdown_container {
+  display: block;
+  font-size: 1.75em;
+  text-align: center;
+  color: var(--blue);
+  margin-bottom: 1em;
+}
+
+.dropdown_label {
+  margin-right: 0.25em;
+}
+
+#dropdown {
+  font-size: 0.75em;
+  color: white;
+  background-color: var(--blue);
+  padding: 0.25em;
+  border: var(--dollar-bill-green) solid 2px;
+  border-radius: 10px;
+}
+
 .card-chart {
   min-width: 45vw;
 }
