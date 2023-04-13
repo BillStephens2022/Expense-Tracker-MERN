@@ -17,14 +17,13 @@ const Footer = () => {
                 </a>
               </div>
               <div className="col-md-4">
-                <p className="m-0">Contact us:</p>
-                <p className="m-0">contact@expensetracker.com</p>
-                <p className="m-0">(123) 456-7890</p>
+                <p className="m-0">Contact us: contact@expensetracker.com</p>
+
               </div>
             </div>
-            <div className="mt-3">
+            <div className="mt-1">
               <h2 className="footer-text">
-                Created by Bill, Joe, Jon, and Marc
+                &copy; 2023. Created by Bill, Joe, Jon, and Marc
               </h2>
             </div>
           </div>

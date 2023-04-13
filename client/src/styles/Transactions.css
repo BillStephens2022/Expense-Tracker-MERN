@@ -47,6 +47,11 @@
   box-shadow: var(--text-shadow);
 }
 
+.add-transaction-button:hover {
+  background: var(--blue);
+  color: white;
+}
+
 .card {
   background-color: var(--dollar-bill-green);
   color: white;

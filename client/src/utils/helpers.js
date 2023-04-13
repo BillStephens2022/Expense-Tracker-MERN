@@ -11,8 +11,10 @@ export function formatAmount(x) {
   if (typeof x === "undefined") {
     return "";
   }
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const num = typeof x === "string" ? x : parseFloat(x);
+  return Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
 
 export function calculateFutureValue(P, PMT, r, n, t) {
   const futureValue =
