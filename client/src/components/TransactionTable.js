@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/Transactions.css";
-import { formatDate, formatAmount, formatAmountDecimal } from "../utils/helpers.js";
+import { formatDate, formatAmountDecimal } from "../utils/helpers.js";
 import Auth from "../utils/auth";
 import { GoTrashcan } from "react-icons/go";
 
@@ -17,10 +17,10 @@ const TransactionTable = ({
     return <div>Loading...</div>;
   }
 
-  // create function that accepts the book's mongo _id value as param and deletes the book from the database
+  // create function that accepts the transactions's mongo _id value as param and deletes the transaction from the database
   const handleDeleteTransaction = async (e) => {
     e.preventDefault();
-    const transactionId = e.target.id;
+    const transactionId = e.currentTarget.id;
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) {
       return false;
