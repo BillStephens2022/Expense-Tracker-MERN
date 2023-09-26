@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Home.css";
 import trend from "../images/trend.png";
 import transactions from "../images/transactions.png";
 import chart from "../images/chart-cat.png";
 import calcform from "../images/calcform.png";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from '../utils/auth';
 
 const Home = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  const [login] = useMutation(LOGIN_USER);
+
+  const handleGuestLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const { data } = await login({
+        variables: { email: "guest@gmail.com", password: "password" },
+      });
+      Auth.login(data.login.token);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
+  };
+
   return (
     <div className="home-body mb-5">
       <div className="text-center">
@@ -13,6 +32,8 @@ const Home = () => {
         <p className="home-subtitle">
           Keep your finances in check and reach your financial goals
         </p>
+        <p className="home-subtitle">Login as Guest to test drive!</p>
+        <button onClick={handleGuestLogin}>Login as Guest</button>
       </div>
       <div className="row d-flex justify-content-around">
         <div className="col col-sm-12 col-md-6 col-lg-6 d-flex justify-content-around">
@@ -84,7 +105,6 @@ const Home = () => {
           <div className="col-lg-2 col-md-4 col-6 mb-4">
             <div className="card card-testimonials w-100">
               <div className="card-body card-testimonials">
-                
                 <p className="card-text">
                   "I love using Expense Tracker! It's so easy to use and helps
                   me keep track of my spending."
@@ -96,7 +116,6 @@ const Home = () => {
           <div className="col-lg-2 col-md-4 col-6 mb-4">
             <div className="card card-testimonials w-100">
               <div className="card-body card-testimonials">
-                
                 <p className="card-text">
                   "This app has been a game-changer for me. I've been able to
                   save more money and reach my financial goals faster."
@@ -107,7 +126,7 @@ const Home = () => {
           </div>
           <div className="col-lg-2 col-md-4 col-6 mb-4">
             <div className="card card-testimonials w-100">
-              <div className="card-body card-testimonials">             
+              <div className="card-body card-testimonials">
                 <p className="card-text">
                   "Expense Tracker has helped me identify areas where I can cut
                   back and save more money. It's a must-have for anyone looking
@@ -119,7 +138,7 @@ const Home = () => {
           </div>
           <div className="col-lg-2 col-md-4 col-6 mb-4">
             <div className="card card-testimonials w-100">
-              <div className="card-body card-testimonials">              
+              <div className="card-body card-testimonials">
                 <p className="card-text">
                   "I've tried other budgeting apps, but Expense Tracker is by
                   far the best. It's intuitive, user-friendly, and has all the
