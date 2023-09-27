@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from 'react-bootstrap';
 import "../styles/Home.css";
 import trend from "../images/trend.png";
 import transactions from "../images/transactions.png";
@@ -11,6 +12,7 @@ import Auth from '../utils/auth';
 const Home = () => {
   const [showAlert, setShowAlert] = useState(false);
   const [login] = useMutation(LOGIN_USER);
+
 
   const handleGuestLogin = async (event) => {
     event.preventDefault();
@@ -32,8 +34,17 @@ const Home = () => {
         <p className="home-subtitle">
           Keep your finances in check and reach your financial goals
         </p>
-        <p className="home-subtitle">Login as Guest to test drive!</p>
-        <button onClick={handleGuestLogin}>Login as Guest</button>
+        <div className="guest-login-div">
+        <p className="guest-login-p">Login as Guest to test drive!</p>
+        {Auth.loggedIn() ? (
+          <Button type="button" variant="danger" onClick={Auth.logout}>Logout</Button> 
+        ) : (
+          <div>
+        <Button className="login-button" type="button" variant="success" onClick={handleGuestLogin}>Login as Guest</Button>
+        <Button className="login-button" type="button" variant="success" onClick={handleGuestLogin}>Login / Signup</Button>
+        </div>
+        )}
+        </div>
       </div>
       <div className="row d-flex justify-content-around">
         <div className="col col-sm-12 col-md-6 col-lg-6 d-flex justify-content-around">

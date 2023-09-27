@@ -66,6 +66,20 @@ body {
   line-height: 1.5em;
 }
 
+.guest-login-div {
+  margin-bottom: 2rem;
+}
+
+.guest-login-p {
+  color: steelblue;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+}
+
+.login-button {
+  margin: 0 0.5rem;
+}
+
 .chart-div {
   text-align: center;
   margin: 15px 0px 15px 15px;
