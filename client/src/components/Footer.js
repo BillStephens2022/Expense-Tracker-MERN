@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/Home.css';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   return (
     <div className="footer text-center mt-5 py-3 text-light">
             <div className="row">
@@ -23,7 +24,7 @@ const Footer = () => {
             </div>
             <div className="mt-1">
               <h2 className="footer-text">
-                &copy; 2023. Created by Bill, Joe, Jon, and Marc
+                &copy; {currentYear}. Created by Bill, Joe, Jon, and Marc
               </h2>
             </div>
           </div>
