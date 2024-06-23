@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Transactions.css";
 import { formatDate, formatAmountDecimal } from "../utils/helpers.js";
 import Auth from "../utils/auth";
-import { GoTrashcan } from "react-icons/go";
+import { GoTrash } from "react-icons/go";
 
 const TransactionTable = ({
   data,
@@ -122,7 +122,7 @@ const TransactionTable = ({
                     id={transaction._id}
                     onClick={handleDeleteTransaction}
                   >
-                    <GoTrashcan />
+                    <GoTrash />
                   </button>
                 </td>
               </tr>
